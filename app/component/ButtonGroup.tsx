@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import BadgeImg from "../assets/badge.png";
 
 interface ButtonGroupProps {
   options: string[];
@@ -23,11 +24,18 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
         <button
           key={option}
           onClick={() => handleSelect(option)}
-          className={`flex-1 px-4 py-2 last:border-r-0 border-gray-300 transition-all text-xl ${
+          className={`flex-1 flex flex-row items-center px-4 py-2 last:border-r-0 border-gray-300 transition-all text-xl ${
             selected === option ? "font-bold" : "font-normal"
           }`}
         >
-          {option}
+          <p>{option}</p>
+          {selected === option && (
+            <img
+              src={BadgeImg.src}
+              alt="badge"
+              className="w-4 h-4 inline ml-2"
+            />
+          )}
         </button>
       ))}
     </div>
