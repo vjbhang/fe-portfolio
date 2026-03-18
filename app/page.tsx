@@ -6,6 +6,8 @@ import Landing from "./component/page/landing";
 import Work from "./component/page/work";
 import About from "./component/page/about";
 import { ButtonGroup } from "./component/elements/ButtonGroup";
+import AnimatedButton from "./component/elements/AnimatedBG/AnimatedBG";
+import AnimatedBG from "./component/elements/AnimatedBG/AnimatedBG";
 
 export default function Home() {
   const buttonGroupOptions = ["landing", "work", "about"];
@@ -75,6 +77,9 @@ export default function Home() {
         selected={selectedButton}
         onSelect={setSelectedButton}
       />
+      <div className="absolute top-0 left-0 w-full h-full">
+        <AnimatedBG />
+      </div>
     </div>
   );
 }

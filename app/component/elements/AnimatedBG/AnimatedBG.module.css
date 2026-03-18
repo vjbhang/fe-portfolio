@@ -47,7 +47,7 @@
   aspect-ratio: 4/5;
   border: 1px solid var(--surface-2);
   isolation: isolate;
-  transition: border-color 200ms var(--ease-out);
+  /* transition: border-color 200ms var(--ease-out); */
   user-select: none;
 }
 
@@ -62,7 +62,7 @@
   );
   pointer-events: none;
   box-shadow: var(--bg) -0.5cqi 0.5cqi 2.5cqi inset;
-  transition: opacity 900ms var(--ease-out);
+  /* transition: opacity 900ms var(--ease-out); */
 }
 
 .card::after {
@@ -72,8 +72,7 @@
   margin: auto;
   aspect-ratio: 1;
   background: radial-gradient(circle, var(--bg), transparent 65%);
-  opacity: 0;
-  transition: opacity 800ms var(--ease-out);
+  /* transition: opacity 800ms var(--ease-out); */
 }
 
 .card > * {
@@ -90,30 +89,14 @@
   transition-property: color, scale;
 } */
 
-.card button {
-  opacity: 0;
-}
 
-.card:focus-within {
-  outline: 5px auto Highlight;
-  outline: 5px auto -webkit-focus-ring-color;
-}
-
-.card:where(:hover, :focus-within) {
+.card {
+  /* Set the final border color and transition */
   border-color: var(--active-color, var(--fg));
-  transition: border-color 800ms var(--ease-in-out);
+  /* transition: border-color 800ms var(--ease-in-out); */
 }
 
-.card:where(:hover, :focus-within) svg {
-  color: var(--active-color, var(--fg));
-  scale: 1.1;
-  transition: 300ms var(--ease-in-out);
-}
-
-.card:where(:hover, :focus-within)::before {
-  opacity: 0;
-}
-
-.card:where(:hover, :focus-within)::after {
+.card::after {
+  /* Overlay animates in on mount */
   opacity: 1;
 }

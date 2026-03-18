@@ -55,28 +55,25 @@ class Pixel {
     this.draw();
   }
 
-  disappear() {
-    this.isShimmer = false;
-    this.counter = 0;
-    if (this.size <= 0) {
-      this.isIdle = true;
-      return;
-    } else {
-      this.size -= 0.1;
-    }
-    this.draw();
-  }
-
   shimmer() {
-    if (this.size >= this.maxSize) {
-      this.isReverse = true;
-    } else if (this.size <= this.minSize) {
-      this.isReverse = false;
-    }
-    if (this.isReverse) {
-      this.size -= this.speed;
-    } else {
+    // if (this.size >= this.maxSize) {
+    //   this.isReverse = true;
+    // } else if (this.size <= this.minSize) {
+    //   this.isReverse = false;
+    // }
+    // if (this.isReverse) {
+    //   this.size -= this.speed;
+    // } else {
+    //   this.size += this.speed;
+    // }
+
+      // Only allow shimmer to grow, not shrink
+    if (this.size < this.maxSize) {
       this.size += this.speed;
+    }
+    // Clamp to maxSize
+    if (this.size > this.maxSize) {
+      this.size = this.maxSize;
     }
   }
 }
@@ -151,49 +148,26 @@ class PixelCanvas extends HTMLElement {
     this.resizeObserver = new ResizeObserver(() => this.init());
     this.resizeObserver.observe(this);
     this._parent.addEventListener("mouseenter", this);
-    this._parent.addEventListener("mouseleave", this);
-    if (!this.noFocus) {
-      this._parent.addEventListener("focusin", this);
-      this._parent.addEventListener("focusout", this);
-    }
+    this._parent.addEventListener("focusin", this);
   }
 
   disconnectedCallback() {
     this.resizeObserver.disconnect();
     this._parent.removeEventListener("mouseenter", this);
-    this._parent.removeEventListener("mouseleave", this);
-    if (!this.noFocus) {
-      this._parent.removeEventListener("focusin", this);
-      this._parent.removeEventListener("focusout", this);
-    }
+    this._parent.removeEventListener("focusin", this);
     delete this._parent;
   }
 
   handleEvent(event) {
-    this[`on${event.type}`](event);
+    if (event.type === "mouseenter" || event.type === "focusin") {
+      this.activateOnce();
+    }
   }
 
-  onmouseenter() {
-    this.handleAnimation("appear");
-  }
-
-  onmouseleave() {
-    this.handleAnimation("disappear");
-  }
-
-  onfocusin(e) {
-    if (e.currentTarget.contains(e.relatedTarget)) return;
-    this.handleAnimation("appear");
-  }
-
-  onfocusout(e) {
-    if (e.currentTarget.contains(e.relatedTarget)) return;
-    this.handleAnimation("disappear");
-  }
-
-  handleAnimation(name) {
-    cancelAnimationFrame(this.animation);
-    this.animation = this.animate(name);
+  activateOnce() {
+    if (this._activated) return;
+    this._activated = true;
+    this.animation = this.animate("appear");
   }
 
   init() {
@@ -240,9 +214,9 @@ class PixelCanvas extends HTMLElement {
     for (let i = 0; i < this.pixels.length; i++) {
       this.pixels[i][fnName]();
     }
-    if (this.pixels.every((pixel) => pixel.isIdle)) {
-      cancelAnimationFrame(this.animation);
-    }
+    // if (this.pixels.every((pixel) => pixel.isIdle)) {
+    //   cancelAnimationFrame(this.animation);
+    // }
   }
 }
 
