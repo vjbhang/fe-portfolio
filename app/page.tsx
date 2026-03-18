@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Header from "./component/Header";
 import Landing from "./component/page/landing";
 import Work from "./component/page/work";
@@ -13,27 +13,62 @@ export default function Home() {
     buttonGroupOptions[0],
   );
 
-  function PageSelector(selectedButton: string) {
-    switch (selectedButton) {
-      case "landing":
-        return <Landing />;
-      case "work":
-        return <Work />;
-      case "about":
-        return <About />;
-      default:
-        return <Landing />;
-    }
-  }
+  const containerRef = useRef<HTMLDivElement>(null);
+  const index = buttonGroupOptions.indexOf(selectedButton);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const child = containerRef.current.children[index] as HTMLElement;
+    child?.scrollIntoView({ behavior: "smooth", inline: "start" });
+  }, [index]);
+
+  const SCROLL_THRESHOLD = 500; // 5 scroll triggers (with my mouse..)
+  const scrollDeltaY = useRef(0);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const handler = (e: WheelEvent) => {
+      e.preventDefault();
+      scrollDeltaY.current += e.deltaY;
+
+      console.log("scrollDeltaY:", scrollDeltaY.current);
+
+      if (Math.abs(scrollDeltaY.current) < SCROLL_THRESHOLD) {
+        console.log("threshold not reached, ignoring scroll event");
+        return;
+      }
+
+      setSelectedButton((prev) => {
+        const i = buttonGroupOptions.indexOf(prev);
+        scrollDeltaY.current = 0; // reset after page change
+        if (e.deltaY > 0 && i < buttonGroupOptions.length - 1)
+          return buttonGroupOptions[i + 1];
+        if (e.deltaY < 0 && i > 0) return buttonGroupOptions[i - 1];
+        return prev;
+      });
+    };
+
+    el.addEventListener("wheel", handler, { passive: false });
+    return () => el.removeEventListener("wheel", handler);
+  }, [buttonGroupOptions]);
 
   return (
     <div className="flex flex-col min-h-screen bg-zinc-50 font-sans dark:bg-black mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
       <Header />
-      {/* {PageSelector(selectedButton)} */}
-      <div className="flex flex-1 w-full">
-        <Landing />
-        <Work />
-        <About />
+      <div
+        ref={containerRef}
+        className="flex flex-1 w-full overflow-x-auto snap-x snap-mandatory scrollbar-hide"
+      >
+        <div className="flex-shrink-0 min-w-full w-full snap-start">
+          <Landing />
+        </div>
+        <div className="flex-shrink-0 min-w-full w-full snap-start">
+          <Work />
+        </div>
+        <div className="flex-shrink-0 min-w-full w-full snap-start">
+          <About />
+        </div>
       </div>
       <ButtonGroup
         options={buttonGroupOptions}
