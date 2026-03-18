@@ -58,5 +58,9 @@ export default function Clock() {
     };
   }, [urlParams]);
 
-  return <div id="output">{timeText}</div>;
+  return (
+    <div id="output" className="text-white">
+      {timeText}
+    </div>
+  );
 }

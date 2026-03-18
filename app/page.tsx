@@ -6,6 +6,7 @@ import Landing from "./component/page/landing";
 import Work from "./component/page/work";
 import About from "./component/page/about";
 import { ButtonGroup } from "./component/ButtonGroup";
+import AnimatedButton from "./component/AnimatedButton";
 
 export default function Home() {
   const buttonGroupOptions = ["landing", "work", "about"];
@@ -54,7 +55,7 @@ export default function Home() {
   }, [buttonGroupOptions]);
 
   return (
-    <div className="flex flex-col min-h-screen bg-zinc-50 font-sans dark:bg-black mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
+    <div className="flex flex-col min-h-screen  font-sans bg-black mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
       <Header />
       <div
         ref={containerRef}
@@ -75,6 +76,7 @@ export default function Home() {
         selected={selectedButton}
         onSelect={setSelectedButton}
       />
+      <AnimatedButton />
     </div>
   );
 }

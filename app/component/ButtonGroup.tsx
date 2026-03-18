@@ -24,11 +24,11 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
         <button
           key={option}
           onClick={() => handleSelect(option)}
-          className={`flex-1 flex flex-row items-center px-4 py-2 last:border-r-0 border-gray-300 transition-all text-xl ${
+          className={`flex-1 flex flex-row items-center justify-center px-4 py-2 last:border-r-0 border-gray-300 transition-all text-xl ${
             selected === option ? "font-bold" : "font-normal"
           }`}
         >
-          <p>{option}</p>
+          <p className="text-white">{option}</p>
           {selected === option && (
             <img
               src={BadgeImg.src}
