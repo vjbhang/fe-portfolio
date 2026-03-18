@@ -1,12 +1,11 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import Header from "./component/Header";
+import Header from "./component/elements/Header";
 import Landing from "./component/page/landing";
 import Work from "./component/page/work";
 import About from "./component/page/about";
-import { ButtonGroup } from "./component/ButtonGroup";
-import AnimatedButton from "./component/AnimatedButton";
+import { ButtonGroup } from "./component/elements/ButtonGroup";
 
 export default function Home() {
   const buttonGroupOptions = ["landing", "work", "about"];
@@ -76,7 +75,6 @@ export default function Home() {
         selected={selectedButton}
         onSelect={setSelectedButton}
       />
-      <AnimatedButton />
     </div>
   );
 }

@@ -21,5 +21,5 @@ export default function Timer() {
     return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
   };
 
-  return <div>{formatTime(time)}</div>;
+  return <div className="text-white">{formatTime(time)}</div>;
 }

@@ -18,7 +18,7 @@ export default function About() {
           I am open to taking on projects (if not already taken). Don’t hesitate
           to reach out!{" "}
         </p>
-        <p className="underline">CONTACT</p>
+        <p className="underline text-white">CONTACT</p>
         <p className="text-md text-white">pixelr_vincent@pm.me</p>
       </div>
       <div className="mt-auto"></div>
