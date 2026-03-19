@@ -89,7 +89,6 @@
   transition-property: color, scale;
 } */
 
-
 .card {
   /* Set the final border color and transition */
   border-color: var(--active-color, var(--fg));

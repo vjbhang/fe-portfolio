@@ -68,7 +68,10 @@ export default function AnimatedButton() {
 
   return (
     // <div className={styles["card-container"]}>
-      <pixel-canvas-background className={styles["card-container"]} {...cards[3].pixelAttrs} />
+    <pixel-canvas-background
+      className={styles["card-container"]}
+      {...cards[3].pixelAttrs}
+    />
     // </div>
   );
 }

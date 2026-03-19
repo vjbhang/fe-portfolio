@@ -67,7 +67,7 @@ class Pixel {
       this.size += this.speed;
     }
 
-      // Only allow shimmer to grow, not shrink
+    // Only allow shimmer to grow, not shrink
   }
 }
 
@@ -149,8 +149,6 @@ class PixelCanvas extends HTMLElement {
     this.resizeObserver.disconnect();
     delete this._parent;
   }
-
-
 
   activateOnce() {
     if (this._activated) return;

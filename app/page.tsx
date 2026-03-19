@@ -81,8 +81,6 @@ export default function Home() {
           onSelect={setSelectedButton}
         />
       </div>
-
-
     </div>
   );
 }
