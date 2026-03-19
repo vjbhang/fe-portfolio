@@ -56,30 +56,23 @@ class Pixel {
   }
 
   shimmer() {
-    // if (this.size >= this.maxSize) {
-    //   this.isReverse = true;
-    // } else if (this.size <= this.minSize) {
-    //   this.isReverse = false;
-    // }
-    // if (this.isReverse) {
-    //   this.size -= this.speed;
-    // } else {
-    //   this.size += this.speed;
-    // }
-
-      // Only allow shimmer to grow, not shrink
-    if (this.size < this.maxSize) {
+    if (this.size >= this.maxSize) {
+      this.isReverse = true;
+    } else if (this.size <= this.minSize) {
+      this.isReverse = false;
+    }
+    if (this.isReverse) {
+      this.size -= this.speed;
+    } else {
       this.size += this.speed;
     }
-    // Clamp to maxSize
-    if (this.size > this.maxSize) {
-      this.size = this.maxSize;
-    }
+
+      // Only allow shimmer to grow, not shrink
   }
 }
 
 class PixelCanvas extends HTMLElement {
-  static register(tag = "pixel-canvas") {
+  static register(tag = "pixel-canvas-background") {
     if ("customElements" in window && !customElements.get(tag)) {
       customElements.define(tag, this);
     }
@@ -147,22 +140,17 @@ class PixelCanvas extends HTMLElement {
     this.init();
     this.resizeObserver = new ResizeObserver(() => this.init());
     this.resizeObserver.observe(this);
-    this._parent.addEventListener("mouseenter", this);
-    this._parent.addEventListener("focusin", this);
+    // Removed event listeners; animation starts automatically
+    // Start animation immediately on page load
+    this.activateOnce();
   }
 
   disconnectedCallback() {
     this.resizeObserver.disconnect();
-    this._parent.removeEventListener("mouseenter", this);
-    this._parent.removeEventListener("focusin", this);
     delete this._parent;
   }
 
-  handleEvent(event) {
-    if (event.type === "mouseenter" || event.type === "focusin") {
-      this.activateOnce();
-    }
-  }
+
 
   activateOnce() {
     if (this._activated) return;
@@ -174,6 +162,7 @@ class PixelCanvas extends HTMLElement {
     const rect = this.getBoundingClientRect();
     const width = Math.floor(rect.width);
     const height = Math.floor(rect.height);
+    console.log("width, height", width, height);
     this.pixels = [];
     this.canvas.width = width;
     this.canvas.height = height;

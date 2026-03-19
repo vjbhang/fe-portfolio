@@ -6,7 +6,7 @@ import styles from "./AnimatedBG.module.css";
 export default function AnimatedButton() {
   useEffect(() => {
     // Dynamically import PixelCanvas only on client
-    import("./PixelCanvas.js");
+    import("./PixelCanvasBackground.js");
   }, []);
   // Example data for dynamic grid
   const cards = [
@@ -67,8 +67,8 @@ export default function AnimatedButton() {
   ];
 
   return (
-    <div className={styles["card-container"]}>
-      <pixel-canvas {...cards[3].pixelAttrs} />
-    </div>
+    // <div className={styles["card-container"]}>
+      <pixel-canvas-background className={styles["card-container"]} {...cards[3].pixelAttrs} />
+    // </div>
   );
 }
