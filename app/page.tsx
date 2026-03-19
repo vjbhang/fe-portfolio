@@ -7,6 +7,7 @@ import Work from "./component/page/work";
 import About from "./component/page/about";
 import { ButtonGroup } from "./component/elements/ButtonGroup";
 import AnimatedBG from "./component/elements/AnimatedBG/AnimatedBG";
+import HamburgerMenu from "./component/elements/HamburgerMenu/HamburgerMenu";
 
 export default function Home() {
   const buttonGroupOptions = ["landing", "work", "about"];
@@ -16,6 +17,8 @@ export default function Home() {
 
   const containerRef = useRef<HTMLDivElement>(null);
   const index = buttonGroupOptions.indexOf(selectedButton);
+
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -59,10 +62,11 @@ export default function Home() {
       <div className="absolute top-0 left-0 w-full h-full z-5">
         <AnimatedBG />
       </div>
-      <Header />
+      <HamburgerMenu isOpen={isOpen} setIsOpen={setIsOpen} />
+      <Header isOpen={isOpen} setIsOpen={setIsOpen} />
       <div
         ref={containerRef}
-        className="flex flex-1 w-full overflow-x-auto snap-x snap-mandatory scrollbar-hide z-10"
+        className="flex flex-1 w-full overflow-x-auto snap-x snap-mandatory scrollbar-hide z-8"
       >
         <div className="flex-shrink-0 min-w-full w-full snap-start">
           <Landing />
@@ -74,7 +78,7 @@ export default function Home() {
           <About />
         </div>
       </div>
-      <div className="z-10">
+      <div className="z-8">
         <ButtonGroup
           options={buttonGroupOptions}
           selected={selectedButton}

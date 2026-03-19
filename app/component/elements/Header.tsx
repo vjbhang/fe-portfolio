@@ -1,9 +1,14 @@
 import React from "react";
 import Clock from "./Clock";
 import Timer from "./Timer";
-import HamburgerMenu from "./Hamburger Menu";
+import HamburgerIcon from "./HamburgerMenu/HamburgerIcon";
 
-export const Header: React.FC = () => {
+interface HeaderProps {
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export const Header: React.FC<HeaderProps> = ({ isOpen, setIsOpen }) => {
   return (
     <header className="h-[87px] w-full bg-transparent z-10">
       <div className="w-full py-6 flex items-center gap-32">
@@ -14,7 +19,7 @@ export const Header: React.FC = () => {
         </div>
         <div className="ml-auto flex gap-8">
           <Timer />
-          <HamburgerMenu />
+          <HamburgerIcon isOpen={isOpen} setIsOpen={setIsOpen} />
         </div>
       </div>
     </header>
