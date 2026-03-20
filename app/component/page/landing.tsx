@@ -1,3 +1,5 @@
+import AnimatedBG from "../elements/AnimatedBG/AnimatedBG";
+
 export default function Landing() {
   return (
     <div className="flex flex-col justify-end pb-8 w-full h-full">
