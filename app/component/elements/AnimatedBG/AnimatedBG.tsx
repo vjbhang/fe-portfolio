@@ -64,13 +64,30 @@ export default function AnimatedButton() {
         "data-no-focus": true,
       },
     },
+    {
+      key: "PixelGridlike",
+      pixelProps: {
+        "data-gap": "7",
+        "data-speed": "80",
+        "data-colors": "#36373240, #3D3D3D40, #29292940, #33333340",
+        "data-no-focus": true,
+      },
+      button: "PixelGridlike",
+      style: { "--active-color": "#36373240", width: "100%", height: "100%" },
+      pixelAttrs: {
+        "data-gap": "7",
+        "data-speed": "80",
+        "data-colors": "#36373240, #3D3D3D40, #29292940, #33333340",
+        "data-no-focus": true,
+      },
+    },
   ];
 
   return (
     // <div className={styles["card-container"]}>
     <pixel-canvas-background
       className={styles["card-container"]}
-      {...cards[3].pixelAttrs}
+      {...cards[4].pixelAttrs}
     />
     // </div>
   );
