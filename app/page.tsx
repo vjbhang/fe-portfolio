@@ -250,7 +250,7 @@ export default function Home() {
           <img
             src="/trackerSVG.svg"
             alt="scroll tracker"
-            className={`w-12 h-12 absolute top-1/2 left-1/2 transform ${index === 8 ? "ml-[25%]" : ""} -translate-x-1/2 -translate-y-1/2 z-10 transition-[margin] ease-in-out duration-1000`}
+            className={`absolute top-1/2 left-1/2 transform ${index === 8 ? "ml-[25%]" : ""} -translate-x-1/2 -translate-y-1/2 z-10 transition-[margin] ease-in-out duration-700`}
           />
           <div className="absolute top-1/2 w-full transform -translate-y-full">
             {(() => {
@@ -265,19 +265,123 @@ export default function Home() {
                 leftOffsets.push(acc);
                 acc += partitionData[i].scale * 100;
               }
-              return partitionData.map((style, i) => (
+              // Animated bars (no border)
+              const bars = partitionData.map((style, i) => (
                 <div
                   key={i}
-                  className={`absolute bottom-0 h-[70vh] transition-[left, transform] duration-1000 linear ${i === partitionData.length - 1 ? "border-r-transparent" : "border-r-2 border-dashed"}`}
+                  className="absolute bottom-0 h-[70vh] transition-[left,transform] duration-700 linear will-change-transform "
                   style={{
                     width: "100%",
                     left: `${leftOffsets[i]}%`,
                     transform: `scaleX(${style.scale})`,
                     transformOrigin: "left",
                     overflow: "hidden",
+                    background: "transparent",
+                    zIndex: 1,
                   }}
-                ></div>
+                />
               ));
+
+              // Overlay borders (not scaled, always crisp)
+              const sequenceMarker = partitionData.slice(0, -1).map((_, i) => (
+                <div
+                  key={`border-${i}`}
+                  className="absolute bottom-0 h-[70vh] transition-[left] duration-700 linear border-r-1 border-dashed pointer-events-none"
+                  style={{
+                    left: `${leftOffsets[i + 1]}%`,
+                    width: 0,
+                    zIndex: 2,
+                  }}
+                />
+              ));
+
+              const accent = partitionData.slice(0, -1).map((_, i) =>
+                i == 0 ? (
+                  <img
+                    src={index > 0 ? `Filled-MD.svg` : `/Hollow-MD.svg`}
+                    alt="scroll tracker"
+                    className="absolute bottom-0 transition-[left] duration-700 linear pointer-events-none top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                    style={{
+                      left: `${leftOffsets[i + 1]}%`,
+                      zIndex: 2,
+                    }}
+                  />
+                ) : i == 2 ? (
+                  <img
+                    src={index > 2 ? `Filled-SM.svg` : `/Hollow-SM.svg`}
+                    alt="scroll tracker"
+                    className="absolute bottom-0 transition-[left] duration-700 linear pointer-events-none top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                    style={{
+                      left: `${leftOffsets[i + 1]}%`,
+                      zIndex: 2,
+                    }}
+                  />
+                ) : i == 4 ? (
+                  <img
+                    src={index > 4 ? `Filled-MD.svg` : `/Hollow-MD.svg`}
+                    alt="scroll tracker"
+                    className="absolute bottom-0 transition-[left] duration-700 linear pointer-events-none top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                    style={{
+                      left: `${leftOffsets[i + 1]}%`,
+                      zIndex: 2,
+                    }}
+                  />
+                ) : i == 6 ? (
+                  <img
+                    src={index > 6 ? `Filled-SM.svg` : `/Hollow-SM.svg`}
+                    alt="scroll tracker"
+                    className="absolute bottom-0 transition-[left] duration-700 linear pointer-events-none top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                    style={{
+                      left: `${leftOffsets[i + 1]}%`,
+                      zIndex: 2,
+                    }}
+                  />
+                ) : i == 8 ? (
+                  <img
+                    src={index > 8 ? `Filled-MD.svg` : `/Hollow-MD.svg`}
+                    alt="scroll tracker"
+                    className="absolute bottom-0 transition-[left] duration-700 linear pointer-events-none top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                    style={{
+                      left: `${leftOffsets[i + 1]}%`,
+                      zIndex: 2,
+                    }}
+                  />
+                ) : null,
+              );
+
+              const filledAccent = partitionData.slice(0, -1).map((_, i) =>
+                (i == 2 && index > 2) || (i == 6 && index > 6) ? (
+                  <img
+                    src="/Filled-SM.svg"
+                    alt="scroll tracker"
+                    className="absolute bottom-0 transition-[left] duration-700 linear pointer-events-none top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                    style={{
+                      left: `${leftOffsets[i + 1]}%`,
+                      zIndex: 2,
+                    }}
+                  />
+                ) : (i == 0 && index > 0) ||
+                  (i == 4 && index > 4) ||
+                  (i == 8 && index > 8) ? (
+                  <img
+                    src="/Filled-MD.svg"
+                    alt="scroll tracker"
+                    className="absolute bottom-0 transition-[left] duration-700 linear pointer-events-none top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                    style={{
+                      left: `${leftOffsets[i + 1]}%`,
+                      zIndex: 2,
+                    }}
+                  />
+                ) : null,
+              );
+
+              return (
+                <>
+                  {bars}
+                  {sequenceMarker}
+                  {accent}
+                </>
+              );
             })()}
           </div>
         </div>
