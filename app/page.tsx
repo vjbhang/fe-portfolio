@@ -68,138 +68,133 @@ export default function Home() {
     return () => el.removeEventListener("wheel", handler);
   }, [buttonGroupOptions]);
 
-  function partitioner(index: number): { [key: string]: string }[] {
-    if (index === 0) {
-      return [
-        { width: "50%" },
-        { width: "12%" },
-        { width: "10%" },
-        { width: "8%" },
-        { width: "6.5%" },
-        { width: "5%" },
-        { width: "3.5%" },
-        { width: "2.5%" },
-        { width: "1.5%" },
-        { width: "1%" },
-      ];
-    } else if (index === 1) {
-      return [
-        { width: "38%" },
-        { width: "12%" },
-        { width: "12%" },
-        { width: "12%" },
-        { width: "9%" },
-        { width: "7%" },
-        { width: "4%" },
-        { width: "3%" },
-        { width: "2%" },
-        { width: "1%" },
-      ];
-    } else if (index === 2) {
-      return [
-        { width: "26%" },
-        { width: "12%" },
-        { width: "12%" },
-        { width: "9%" },
-        { width: "8%" },
-        { width: "7%" },
-        { width: "7%" },
-        { width: "7%" },
-        { width: "6%" },
-        { width: "6%" },
-      ];
-    } else if (index === 3) {
-      return [
-        { width: "14%" },
-        { width: "12%" },
-        { width: "12%" },
-        { width: "12%" },
-        { width: "11%" },
-        { width: "9%" },
-        { width: "8%" },
-        { width: "8%" },
-        { width: "7%" },
-        { width: "7%" },
-      ];
-    } else if (index === 4) {
-      return [
-        { width: "10%" },
-        { width: "10%" },
-        { width: "10%" },
-        { width: "10%" },
-        { width: "10%" },
-        { width: "10%" },
-        { width: "10%" },
-        { width: "10%" },
-        { width: "10%" },
-        { width: "10%" },
-      ];
-    } else if (index === 5) {
-      return [
-        { width: "6%" },
-        { width: "7%" },
-        { width: "9%" },
-        { width: "9%" },
-        { width: "9%" },
-        { width: "10%" },
-        { width: "12%" },
-        { width: "12%" },
-        { width: "12%" },
-        { width: "14%" },
-      ];
-    } else if (index === 6) {
-      return [
-        { width: "6%" },
-        { width: "6%" },
-        { width: "7%" },
-        { width: "7%" },
-        { width: "8%" },
-        { width: "8%" },
-        { width: "8%" },
-        { width: "17%" },
-        { width: "17%" },
-        { width: "16%" },
-      ];
-    } else if (index === 7) {
-      return [
-        { width: "6%" },
-        { width: "6%" },
-        { width: "6%" },
-        { width: "6%" },
-        { width: "6%" },
-        { width: "6%" },
-        { width: "7%" },
-        { width: "7%" },
-        { width: "25%" },
-        { width: "25%" },
-      ];
-    } else if (index === 8) {
-      return [
-        { width: "6%", transform: "scaleY(0)" },
-        { width: "6%", transform: "scaleY(0)" },
-        { width: "6%", transform: "scaleY(0)" },
-        { width: "6%", transform: "scaleY(0)" },
-        { width: "6%", transform: "scaleY(0)" },
-        { width: "6%", transform: "scaleY(0)" },
-        { width: "7%", transform: "scaleY(0)" },
-        { width: "7%", transform: "scaleY(0)" },
-        { width: "25%" },
-        { width: "25%" },
-      ];
-    } else {
-      return [
-        { width: "10%" },
-        { width: "10%" },
-        { width: "10%" },
-        { width: "10%" },
-        { width: "10%" },
-        { width: "10%" },
-        { width: "10%" },
-        { width: "10%" },
-        { width: "10%" },
-        { width: "10%" },
-      ];
-    }
+  // Partitioner now returns scaleX values (0-1) for each bar
+  function partitioner(index: number): { [key: string]: number }[] {
+    // Example scale arrays for each index, matching the original width proportions
+    const scales = [
+      [
+        { scale: 0.5 },
+        { scale: 0.12 },
+        { scale: 0.1 },
+        { scale: 0.08 },
+        { scale: 0.065 },
+        { scale: 0.05 },
+        { scale: 0.035 },
+        { scale: 0.025 },
+        { scale: 0.015 },
+        { scale: 0.01 },
+      ], // index 0
+      [
+        { scale: 0.38 },
+        { scale: 0.12 },
+        { scale: 0.12 },
+        { scale: 0.12 },
+        { scale: 0.09 },
+        { scale: 0.07 },
+        { scale: 0.04 },
+        { scale: 0.03 },
+        { scale: 0.02 },
+        { scale: 0.01 },
+      ], // index 1
+      [
+        { scale: 0.26 },
+        { scale: 0.12 },
+        { scale: 0.12 },
+        { scale: 0.09 },
+        { scale: 0.08 },
+        { scale: 0.07 },
+        { scale: 0.07 },
+        { scale: 0.07 },
+        { scale: 0.06 },
+        { scale: 0.06 },
+      ], // index 2
+      [
+        { scale: 0.14 },
+        { scale: 0.12 },
+        { scale: 0.12 },
+        { scale: 0.12 },
+        { scale: 0.11 },
+        { scale: 0.09 },
+        { scale: 0.08 },
+        { scale: 0.08 },
+        { scale: 0.07 },
+        { scale: 0.07 },
+      ], // index 3
+      [
+        { scale: 0.1 },
+        { scale: 0.1 },
+        { scale: 0.1 },
+        { scale: 0.1 },
+        { scale: 0.1 },
+        { scale: 0.1 },
+        { scale: 0.1 },
+        { scale: 0.1 },
+        { scale: 0.1 },
+        { scale: 0.1 },
+      ], // index 4
+      [
+        { scale: 0.06 },
+        { scale: 0.07 },
+        { scale: 0.09 },
+        { scale: 0.09 },
+        { scale: 0.09 },
+        { scale: 0.1 },
+        { scale: 0.12 },
+        { scale: 0.12 },
+        { scale: 0.12 },
+        { scale: 0.14 },
+      ], // index 5
+      [
+        { scale: 0.06 },
+        { scale: 0.06 },
+        { scale: 0.07 },
+        { scale: 0.07 },
+        { scale: 0.08 },
+        { scale: 0.08 },
+        { scale: 0.08 },
+        { scale: 0.17 },
+        { scale: 0.17 },
+        { scale: 0.16 },
+      ], // index 6
+      [
+        { scale: 0.06 },
+        { scale: 0.06 },
+        { scale: 0.06 },
+        { scale: 0.06 },
+        { scale: 0.06 },
+        { scale: 0.06 },
+        { scale: 0.07 },
+        { scale: 0.07 },
+        { scale: 0.25 },
+        { scale: 0.25 },
+      ], // index 7
+      [
+        { scale: 0.06 },
+        { scale: 0.06 },
+        { scale: 0.06 },
+        { scale: 0.06 },
+        { scale: 0.06 },
+        { scale: 0.06 },
+        { scale: 0.07 },
+        { scale: 0.07 },
+        { scale: 0.25 },
+        { scale: 0.25 },
+      ], // index 8
+    ];
+    return (
+      scales[index] || [
+        { scale: 0.2 },
+        { scale: 0.2 },
+        { scale: 0.2 },
+        { scale: 0.2 },
+        { scale: 0.2 },
+        { scale: 0.2 },
+        { scale: 0.2 },
+        { scale: 0.2 },
+        { scale: 0.2 },
+        { scale: 0.2 },
+      ]
+    );
   }
 
   return (
@@ -257,24 +252,33 @@ export default function Home() {
             alt="scroll tracker"
             className={`w-12 h-12 absolute top-1/2 left-1/2 transform ${index === 8 ? "ml-[25%]" : ""} -translate-x-1/2 -translate-y-1/2 z-10 transition-[margin] ease-in-out duration-1000`}
           />
-          <div className="flex items-center justify-center absolute top-1/2 w-full transform -translate-y-full">
-            {partitioner(index).map((style, i) => (
-              <div
-                key={i}
-                className={`h-[70vh] ${i === partitioner(index).length - 1 ? "border-r-transparent" : "border-r-2 border-dashed transition-all transform-[scaleY(1)] origin-bottom ease-in-out duration-1000"}`}
-                style={style}
-              ></div>
-            ))}
-            {/* <div className="min-w-[50%] h-24 border-r-2 border-solid"></div>
-            <div className="min-w-[12%] h-24 border-r-2 border-solid"></div>
-            <div className="min-w-[10%] h-24 border-r-2 border-solid"></div>
-            <div className="min-w-[8%] h-24 border-r-2 border-solid"></div>
-            <div className="min-w-[6.5%] h-24 border-r-2 border-solid"></div>
-            <div className="min-w-[5%] h-24 border-r-2 border-solid"></div>
-            <div className="min-w-[3.5%] h-24 border-r-2 border-solid"></div>
-            <div className="min-w-[2.5%] h-24 border-r-2 border-solid"></div>
-            <div className="min-w-[1.5%] h-24 border-r-2 border-solid"></div>
-            <div className="min-w-[1%] h-24 border-r-2 border-transparent"></div> */}
+          <div className="absolute top-1/2 w-full transform -translate-y-full">
+            {(() => {
+              const partitionData = partitioner(index);
+              let leftOffsets: number[] = [];
+              let acc = 0;
+              for (let i = 0; i < partitionData.length; i++) {
+                if (i === partitionData.length - 1) {
+                  leftOffsets.push(100 - partitionData[i].scale * 100);
+                  break;
+                }
+                leftOffsets.push(acc);
+                acc += partitionData[i].scale * 100;
+              }
+              return partitionData.map((style, i) => (
+                <div
+                  key={i}
+                  className={`absolute bottom-0 h-[70vh] transition-[left, transform] duration-1000 linear ${i === partitionData.length - 1 ? "border-r-transparent" : "border-r-2 border-dashed"}`}
+                  style={{
+                    width: "100%",
+                    left: `${leftOffsets[i]}%`,
+                    transform: `scaleX(${style.scale})`,
+                    transformOrigin: "left",
+                    overflow: "hidden",
+                  }}
+                ></div>
+              ));
+            })()}
           </div>
         </div>
       </div>
