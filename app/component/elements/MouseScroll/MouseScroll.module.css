@@ -3,7 +3,7 @@
   width: 2.4em;
   height: 3em;
   background-color: rgba(255, 255, 255, 0);
-  border-radius: 100px;
+  border-radius: 16px 16px 10px 10px;
   border: 2px solid white;
 }
 
