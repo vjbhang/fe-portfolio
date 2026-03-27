@@ -6,6 +6,11 @@
   --foreground: #171717;
 }
 
+@theme {
+  --color-energyblue: #43bed4;
+  --color-launchred: #e86565;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
