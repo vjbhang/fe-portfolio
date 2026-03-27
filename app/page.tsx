@@ -8,7 +8,7 @@ import About from "./component/page/about";
 import { ButtonGroup } from "./component/elements/ButtonGroup";
 import AnimatedBG from "./component/elements/AnimatedBG/AnimatedBG";
 import HamburgerMenu from "./component/elements/HamburgerMenu/HamburgerMenu";
-import MouseScroll from "./component/elements/MouseScroll/MouseScroll";
+import Footer from "./component/elements/Footer";
 
 export default function Home() {
   const buttonGroupOptions = [
@@ -209,6 +209,25 @@ export default function Home() {
     );
   }
 
+  const pages = [
+    <Landing />,
+    <div />,
+    <div />,
+    <div />,
+    <div />,
+    <div />,
+    <div />,
+    <div />,
+    <div />,
+    <About />,
+  ];
+
+  const snapPages = pages.map((page, i) => (
+    <div key={`page-${i}`} className="shrink-0 min-w-full w-full snap-start">
+      {page}
+    </div>
+  ));
+
   return (
     <div className="flex flex-col min-w-screen min-h-screen  font-sans bg-white mx-auto px-[3vw] sm:px-[3vw] lg:px-[3vw] py-4 sm:py-6 lg:py-8">
       <div className="absolute top-0 left-0 w-full h-full z-6">
@@ -225,172 +244,17 @@ export default function Home() {
       </video>
       <HamburgerMenu isOpen={isOpen} setIsOpen={setIsOpen} />
       <Header isOpen={isOpen} setIsOpen={setIsOpen} />
-
       <div
         ref={containerRef}
         className="flex flex-1 w-full overflow-x-auto snap-x snap-mandatory scrollbar-hide z-8"
       >
-        <div className="shrink-0 min-w-full w-full snap-start">
-          <Landing />
-        </div>
-        <div className="shrink-0 min-w-full w-full snap-start">
-          <div></div>
-        </div>
-        <div className="shrink-0 min-w-full w-full snap-start">
-          <div></div>
-        </div>
-        <div className="shrink-0 min-w-full w-full snap-start">
-          <div></div>
-        </div>
-        <div className="shrink-0 min-w-full w-full snap-start">
-          <div></div>
-        </div>
-        <div className="shrink-0 min-w-full w-full snap-start">
-          <div></div>
-        </div>
-        <div className="shrink-0 min-w-full w-full snap-start">
-          <div></div>
-        </div>
-        <div className="shrink-0 min-w-full w-full snap-start">
-          <div></div>
-        </div>
-        <div className="shrink-0 min-w-full w-full snap-start">
-          <About />
-        </div>
-        <div className="fixed bottom-[15vh] left-[50%] w-[94vw] bg-white z-9 transform -translate-x-1/2">
-          <div className="border-3 border-solid border-white" />
-          <img
-            src="/trackerSVG.svg"
-            alt="scroll tracker"
-            className={`absolute top-1/2 left-1/2 transform ${index === 8 ? "ml-[25%]" : ""} -translate-x-1/2 -translate-y-1/2 z-10 transition-[margin] ease-in-out duration-700`}
-          />
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 translate-y-9">
-            <MouseScroll scrollDeltaYState={scrollDeltaYState} />
-          </div>
-          <div className="absolute top-1/2 w-full transform -translate-y-full">
-            {(() => {
-              const partitionData = partitioner(index);
-              let leftOffsets: number[] = [];
-              let acc = 0;
-              for (let i = 0; i < partitionData.length; i++) {
-                if (i === partitionData.length - 1) {
-                  leftOffsets.push(100 - partitionData[i].scale * 100);
-                  break;
-                }
-                leftOffsets.push(acc);
-                acc += partitionData[i].scale * 100;
-              }
-              // Animated bars (no border)
-              const bars = partitionData.map((style, i) => (
-                <div
-                  key={i}
-                  className="absolute bottom-0 h-[70vh] transition-[left,transform] duration-700 linear will-change-transform "
-                  style={{
-                    width: "100%",
-                    left: `${leftOffsets[i]}%`,
-                    transform: `scaleX(${style.scale})`,
-                    transformOrigin: "left",
-                    overflow: "hidden",
-                    background: "transparent",
-                    zIndex: 1,
-                  }}
-                />
-              ));
-
-              // Overlay borders (not scaled, always crisp)
-              const sequenceMarker = partitionData.slice(0, -1).map((_, i) => (
-                <div
-                  key={`border-${i}`}
-                  className="absolute bottom-0 h-[70vh] transition-[left] duration-700 linear border-r-1 border-dashed pointer-events-none"
-                  style={{
-                    left: `${leftOffsets[i + 1]}%`,
-                    width: 0,
-                    zIndex: 2,
-                  }}
-                />
-              ));
-
-              const accent = partitionData.slice(0, -1).map((_, i) =>
-                i == 0 ? (
-                  <img
-                    key={`accent-${i}`}
-                    src={index > 0 ? `Filled-MD.svg` : `/Hollow-MD.svg`}
-                    alt="scroll tracker"
-                    className="absolute bottom-0 transition-[left] duration-700 linear pointer-events-none top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                    style={{
-                      left: `${leftOffsets[i + 1]}%`,
-                      zIndex: 2,
-                    }}
-                  />
-                ) : i == 2 ? (
-                  <img
-                    key={`accent-${i}`}
-                    src={index > 2 ? `Filled-SM.svg` : `/Hollow-SM.svg`}
-                    alt="scroll tracker"
-                    className="absolute bottom-0 transition-[left] duration-700 linear pointer-events-none top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                    style={{
-                      left: `${leftOffsets[i + 1]}%`,
-                      zIndex: 2,
-                    }}
-                  />
-                ) : i == 4 ? (
-                  <img
-                    key={`accent-${i}`}
-                    src={index > 4 ? `Filled-MD.svg` : `/Hollow-MD.svg`}
-                    alt="scroll tracker"
-                    className="absolute bottom-0 transition-[left] duration-700 linear pointer-events-none top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                    style={{
-                      left: `${leftOffsets[i + 1]}%`,
-                      zIndex: 2,
-                    }}
-                  />
-                ) : i == 6 ? (
-                  <img
-                    key={`accent-${i}`}
-                    src={index > 6 ? `Filled-SM.svg` : `/Hollow-SM.svg`}
-                    alt="scroll tracker"
-                    className="absolute bottom-0 transition-[left] duration-700 linear pointer-events-none top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                    style={{
-                      left: `${leftOffsets[i + 1]}%`,
-                      zIndex: 2,
-                    }}
-                  />
-                ) : i == 8 ? (
-                  <img
-                    key={`accent-${i}`}
-                    src={index > 8 ? `Filled-MD.svg` : `/Hollow-MD.svg`}
-                    alt="scroll tracker"
-                    className="absolute bottom-0 transition-[left] duration-700 linear pointer-events-none top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                    style={{
-                      left: `${leftOffsets[i + 1]}%`,
-                      zIndex: 2,
-                    }}
-                  />
-                ) : null,
-              );
-
-              return (
-                <>
-                  {bars}
-                  {sequenceMarker}
-                  {accent}
-                </>
-              );
-            })()}
-          </div>
-        </div>
-      </div>
-
-      <div className="w-full z-9 flex">
-        <p>Filler</p>
-      </div>
-      {/* <div className="z-8">
-        <ButtonGroup
-          options={buttonGroupOptions}
-          selected={selectedButton}
-          onSelect={setSelectedButton}
+        {snapPages}
+        <Footer
+          pageIndex={index}
+          scrollDeltaYState={scrollDeltaYState}
+          partitioner={partitioner}
         />
-      </div> */}
+      </div>
     </div>
   );
 }
