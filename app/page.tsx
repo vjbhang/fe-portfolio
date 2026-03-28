@@ -8,7 +8,7 @@ import About from "./component/page/about";
 import { ButtonGroup } from "./component/elements/ButtonGroup";
 import AnimatedBG from "./component/elements/AnimatedBG/AnimatedBG";
 import HamburgerMenu from "./component/elements/HamburgerMenu/HamburgerMenu";
-import Footer from "./component/elements/Footer";
+import Sequence from "./component/elements/Sequence";
 
 export default function Home() {
   const buttonGroupOptions = [
@@ -222,7 +222,10 @@ export default function Home() {
   ];
 
   const snapPages = pages.map((page, i) => (
-    <div key={`page-${i}`} className="shrink-0 min-w-full w-full snap-start">
+    <div
+      key={`page-${i}`}
+      className="shrink-0 min-w-full w-full snap-start z-9"
+    >
       {page}
     </div>
   ));
@@ -245,10 +248,11 @@ export default function Home() {
       <Header isOpen={isOpen} setIsOpen={setIsOpen} />
       <div
         ref={containerRef}
-        className="flex flex-1 w-full overflow-x-auto snap-x snap-mandatory scrollbar-hide z-8"
+        className="flex flex-1 w-full overflow-x-auto snap-x snap-mandatory scrollbar-hide z-9"
       >
         {snapPages}
-        <Footer
+
+        <Sequence
           pageIndex={index}
           scrollDeltaYState={scrollDeltaYState}
           partitioner={partitioner}

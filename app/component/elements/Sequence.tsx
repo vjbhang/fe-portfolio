@@ -1,6 +1,6 @@
 import MouseScroll from "./MouseScroll/MouseScroll";
 
-export default function Footer({
+export default function Sequence({
   pageIndex,
   scrollDeltaYState,
   partitioner,
@@ -10,7 +10,7 @@ export default function Footer({
   partitioner: (index: number) => { [key: string]: number }[];
 }) {
   return (
-    <div className="fixed bottom-[14.4vh] left-[50%] w-[94vw] bg-white z-9 transform -translate-x-1/2">
+    <div className="fixed bottom-[14.4vh] left-[50%] w-[94vw] bg-white z-8 transform -translate-x-1/2">
       <div className="border-3 border-solid border-white" />
       <img
         src="/trackerSVG.svg"
@@ -52,15 +52,24 @@ export default function Footer({
 
           // Overlay borders (not scaled, always crisp)
           const sequenceMarker = partitionData.slice(0, -1).map((_, i) => (
-            <div
-              key={`border-${i}`}
-              className="absolute bottom-0 h-[70vh] transition-[left] duration-700 linear border-r border-dashed pointer-events-none"
-              style={{
-                left: `${leftOffsets[i + 1]}%`,
-                width: 0,
-                zIndex: 2,
-              }}
-            />
+            <div key={`border-${i}`}>
+              <div
+                className="absolute bottom-0 h-[70vh] transition-[left] duration-700 linear border-r border-dashed pointer-events-none"
+                style={{
+                  left: `${leftOffsets[i + 1]}%`,
+                  width: 0,
+                  zIndex: 2,
+                }}
+              />
+              <div
+                className="absolute bottom-0 h-8 transition-[left] duration-700 linear border-r border-solid pointer-events-none translate-y-4"
+                style={{
+                  left: `${leftOffsets[i + 1]}%`,
+                  width: 0,
+                  zIndex: 2,
+                }}
+              />
+            </div>
           ));
 
           const accent = partitionData.slice(0, -1).map((_, i) =>
