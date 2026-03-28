@@ -221,7 +221,7 @@ export default function Home() {
   const snapPages = pages.map((page, i) => (
     <div
       key={`page-${i}`}
-      className="shrink-0 min-w-full w-full snap-start z-9"
+      className="shrink-0 min-w-full w-full snap-start z-9 mb-28"
     >
       {page}
     </div>
@@ -253,6 +253,7 @@ export default function Home() {
           pageIndex={pageIndex}
           scrollDeltaYState={scrollDeltaYState}
           partitioner={partitioner}
+          setPageIndex={setPageIndex}
         />
       </div>
     </div>

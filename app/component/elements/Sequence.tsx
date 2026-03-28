@@ -4,10 +4,12 @@ export default function Sequence({
   pageIndex,
   scrollDeltaYState,
   partitioner,
+  setPageIndex,
 }: {
   pageIndex: number;
   scrollDeltaYState: number;
   partitioner: (index: number) => { [key: string]: number }[];
+  setPageIndex: React.Dispatch<React.SetStateAction<number>>;
 }) {
   return (
     <div className="fixed bottom-[14.4vh] left-[50%] w-[94vw] bg-white z-8 transform -translate-x-1/2">
@@ -74,60 +76,75 @@ export default function Sequence({
 
           const accent = partitionData.slice(0, -1).map((_, i) =>
             i == 0 ? (
-              <img
+              <button
                 key={`accent-${i}`}
-                src={pageIndex > 0 ? `Filled-MD.svg` : `/Hollow-MD.svg`}
-                alt="scroll tracker"
-                className="absolute bottom-0 transition-[left] duration-700 linear pointer-events-none top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                className="block z-2 absolute transition-[left] duration-700 linear hover:cursor-pointer transform top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
                 style={{
                   left: `${leftOffsets[i + 1]}%`,
-                  zIndex: 2,
                 }}
-              />
+                onClick={() => setPageIndex(0)}
+              >
+                <img
+                  src={pageIndex > 0 ? `Filled-MD.svg` : `/Hollow-MD.svg`}
+                  alt="scroll tracker"
+                />
+              </button>
             ) : i == 2 ? (
-              <img
+              <button
                 key={`accent-${i}`}
-                src={pageIndex > 2 ? `Filled-SM.svg` : `/Hollow-SM.svg`}
-                alt="scroll tracker"
-                className="absolute bottom-0 transition-[left] duration-700 linear pointer-events-none top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                className="block z-2 absolute transition-[left] duration-700 linear hover:cursor-pointer transform top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
                 style={{
                   left: `${leftOffsets[i + 1]}%`,
-                  zIndex: 2,
                 }}
-              />
+                onClick={() => setPageIndex(2)}
+              >
+                <img
+                  src={pageIndex > 2 ? `Filled-SM.svg` : `/Hollow-SM.svg`}
+                  alt="scroll tracker"
+                />
+              </button>
             ) : i == 4 ? (
-              <img
+              <button
                 key={`accent-${i}`}
-                src={pageIndex > 4 ? `Filled-MD.svg` : `/Hollow-MD.svg`}
-                alt="scroll tracker"
-                className="absolute bottom-0 transition-[left] duration-700 linear pointer-events-none top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                className="block z-2 absolute transition-[left] duration-700 linear hover:cursor-pointer transform top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
                 style={{
                   left: `${leftOffsets[i + 1]}%`,
-                  zIndex: 2,
                 }}
-              />
+                onClick={() => setPageIndex(4)}
+              >
+                <img
+                  src={pageIndex > 4 ? `Filled-MD.svg` : `/Hollow-MD.svg`}
+                  alt="scroll tracker"
+                />
+              </button>
             ) : i == 6 ? (
-              <img
+              <button
                 key={`accent-${i}`}
-                src={pageIndex > 6 ? `Filled-SM.svg` : `/Hollow-SM.svg`}
-                alt="scroll tracker"
-                className="absolute bottom-0 transition-[left] duration-700 linear pointer-events-none top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                className="block z-2 absolute transition-[left] duration-700 linear hover:cursor-pointer transform top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
                 style={{
                   left: `${leftOffsets[i + 1]}%`,
-                  zIndex: 2,
                 }}
-              />
+                onClick={() => setPageIndex(6)}
+              >
+                <img
+                  src={pageIndex > 6 ? `Filled-SM.svg` : `/Hollow-SM.svg`}
+                  alt="scroll tracker"
+                />
+              </button>
             ) : i == 8 ? (
-              <img
+              <button
                 key={`accent-${i}`}
-                src={pageIndex > 8 ? `Filled-MD.svg` : `/Hollow-MD.svg`}
-                alt="scroll tracker"
-                className="absolute bottom-0 transition-[left] duration-700 linear pointer-events-none top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                className="block z-2 absolute transition-[left] duration-700 linear hover:cursor-pointer transform top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
                 style={{
                   left: `${leftOffsets[i + 1]}%`,
-                  zIndex: 2,
                 }}
-              />
+                onClick={() => setPageIndex(8)}
+              >
+                <img
+                  src={pageIndex > 8 ? `Filled-MD.svg` : `/Hollow-MD.svg`}
+                  alt="scroll tracker"
+                />
+              </button>
             ) : null,
           );
 
