@@ -1,4 +1,8 @@
-export default function About() {
+export default function About({
+  setPageIndex,
+}: {
+  setPageIndex: React.Dispatch<React.SetStateAction<number>>;
+}) {
   return (
     <div className="flex w-full h-full pb-22">
       <div className="flex flex-[1.2] flex-col justify-end pb-8 w-full h-full">
@@ -26,7 +30,10 @@ export default function About() {
       </div>
       <div className="flex flex-[0.8]"></div>
       <div className="flex flex-1 flex-col items-center justify-center">
-        <button className="mt-100 border-2 border-solid border-white rounded-lg px-4 py-2 text-white hover:bg-white hover:text-black transition-colors duration-300">
+        <button
+          className="mt-100 border-2 border-solid border-white rounded-lg px-4 py-2 text-white hover:bg-white hover:text-black transition-colors duration-300"
+          onClick={() => setPageIndex(0)}
+        >
           <p>Replay</p>
         </button>
       </div>

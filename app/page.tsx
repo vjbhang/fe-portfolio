@@ -22,21 +22,19 @@ export default function Home() {
     "Entry burn start",
     "Touchdown!",
   ];
-  const [selectedButton, setSelectedButton] = useState<string>(
-    buttonGroupOptions[0],
-  );
+
+  const [pageIndex, setPageIndex] = useState<number>(0);
 
   const containerRef = useRef<HTMLDivElement>(null);
-  const index = buttonGroupOptions.indexOf(selectedButton);
 
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     if (!containerRef.current) return;
-    const child = containerRef.current.children[index] as HTMLElement;
+    const child = containerRef.current.children[pageIndex] as HTMLElement;
     child?.scrollIntoView({ behavior: "smooth", inline: "start" });
-    console.log("index:", index);
-  }, [index]);
+    console.log("index:", pageIndex);
+  }, [pageIndex]);
 
   const SCROLL_THRESHOLD = 1200; // 5 scroll triggers (with my mouse..)
   const [scrollDeltaYState, setScrollDeltaYState] = useState(0);
@@ -65,13 +63,12 @@ export default function Home() {
         return;
       }
 
-      setSelectedButton((prev) => {
-        const i = buttonGroupOptions.indexOf(prev);
+      setPageIndex((prev) => {
+        const i = prev;
         scrollDeltaY.current = 0; // reset after page change
         setScrollDeltaYState(0);
-        if (e.deltaY > 0 && i < buttonGroupOptions.length - 1)
-          return buttonGroupOptions[i + 1];
-        if (e.deltaY < 0 && i > 0) return buttonGroupOptions[i - 1];
+        if (e.deltaY > 0 && i < buttonGroupOptions.length - 1) return i + 1;
+        if (e.deltaY < 0 && i > 0) return i - 1;
         return prev;
       });
     };
@@ -218,7 +215,7 @@ export default function Home() {
     <div />,
     <div />,
     <div />,
-    <About />,
+    <About setPageIndex={setPageIndex} />,
   ];
 
   const snapPages = pages.map((page, i) => (
@@ -253,7 +250,7 @@ export default function Home() {
         {snapPages}
 
         <Sequence
-          pageIndex={index}
+          pageIndex={pageIndex}
           scrollDeltaYState={scrollDeltaYState}
           partitioner={partitioner}
         />
