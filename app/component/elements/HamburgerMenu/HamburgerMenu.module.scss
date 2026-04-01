@@ -1,154 +1,125 @@
-@use "sass:color";
-$primary-color: black;
+$slide-duration: 0.8s;
+$energy-cyan: #7aefff;
+$energy-blue: #1e6bff;
+$energy-deep: #0a4a8f;
 
 @mixin easeOut {
-  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-@mixin tablet {
-  @media screen and (max-width: 768px) {
-    @content;
-  }
-}
-body {
-  min-height: 100vh;
-  background: $primary-color;
-  font-family: "Open Sans";
-  color: white;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
+  transition: transform $slide-duration cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .menu {
-  background-color: black;
-  opacity: 0.8;
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: fixed;
+  inset: 0;
   z-index: 9;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
   visibility: hidden;
+  pointer-events: none;
 
   &--active {
     visibility: visible;
+    pointer-events: auto;
+  }
+}
+
+.menu__panel {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate3d(100%, 0, 0);
+  overflow: hidden;
+  @include easeOut;
+
+  &--offLeft {
+    transform: translate3d(-100%, 0, 0);
   }
 
-  &__brand,
-  &__list {
-    display: flex;
-    flex-flow: column wrap;
-    align-items: center;
-    justify-content: center;
-    float: left;
-    width: 50%;
-    height: 100vh;
-    overflow: hidden;
+  &--noTransition {
+    transition: none !important;
   }
 
-  &__list {
-    margin: 0;
-    padding: 0;
-    background: color.mix(black, $primary-color, 20%);
-    list-style-type: none;
-    transform: translate3d(0, -100%, 0);
-    @include easeOut;
-
-    &--active {
-      transform: translate3d(0, 0, 0);
-    }
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 8px;
+    pointer-events: none;
+    background: linear-gradient(
+      180deg,
+      $energy-cyan 0%,
+      var(--color-energyblue) 35%,
+      $energy-deep 50%,
+      var(--color-energyblue) 65%,
+      $energy-cyan 100%
+    );
+    box-shadow:
+      -4px 0 18px rgba(67, 190, 212, 0.9),
+      -10px 0 36px rgba(30, 107, 255, 0.45);
+    opacity: 0;
   }
 
-  &__brand {
-    background: $primary-color;
-    @include easeOut;
-    transform: translate3d(0, 100%, 0);
+  &--active {
+    transform: translate3d(0, 0, 0);
 
-    &--active {
-      transform: translate3d(0, 0, 0);
-    }
-  }
-
-  &__item {
-    transform: translate3d(500px, 0, 0);
-    @include easeOut;
-
-    &--active {
-      transform: translate3d(0, 0, 0);
-    }
-  }
-
-  &__link {
-    display: inline-block;
-    position: relative;
-    font-size: 30px;
-    padding: 15px 0;
-    font-weight: 300;
-    color: white;
-    text-decoration: none;
-    color: white;
-    @include easeOut;
-
-    &:before {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      width: 10px;
-      height: 2px;
-      background: white;
-      transform: translateX(-50%);
-      @include easeOut;
-    }
-
-    &:hover {
-      &:before {
-        width: 100%;
-      }
-    }
-  }
-
-  // add delay to each menu item
-  @for $x from 1 through 6 {
-    .menu__item:nth-child(#{$x}) {
-      transition-delay: $x * 0.1s;
+    &::before {
+      opacity: 1;
+      animation: menuPanelGlowFade 2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+      animation-delay: $slide-duration;
     }
   }
 }
 
-// responsive tablet view
-@include tablet {
-  ul.menu__list,
-  div.menu__brand {
-    float: none;
+@keyframes menuPanelGlowFade {
+  to {
+    opacity: 0;
+  }
+}
+
+.menu__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.menu__link {
+  display: inline-block;
+  position: relative;
+  font-size: clamp(1.25rem, 4vw, 1.875rem);
+  padding: 15px 0;
+  font-weight: 300;
+  color: white;
+  text-decoration: none;
+  transition: color 0.25s ease;
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 10px;
+    height: 2px;
+    background: white;
+    transform: translateX(-50%);
+    transition: width 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  &:hover::before {
     width: 100%;
-    min-height: 0;
-
-    &--active {
-      transform: translate3d(0, 0, 0);
-    }
   }
+}
 
-  .menu__list {
-    height: 75vh;
-    transform: translate3d(-100%, 0, 0);
-  }
-
+@media screen and (max-width: 768px) {
   .menu__link {
-    font-size: 24px;
-  }
-
-  .menu__brand {
-    height: 25vh;
-    transform: translate3d(100%, 0, 0);
-
-    .logo {
-      width: 90px;
-      height: 90px;
-    }
+    font-size: 1.25rem;
   }
 }
