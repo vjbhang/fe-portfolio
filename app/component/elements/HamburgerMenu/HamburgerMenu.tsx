@@ -62,17 +62,17 @@ export default function HamburgerMenu({
       >
         <ul className={styles.menu__list}>
           <li className={styles.menu__item}>
-            <a href="#landing" className={styles.menu__link}>
+            <a href="#landing" className={`${styles.menu__link} font-inconsolata`}>
               Landing
             </a>
           </li>
           <li className={styles.menu__item}>
-            <a href="#work" className={styles.menu__link}>
+            <a href="#work" className={`${styles.menu__link} font-inconsolata`}>
               Work
             </a>
           </li>
           <li className={styles.menu__item}>
-            <a href="#about" className={styles.menu__link}>
+            <a href="#about" className={`${styles.menu__link} font-inconsolata`}>
               About
             </a>
           </li>
