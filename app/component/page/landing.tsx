@@ -4,7 +4,9 @@ export default function Landing() {
       <div className="flex flex-col gap-8 mb-auto">
         <h1 className="text-5xl text-white">I build your Digital Spaceship</h1>
         <div className="flex gap-12 items-center">
-          <h4 className="text-xl text-white font-bold">Every Pixel, Intentional</h4>
+          <h4 className="text-xl text-white font-bold">
+            Every Pixel, Intentional
+          </h4>
           <h5 className="text-m mt-[4px] text-white font-bold">
             -- Because Every Detail Matters
           </h5>

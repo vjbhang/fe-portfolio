@@ -3,10 +3,7 @@
 }
 
 .burger {
-  position: absolute;
   z-index: 10;
-  right: 25px;
-  top: 25px;
   cursor: pointer;
   transform: rotateY(0);
   @include easeOut;

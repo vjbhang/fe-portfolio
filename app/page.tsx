@@ -229,7 +229,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-w-screen min-h-screen  font-sans bg-white mx-auto px-[3vw] sm:px-[3vw] lg:px-[3vw] py-4 sm:py-6 lg:py-8">
-      <div className="absolute top-0 left-0 w-full h-full z-6">
+      <div className="absolute top-0 left-0 w-full h-full z-7">
         <AnimatedBG />
       </div>
       <video
@@ -241,6 +241,7 @@ export default function Home() {
         <source src={"/bgvid.webm"} type="video/webm" />
         <source src={"/bgvid.mp4"} type="video/mp4" />
       </video>
+      <div className="absolute top-0 left-0 w-full h-full z-6 bg-black/65 backdrop-blur-sm" />
       <HamburgerMenu isOpen={isOpen} setIsOpen={setIsOpen} />
       <Header isOpen={isOpen} setIsOpen={setIsOpen} />
       <div

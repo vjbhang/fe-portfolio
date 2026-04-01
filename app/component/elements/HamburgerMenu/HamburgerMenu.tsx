@@ -37,7 +37,9 @@ export default function HamburgerMenu({
     }
   }, [isOpen]);
 
-  const handlePanelTransitionEnd = (e: React.TransitionEvent<HTMLDivElement>) => {
+  const handlePanelTransitionEnd = (
+    e: React.TransitionEvent<HTMLDivElement>,
+  ) => {
     if (e.target !== e.currentTarget) return;
     if (e.propertyName !== "transform") return;
     if (isOpen || !panelOffLeft) return;
@@ -62,7 +64,10 @@ export default function HamburgerMenu({
       >
         <ul className={styles.menu__list}>
           <li className={styles.menu__item}>
-            <a href="#landing" className={`${styles.menu__link} font-inconsolata`}>
+            <a
+              href="#landing"
+              className={`${styles.menu__link} font-inconsolata`}
+            >
               Landing
             </a>
           </li>
@@ -72,7 +77,10 @@ export default function HamburgerMenu({
             </a>
           </li>
           <li className={styles.menu__item}>
-            <a href="#about" className={`${styles.menu__link} font-inconsolata`}>
+            <a
+              href="#about"
+              className={`${styles.menu__link} font-inconsolata`}
+            >
               About
             </a>
           </li>

@@ -56,7 +56,7 @@ export default function Sequence({
           const sequenceMarker = partitionData.slice(0, -1).map((_, i) => (
             <div key={`border-${i}`}>
               <div
-                className="absolute bottom-0 h-[70vh] transition-[left] duration-700 linear border-r border-dashed pointer-events-none"
+                className="absolute bottom-0 h-[70vh] transition-[left] duration-700 linear border-white border-r border-dashed pointer-events-none"
                 style={{
                   left: `${leftOffsets[i + 1]}%`,
                   width: 0,
@@ -64,7 +64,7 @@ export default function Sequence({
                 }}
               />
               <div
-                className="absolute bottom-0 h-8 transition-[left] duration-700 linear border-r border-solid pointer-events-none translate-y-4"
+                className="absolute bottom-0 h-8 transition-[left] duration-700 linear border-white border-r border-solid pointer-events-none translate-y-4"
                 style={{
                   left: `${leftOffsets[i + 1]}%`,
                   width: 0,
