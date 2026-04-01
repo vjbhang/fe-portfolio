@@ -245,7 +245,7 @@ export default function Home() {
       <Header isOpen={isOpen} setIsOpen={setIsOpen} />
       <div
         ref={containerRef}
-        className="flex flex-1 w-full overflow-x-auto snap-x snap-mandatory scrollbar-hide z-9"
+        className="flex flex-1 w-full overflow-x-auto snap-x snap-mandatory scrollbar-hide z-7"
       >
         {snapPages}
 

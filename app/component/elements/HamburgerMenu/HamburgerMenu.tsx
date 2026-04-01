@@ -52,7 +52,7 @@ export default function HamburgerMenu({
 
   return (
     <nav
-      className={`${styles.menu} ${navVisible ? styles["menu--active"] : ""}`}
+      className={`z-8 ${styles.menu} ${navVisible ? styles["menu--active"] : ""}`}
     >
       <div
         className={`${styles.menu__panel} ${panelActive ? styles["menu__panel--active"] : ""} ${

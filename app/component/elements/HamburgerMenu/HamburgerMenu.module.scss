@@ -33,10 +33,6 @@ $energy-deep: #0a4a8f;
   overflow: hidden;
   @include easeOut;
 
-  &--offLeft {
-    transform: translate3d(-100%, 0, 0);
-  }
-
   &--noTransition {
     transition: none !important;
   }
@@ -63,10 +59,42 @@ $energy-deep: #0a4a8f;
     opacity: 0;
   }
 
+  &::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 8px;
+    pointer-events: none;
+    background: linear-gradient(
+      180deg,
+      $energy-cyan 0%,
+      var(--color-energyblue) 35%,
+      $energy-deep 50%,
+      var(--color-energyblue) 65%,
+      $energy-cyan 100%
+    );
+    box-shadow:
+      4px 0 18px rgba(67, 190, 212, 0.9),
+      10px 0 36px rgba(30, 107, 255, 0.45);
+    opacity: 0;
+  }
+
   &--active {
     transform: translate3d(0, 0, 0);
 
     &::before {
+      opacity: 1;
+      animation: menuPanelGlowFade 2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+      animation-delay: $slide-duration;
+    }
+  }
+
+  &--offLeft {
+    transform: translate3d(-100%, 0, 0);
+
+    &::after {
       opacity: 1;
       animation: menuPanelGlowFade 2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
       animation-delay: $slide-duration;
