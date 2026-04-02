@@ -7,47 +7,49 @@ const ROCKET_CRUISE_DEG = 45;
 /** Extra translateY at apogee (step 6); negative = higher. Steps 0 and 8 use 0 (landed). */
 const ROCKET_VERTICAL_PEAK_REM = -22;
 
-function rocketRotationDeg(pageIndex: number): number | undefined {
-  const i = Math.min(Math.max(pageIndex, 0), 8);
-
-  if (i <= 5) {
-    const t = i / 5;
-    const eased = (1 - Math.cos(t * Math.PI)) / 2;
-    return ROCKET_PAD_DEG + (ROCKET_CRUISE_DEG - ROCKET_PAD_DEG) * eased;
-  }
-
-  if (i === 6) {
-    return -120;
-  }
-
-  if (i === 7) {
-    return -90;
-  }
-
-  if (i === 8) {
-    return -45;
-  }
-
-  return undefined;
-}
-
-function rocketVerticalLiftRem(pageIndex: number): number {
-  const i = Math.min(Math.max(pageIndex, 0), 8);
-  const crescent = (u: number) => (1 - Math.cos(u * Math.PI)) / 2;
-
-  if (i <= 6) {
-    return ROCKET_VERTICAL_PEAK_REM * crescent(i / 5);
-  }
-  const u = (i - 6) / 2;
-  return ROCKET_VERTICAL_PEAK_REM * (1 - crescent(u));
-}
-
+/** Orbital bound arc: larger `bottom` = higher in the sequence strip; smaller = lower (“low peak”). */
+const ORBITAL_BOTTOM_HIGH_REM = 30;
+const ORBITAL_BOTTOM_LOW_REM = 2.5;
 /** Module-level component so React keeps the same DOM node across `pageIndex` updates (CSS transitions work). */
 function SequenceRocket({ pageIndex }: { pageIndex: number }) {
   const deg = rocketRotationDeg(pageIndex) ?? ROCKET_PAD_DEG;
   const liftRem = rocketVerticalLiftRem(pageIndex);
   const translateYRem = 0.5 + liftRem;
   const transform = `translate(-50%, ${translateYRem}rem) rotate(${deg}deg)`;
+  function rocketRotationDeg(pageIndex: number): number | undefined {
+    const i = Math.min(Math.max(pageIndex, 0), 8);
+
+    if (i <= 5) {
+      const t = i / 5;
+      const eased = (1 - Math.cos(t * Math.PI)) / 2;
+      return ROCKET_PAD_DEG + (ROCKET_CRUISE_DEG - ROCKET_PAD_DEG) * eased;
+    }
+
+    if (i === 6) {
+      return -120;
+    }
+
+    if (i === 7) {
+      return -90;
+    }
+
+    if (i === 8) {
+      return -45;
+    }
+
+    return undefined;
+  }
+
+  function rocketVerticalLiftRem(pageIndex: number): number {
+    const i = Math.min(Math.max(pageIndex, 0), 8);
+    const crescent = (u: number) => (1 - Math.cos(u * Math.PI)) / 2;
+
+    if (i <= 6) {
+      return ROCKET_VERTICAL_PEAK_REM * crescent(i / 5);
+    }
+    const u = (i - 6) / 2;
+    return ROCKET_VERTICAL_PEAK_REM * (1 - crescent(u));
+  }
 
   return (
     <img
@@ -60,6 +62,51 @@ function SequenceRocket({ pageIndex }: { pageIndex: number }) {
         marginLeft: pageIndex === 8 ? "25%" : "0%",
         transition:
           "transform 700ms ease-in-out, margin-left 700ms ease-in-out",
+      }}
+    />
+  );
+}
+
+function SequenceOrbitalBound({ pageIndex }: { pageIndex: number }) {
+  function orbitalBoundOpacity(pageIndex: number): number {
+    const i = Math.min(Math.max(pageIndex, 0), 8);
+    if (i < 2 || i >= 8) return 0;
+    return 1;
+  }
+
+  function orbitalBoundBottomRem(pageIndex: number): number {
+    const i = Math.min(Math.max(pageIndex, 0), 8);
+    const crescent = (u: number) => (1 - Math.cos(u * Math.PI)) / 2;
+
+    if (i <= 2) {
+      return ORBITAL_BOTTOM_HIGH_REM;
+    }
+    if (i <= 4) {
+      const t = (i - 2) / 2;
+      return (
+        ORBITAL_BOTTOM_HIGH_REM +
+        (ORBITAL_BOTTOM_LOW_REM - ORBITAL_BOTTOM_HIGH_REM) * crescent(t)
+      );
+    }
+    if (i < 8) {
+      const t = (i - 4) / 4;
+      return (
+        ORBITAL_BOTTOM_LOW_REM +
+        (ORBITAL_BOTTOM_HIGH_REM - ORBITAL_BOTTOM_LOW_REM) * crescent(t)
+      );
+    }
+    return ORBITAL_BOTTOM_HIGH_REM;
+  }
+
+  return (
+    <img
+      src="/orbitalBoundSVG.svg"
+      alt=""
+      className="pointer-events-none absolute left-0 w-full z-1"
+      style={{
+        bottom: `${orbitalBoundBottomRem(pageIndex)}rem`,
+        opacity: orbitalBoundOpacity(pageIndex),
+        transition: "opacity 700ms ease-in-out, bottom 700ms ease-in-out",
       }}
     />
   );
@@ -89,6 +136,7 @@ export default function Sequence({
       </div>
       <div className="absolute top-1/2 w-full transform -translate-y-full">
         <SequenceRocket pageIndex={pageIndex} />
+        <SequenceOrbitalBound pageIndex={pageIndex} />
         {(() => {
           const partitionData = partitioner(pageIndex);
           let leftOffsets: number[] = [];
