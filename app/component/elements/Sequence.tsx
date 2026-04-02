@@ -11,6 +11,7 @@ const ROCKET_VERTICAL_PEAK_REM = -22;
 const ORBITAL_BOTTOM_HIGH_REM = 30;
 const ORBITAL_BOTTOM_LOW_REM = 10;
 /** Module-level component so React keeps the same DOM node across `pageIndex` updates (CSS transitions work). */
+
 function SequenceRocket({ pageIndex }: { pageIndex: number }) {
   const deg = rocketRotationDeg(pageIndex) ?? ROCKET_PAD_DEG;
   const liftRem = rocketVerticalLiftRem(pageIndex);
@@ -112,6 +113,81 @@ function SequenceOrbitalBound({ pageIndex }: { pageIndex: number }) {
   );
 }
 
+function SequenceMessage({ pageIndex }: { pageIndex: number }) {
+  const liftRem = rocketVerticalLiftRem(pageIndex);
+  const translateYRem = 0.5 + liftRem;
+  const transform = `translate(-50%, ${translateYRem}rem)`;
+
+  function rocketVerticalLiftRem(pageIndex: number): number {
+    const i = Math.min(Math.max(pageIndex, 0), 8);
+    const crescent = (u: number) => (1 - Math.cos(u * Math.PI)) / 2;
+
+    if (i <= 6) {
+      return ROCKET_VERTICAL_PEAK_REM * crescent(i / 5);
+    }
+    const u = (i - 6) / 2;
+    return ROCKET_VERTICAL_PEAK_REM * (1 - crescent(u));
+  }
+  const messages = [
+    "We are go for launch",
+    "Lift off!",
+    "All systems nominal",
+    "Vehicle is super sonic!",
+    "We're in orbit!",
+    "Prepare for re-entry",
+    "Entry interface",
+    "Entry burn start",
+    "Touch down!",
+  ];
+  // const messagesOffset = [{x:}]
+  return (
+    <div
+      className="w-32 h-28 absolute left-[42%] bottom-3"
+      style={{
+        transform,
+        marginLeft: pageIndex === 8 ? "25%" : "0%",
+        transition:
+          "transform 700ms ease-in-out, margin-left 700ms ease-in-out",
+      }}
+    >
+      {pageIndex === 1 ? (
+        <p
+          className={`text-amber-500 font-bold text-xl font-inconsolata text-center`}
+        >
+          {messages[pageIndex]}
+        </p>
+      ) : pageIndex === 3 ? (
+        <p className={`text-white text-xl font-inconsolata text-center`}>
+          {messages[pageIndex].split(" ")[0]}{" "}
+          {messages[pageIndex].split(" ")[1]}{" "}
+          <span className="text-sky-500 font-bold">
+            {messages[pageIndex].split(" ")[2]}{" "}
+            {messages[pageIndex].split(" ")[3]}
+          </span>
+        </p>
+      ) : pageIndex === 5 ? (
+        <p className={`text-white text-xl font-inconsolata text-center`}>
+          {messages[pageIndex].split(" ")[0]}{" "}
+          {messages[pageIndex].split(" ")[1]}{" "}
+          <span className="text-red-600 font-bold">
+            {messages[pageIndex].split(" ")[2]}
+          </span>
+        </p>
+      ) : pageIndex === 8 ? (
+        <p
+          className={`text-white font-bold text-xl font-inconsolata text-center`}
+        >
+          {messages[pageIndex]}
+        </p>
+      ) : (
+        <p className="text-white text-xl font-inconsolata text-center">
+          {messages[pageIndex]}
+        </p>
+      )}
+    </div>
+  );
+}
+
 export default function Sequence({
   pageIndex,
   scrollDeltaYState,
@@ -137,6 +213,7 @@ export default function Sequence({
       <div className="absolute top-1/2 w-full transform -translate-y-full">
         <SequenceRocket pageIndex={pageIndex} />
         <SequenceOrbitalBound pageIndex={pageIndex} />
+        <SequenceMessage pageIndex={pageIndex} />
         {(() => {
           const partitionData = partitioner(pageIndex);
           let leftOffsets: number[] = [];
