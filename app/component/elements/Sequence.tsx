@@ -57,7 +57,9 @@ function SequenceRocket({ pageIndex }: { pageIndex: number }) {
       style={{
         transform,
         transformOrigin: "center center",
-        transition: "transform 700ms ease-in-out",
+        marginLeft: pageIndex === 8 ? "25%" : "0%",
+        transition:
+          "transform 700ms ease-in-out, margin-left 700ms ease-in-out",
       }}
     />
   );
