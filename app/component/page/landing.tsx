@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Landing() {
   return (
     <div className="flex flex-col w-full h-full justify-center gap-12 font-inconsolata">
@@ -12,9 +14,11 @@ export default function Landing() {
           </h5>
         </div>
         <div className="flex flex-col bg-black/50 items-center justify-center w-78.5 h-70 rounded-lg gap-4 ml-[6vw]">
-          <img
+          <Image
             src="/scrollmouseSVG.svg"
             alt="scroll mouse"
+            width={62}
+            height={127}
             className="w-24 h-24"
           />
           <div className="flex flex-col items-center gap-1 text-center text-white text-lg">

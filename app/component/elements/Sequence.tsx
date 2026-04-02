@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import MouseScroll from "./MouseScroll/MouseScroll";
 import ShakyText from "./ShakyText";
 
@@ -7,6 +9,8 @@ type AccentMarker = {
   targetPageIndex: number;
   filledSrc: string;
   hollowSrc: string;
+  width: number;
+  height: number;
 };
 
 /** Pad / upright (perpendicular). */
@@ -37,30 +41,40 @@ const ACCENT_MARKERS: AccentMarker[] = [
     targetPageIndex: 0,
     filledSrc: "/Filled-MD.svg",
     hollowSrc: "/Hollow-MD.svg",
+    width: 30,
+    height: 30,
   },
   {
     accentIndex: 2,
     targetPageIndex: 2,
     filledSrc: "/Filled-SM.svg",
     hollowSrc: "/Hollow-SM.svg",
+    width: 20,
+    height: 20,
   },
   {
     accentIndex: 4,
     targetPageIndex: 4,
     filledSrc: "/Filled-MD.svg",
     hollowSrc: "/Hollow-MD.svg",
+    width: 30,
+    height: 30,
   },
   {
     accentIndex: 6,
     targetPageIndex: 6,
     filledSrc: "/Filled-SM.svg",
     hollowSrc: "/Hollow-SM.svg",
+    width: 20,
+    height: 20,
   },
   {
     accentIndex: 8,
     targetPageIndex: 8,
     filledSrc: "/Filled-MD.svg",
     hollowSrc: "/Hollow-MD.svg",
+    width: 30,
+    height: 30,
   },
 ];
 
@@ -201,9 +215,11 @@ function SequenceRocket({ pageIndex }: { pageIndex: number }) {
   const transform = `translate(-50%, ${translateYRem}rem) rotate(${deg}deg)`;
 
   return (
-    <img
+    <Image
       src="/rocketSVG.svg"
       alt="rocket"
+      width={130}
+      height={130}
       className="w-24 h-24 absolute bottom-10 left-1/2"
       style={{
         transform,
@@ -218,9 +234,11 @@ function SequenceRocket({ pageIndex }: { pageIndex: number }) {
 
 function SequenceOrbitalBound({ pageIndex }: { pageIndex: number }) {
   return (
-    <img
+    <Image
       src="/orbitalBoundSVG.svg"
       alt=""
+      width={1799}
+      height={39}
       className="pointer-events-none absolute left-0 w-full z-1"
       style={{
         bottom: `${orbitalBoundBottomRem(pageIndex)}rem`,
@@ -268,9 +286,11 @@ export default function Sequence({
   return (
     <div className="fixed bottom-[14.4vh] left-[50%] w-[94vw] bg-white z-8 transform -translate-x-1/2">
       <div className="border-3 border-solid border-white" />
-      <img
+      <Image
         src="/trackerSVG.svg"
         alt="scroll tracker"
+        width={42}
+        height={42}
         className={`absolute top-1/2 left-1/2 transform ${pageIndex === LAST_PAGE_INDEX ? "ml-[25%]" : ""} -translate-x-1/2 -translate-y-1/2 z-10 transition-[margin] ease-in-out duration-700`}
       />
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 translate-y-9">
@@ -324,9 +344,11 @@ export default function Sequence({
             }}
             onClick={() => setPageIndex(marker.targetPageIndex)}
           >
-            <img
+            <Image
               src={pageIndex > marker.targetPageIndex ? marker.filledSrc : marker.hollowSrc}
               alt="scroll tracker"
+              width={marker.width}
+              height={marker.height}
             />
           </button>
         ))}

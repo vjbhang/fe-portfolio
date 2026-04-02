@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, type CSSProperties } from "react";
 import styles from "./AnimatedButton.module.css";
 import BadgeImg from "../../../assets/badge.png";
@@ -68,9 +69,11 @@ export default function AnimatedButton({
         <div className="flex items-center justify-center opacity-100 z-10">
           <p className="text-white">{option}</p>
           {selected && (
-            <img
+            <Image
               src={BadgeImg.src}
               alt="badge"
+              width={BadgeImg.width}
+              height={BadgeImg.height}
               className="w-4 h-4 inline ml-2"
             />
           )}
