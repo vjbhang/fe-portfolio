@@ -9,7 +9,7 @@ const ROCKET_VERTICAL_PEAK_REM = -22;
 
 /** Orbital bound arc: larger `bottom` = higher in the sequence strip; smaller = lower (“low peak”). */
 const ORBITAL_BOTTOM_HIGH_REM = 30;
-const ORBITAL_BOTTOM_LOW_REM = 2.5;
+const ORBITAL_BOTTOM_LOW_REM = 10;
 /** Module-level component so React keeps the same DOM node across `pageIndex` updates (CSS transitions work). */
 function SequenceRocket({ pageIndex }: { pageIndex: number }) {
   const deg = rocketRotationDeg(pageIndex) ?? ROCKET_PAD_DEG;
