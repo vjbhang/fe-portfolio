@@ -1,4 +1,5 @@
 import MouseScroll from "./MouseScroll/MouseScroll";
+import ShakyText from "./ShakyText";
 
 /** Pad / upright (perpendicular). */
 const ROCKET_PAD_DEG = -45;
@@ -154,15 +155,17 @@ function SequenceMessage({ pageIndex }: { pageIndex: number }) {
         <p
           className={`text-amber-500 font-bold text-xl font-inconsolata text-center`}
         >
-          {messages[pageIndex]}
+          <ShakyText content={messages[pageIndex]} />
         </p>
       ) : pageIndex === 3 ? (
         <p className={`text-white text-xl font-inconsolata text-center`}>
           {messages[pageIndex].split(" ")[0]}{" "}
           {messages[pageIndex].split(" ")[1]}{" "}
           <span className="text-sky-500 font-bold">
-            {messages[pageIndex].split(" ")[2]}{" "}
-            {messages[pageIndex].split(" ")[3]}
+            <ShakyText
+              content={`${messages[pageIndex].split(" ")[2]} 
+            ${messages[pageIndex].split(" ")[3]}`}
+            />{" "}
           </span>
         </p>
       ) : pageIndex === 5 ? (
@@ -170,7 +173,7 @@ function SequenceMessage({ pageIndex }: { pageIndex: number }) {
           {messages[pageIndex].split(" ")[0]}{" "}
           {messages[pageIndex].split(" ")[1]}{" "}
           <span className="text-red-600 font-bold">
-            {messages[pageIndex].split(" ")[2]}
+            <ShakyText content={messages[pageIndex].split(" ")[2]} />{" "}
           </span>
         </p>
       ) : pageIndex === 8 ? (
