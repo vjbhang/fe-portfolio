@@ -3,13 +3,13 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./HamburgerMenu.module.scss";
 
+type HamburgerMenuProps = {
+  isOpen: boolean;
+};
+
 export default function HamburgerMenu({
   isOpen,
-  setIsOpen: _setIsOpen,
-}: {
-  isOpen: boolean;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}) {
+}: HamburgerMenuProps) {
   const [navVisible, setNavVisible] = useState(false);
   const [panelActive, setPanelActive] = useState(false);
   const [panelOffLeft, setPanelOffLeft] = useState(false);
@@ -20,11 +20,11 @@ export default function HamburgerMenu({
   useEffect(() => {
     if (isOpen) {
       hadOpenedRef.current = true;
-      setNavVisible(true);
-      setPanelOffLeft(false);
-      setPanelNoTransition(false);
-      setPanelActive(false);
       const id = requestAnimationFrame(() => {
+        setNavVisible(true);
+        setPanelOffLeft(false);
+        setPanelNoTransition(false);
+        setPanelActive(false);
         requestAnimationFrame(() => setPanelActive(true));
       });
       return () => cancelAnimationFrame(id);
@@ -32,8 +32,11 @@ export default function HamburgerMenu({
 
     if (hadOpenedRef.current) {
       hadOpenedRef.current = false;
-      setPanelActive(false);
-      setPanelOffLeft(true);
+      const id = requestAnimationFrame(() => {
+        setPanelActive(false);
+        setPanelOffLeft(true);
+      });
+      return () => cancelAnimationFrame(id);
     }
   }, [isOpen]);
 

@@ -160,7 +160,6 @@ class PixelCanvas extends HTMLElement {
     const rect = this.getBoundingClientRect();
     const width = Math.floor(rect.width);
     const height = Math.floor(rect.height);
-    console.log("width, height", width, height);
     this.pixels = [];
     this.canvas.width = width;
     this.canvas.height = height;
@@ -201,9 +200,6 @@ class PixelCanvas extends HTMLElement {
     for (let i = 0; i < this.pixels.length; i++) {
       this.pixels[i][fnName]();
     }
-    // if (this.pixels.every((pixel) => pixel.isIdle)) {
-    //   cancelAnimationFrame(this.animation);
-    // }
   }
 }
 

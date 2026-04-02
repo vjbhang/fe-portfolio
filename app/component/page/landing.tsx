@@ -7,7 +7,7 @@ export default function Landing() {
           <h4 className="text-xl text-white font-bold">
             Every Pixel, Intentional
           </h4>
-          <h5 className="text-m mt-[4px] text-white font-bold">
+          <h5 className="text-m mt-1 text-white font-bold">
             -- Because Every Detail Matters
           </h5>
         </div>

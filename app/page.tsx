@@ -3,26 +3,41 @@
 import { useState, useRef, useEffect } from "react";
 import Header from "./component/elements/Header";
 import Landing from "./component/page/landing";
-import Work from "./component/page/work";
 import About from "./component/page/about";
-import { ButtonGroup } from "./component/elements/ButtonGroup";
 import AnimatedBG from "./component/elements/AnimatedBG/AnimatedBG";
 import HamburgerMenu from "./component/elements/HamburgerMenu/HamburgerMenu";
 import Sequence from "./component/elements/Sequence";
 
-export default function Home() {
-  const buttonGroupOptions = [
-    "Launch",
-    "Systems nominal",
-    "Good telemetry",
-    "Vehicle is super sonic!",
-    "We're in orbit",
-    "Prepare for re-entry",
-    "Entry interface",
-    "Entry burn start",
-    "Touchdown!",
-  ];
+type PartitionSegment = { scale: number };
 
+const PAGE_LABELS = [
+  "Launch",
+  "Systems nominal",
+  "Good telemetry",
+  "Vehicle is super sonic!",
+  "We're in orbit",
+  "Prepare for re-entry",
+  "Entry interface",
+  "Entry burn start",
+  "Touchdown!",
+];
+
+const PARTITIONS = [
+  [0.5, 0.12, 0.1, 0.08, 0.065, 0.05, 0.035, 0.025, 0.015, 0.01],
+  [0.38, 0.12, 0.12, 0.12, 0.09, 0.07, 0.04, 0.03, 0.02, 0.01],
+  [0.26, 0.12, 0.12, 0.09, 0.08, 0.07, 0.07, 0.07, 0.06, 0.06],
+  [0.14, 0.12, 0.12, 0.12, 0.11, 0.09, 0.08, 0.08, 0.07, 0.07],
+  [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1],
+  [0.06, 0.07, 0.09, 0.09, 0.09, 0.1, 0.12, 0.12, 0.12, 0.14],
+  [0.06, 0.06, 0.07, 0.07, 0.08, 0.08, 0.08, 0.17, 0.17, 0.16],
+  [0.06, 0.06, 0.06, 0.06, 0.06, 0.06, 0.07, 0.07, 0.25, 0.25],
+  [0.06, 0.06, 0.06, 0.06, 0.06, 0.06, 0.07, 0.07, 0.25, 0.25],
+];
+
+const DEFAULT_PARTITION = new Array(10).fill({ scale: 0.2 });
+const SCROLL_THRESHOLD = 1200;
+
+export default function Home() {
   const [pageIndex, setPageIndex] = useState<number>(0);
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -33,10 +48,8 @@ export default function Home() {
     if (!containerRef.current) return;
     const child = containerRef.current.children[pageIndex] as HTMLElement;
     child?.scrollIntoView({ behavior: "smooth", inline: "start" });
-    console.log("index:", pageIndex);
   }, [pageIndex]);
 
-  const SCROLL_THRESHOLD = 1200; // 5 scroll triggers (with my mouse..)
   const [scrollDeltaYState, setScrollDeltaYState] = useState(0);
   const scrollDeltaY = useRef(0);
   const scrollResetTimeout = useRef<NodeJS.Timeout | null>(null);
@@ -56,166 +69,37 @@ export default function Home() {
         setScrollDeltaYState(0);
       }, 900);
 
-      console.log("scrollDeltaY:", scrollDeltaY.current);
-
       if (Math.abs(scrollDeltaY.current) < SCROLL_THRESHOLD) {
-        console.log("threshold not reached, ignoring scroll event");
         return;
       }
 
       setPageIndex((prev) => {
-        const i = prev;
         scrollDeltaY.current = 0; // reset after page change
         setScrollDeltaYState(0);
-        if (e.deltaY > 0 && i < buttonGroupOptions.length - 1) return i + 1;
-        if (e.deltaY < 0 && i > 0) return i - 1;
+        if (e.deltaY > 0 && prev < PAGE_LABELS.length - 1) return prev + 1;
+        if (e.deltaY < 0 && prev > 0) return prev - 1;
         return prev;
       });
     };
 
     el.addEventListener("wheel", handler, { passive: false });
     return () => el.removeEventListener("wheel", handler);
-  }, [buttonGroupOptions]);
+  }, []);
 
-  // Partitioner now returns scaleX values (0-1) for each bar
-  function partitioner(index: number): { [key: string]: number }[] {
-    // Example scale arrays for each index, matching the original width proportions
-    const scales = [
-      [
-        { scale: 0.5 },
-        { scale: 0.12 },
-        { scale: 0.1 },
-        { scale: 0.08 },
-        { scale: 0.065 },
-        { scale: 0.05 },
-        { scale: 0.035 },
-        { scale: 0.025 },
-        { scale: 0.015 },
-        { scale: 0.01 },
-      ], // index 0
-      [
-        { scale: 0.38 },
-        { scale: 0.12 },
-        { scale: 0.12 },
-        { scale: 0.12 },
-        { scale: 0.09 },
-        { scale: 0.07 },
-        { scale: 0.04 },
-        { scale: 0.03 },
-        { scale: 0.02 },
-        { scale: 0.01 },
-      ], // index 1
-      [
-        { scale: 0.26 },
-        { scale: 0.12 },
-        { scale: 0.12 },
-        { scale: 0.09 },
-        { scale: 0.08 },
-        { scale: 0.07 },
-        { scale: 0.07 },
-        { scale: 0.07 },
-        { scale: 0.06 },
-        { scale: 0.06 },
-      ], // index 2
-      [
-        { scale: 0.14 },
-        { scale: 0.12 },
-        { scale: 0.12 },
-        { scale: 0.12 },
-        { scale: 0.11 },
-        { scale: 0.09 },
-        { scale: 0.08 },
-        { scale: 0.08 },
-        { scale: 0.07 },
-        { scale: 0.07 },
-      ], // index 3
-      [
-        { scale: 0.1 },
-        { scale: 0.1 },
-        { scale: 0.1 },
-        { scale: 0.1 },
-        { scale: 0.1 },
-        { scale: 0.1 },
-        { scale: 0.1 },
-        { scale: 0.1 },
-        { scale: 0.1 },
-        { scale: 0.1 },
-      ], // index 4
-      [
-        { scale: 0.06 },
-        { scale: 0.07 },
-        { scale: 0.09 },
-        { scale: 0.09 },
-        { scale: 0.09 },
-        { scale: 0.1 },
-        { scale: 0.12 },
-        { scale: 0.12 },
-        { scale: 0.12 },
-        { scale: 0.14 },
-      ], // index 5
-      [
-        { scale: 0.06 },
-        { scale: 0.06 },
-        { scale: 0.07 },
-        { scale: 0.07 },
-        { scale: 0.08 },
-        { scale: 0.08 },
-        { scale: 0.08 },
-        { scale: 0.17 },
-        { scale: 0.17 },
-        { scale: 0.16 },
-      ], // index 6
-      [
-        { scale: 0.06 },
-        { scale: 0.06 },
-        { scale: 0.06 },
-        { scale: 0.06 },
-        { scale: 0.06 },
-        { scale: 0.06 },
-        { scale: 0.07 },
-        { scale: 0.07 },
-        { scale: 0.25 },
-        { scale: 0.25 },
-      ], // index 7
-      [
-        { scale: 0.06 },
-        { scale: 0.06 },
-        { scale: 0.06 },
-        { scale: 0.06 },
-        { scale: 0.06 },
-        { scale: 0.06 },
-        { scale: 0.07 },
-        { scale: 0.07 },
-        { scale: 0.25 },
-        { scale: 0.25 },
-      ], // index 8
-    ];
-    return (
-      scales[index] || [
-        { scale: 0.2 },
-        { scale: 0.2 },
-        { scale: 0.2 },
-        { scale: 0.2 },
-        { scale: 0.2 },
-        { scale: 0.2 },
-        { scale: 0.2 },
-        { scale: 0.2 },
-        { scale: 0.2 },
-        { scale: 0.2 },
-      ]
-    );
+  function partitioner(index: number): PartitionSegment[] {
+    return (PARTITIONS[index] ?? DEFAULT_PARTITION).map((scale) => ({ scale }));
   }
 
   const pages = [
-    <Landing />,
-    <div />,
-    <div />,
-    <div />,
-    <div />,
-    <div />,
-    <div />,
-    <div />,
-    <About setPageIndex={setPageIndex} />,
+    <Landing key="landing" />,
+    <div key="spacer-1" />,
+    <div key="spacer-2" />,
+    <div key="spacer-3" />,
+    <div key="spacer-4" />,
+    <div key="spacer-5" />,
+    <div key="spacer-6" />,
+    <div key="spacer-7" />,
+    <About key="about" setPageIndex={setPageIndex} />,
   ];
 
   const snapPages = pages.map((page, i) => (
@@ -242,7 +126,7 @@ export default function Home() {
         <source src={"/bgvid.mp4"} type="video/mp4" />
       </video>
       <div className="absolute top-0 left-0 w-full h-full z-6 bg-black/65 backdrop-blur-sm" />
-      <HamburgerMenu isOpen={isOpen} setIsOpen={setIsOpen} />
+      <HamburgerMenu isOpen={isOpen} />
       <Header isOpen={isOpen} setIsOpen={setIsOpen} />
       <div
         ref={containerRef}
