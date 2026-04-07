@@ -29,14 +29,6 @@ export default function About({
         <div className="mt-auto"></div>
       </div>
       <div className="flex flex-[0.8]"></div>
-      <div className="flex flex-1 flex-col items-center justify-center">
-        <button
-          className="hover:cursor-pointer mt-100 border-2 border-solid border-white rounded-lg px-4 py-2 text-white hover:bg-white hover:text-black transition-colors duration-300"
-          onClick={() => setPageIndex(0)}
-        >
-          <p>Replay</p>
-        </button>
-      </div>
       <div className="flex flex-1"></div>
     </div>
   );

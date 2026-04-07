@@ -162,7 +162,10 @@ function getLeftOffsets(partitionData: PartitionSegment[]): number[] {
   return leftOffsets;
 }
 
-function renderSequenceMessage(pageIndex: number) {
+function renderSequenceMessage(
+  pageIndex: number,
+  setPageIndex: React.Dispatch<React.SetStateAction<number>>,
+): JSX.Element {
   const message = SEQUENCE_MESSAGES[pageIndex];
 
   if (pageIndex === 1) {
@@ -201,9 +204,23 @@ function renderSequenceMessage(pageIndex: number) {
 
   if (pageIndex === LAST_PAGE_INDEX) {
     return (
-      <p className="text-white font-bold text-xl font-inconsolata text-center">
-        {message}
-      </p>
+      <div className="flex flex-col justify-center items-center gap-4 ">
+        <p className="text-white font-bold text-xl font-inconsolata text-center">
+          {message}
+        </p>
+        <button
+          className="hover:cursor-pointer border-2 border-solid border-white/70 rounded-lg px-4 py-2 text-white hover:border-white transition duration-300 group"
+          onClick={() => setPageIndex(0)}
+        >
+          <Image
+            src="/replay.svg"
+            alt="replay"
+            width={20}
+            height={20}
+            className="inline-block opacity-70 group-hover:opacity-100 transition duration-300"
+          />
+        </button>
+      </div>
     );
   }
 
@@ -253,14 +270,20 @@ function SequenceOrbitalBound({ pageIndex }: { pageIndex: number }) {
   );
 }
 
-function SequenceMessage({ pageIndex }: { pageIndex: number }) {
+function SequenceMessage({
+  pageIndex,
+  setPageIndex,
+}: {
+  pageIndex: number;
+  setPageIndex: React.Dispatch<React.SetStateAction<number>>;
+}) {
   const liftRem = rocketVerticalLiftRem(pageIndex);
   const translateYRem = 0.5 + liftRem;
   const transform = `translate(-50%, ${translateYRem}rem)`;
 
   return (
     <div
-      className="w-32 h-28 absolute left-[42%] bottom-3"
+      className="w-32 h-28 absolute left-[42%] bottom-3 z-2"
       style={{
         transform,
         marginLeft: pageIndex === LAST_PAGE_INDEX ? "25%" : "0%",
@@ -268,7 +291,7 @@ function SequenceMessage({ pageIndex }: { pageIndex: number }) {
           "transform 700ms ease-in-out, margin-left 700ms ease-in-out",
       }}
     >
-      {renderSequenceMessage(pageIndex)}
+      {renderSequenceMessage(pageIndex, setPageIndex)}
     </div>
   );
 }
@@ -373,7 +396,7 @@ export default function Sequence({
       <div className="absolute top-1/2 w-full transform -translate-y-full">
         <SequenceRocket pageIndex={pageIndex} />
         <SequenceOrbitalBound pageIndex={pageIndex} />
-        <SequenceMessage pageIndex={pageIndex} />
+        <SequenceMessage pageIndex={pageIndex} setPageIndex={setPageIndex} />
         {partitionData.map((segment, index) => (
           <div
             key={`bar-${index}`}
