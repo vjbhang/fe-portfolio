@@ -7,6 +7,10 @@ import styles from "./DynamicPages.module.css";
 
 const EXIT_DURATION_MS = 450;
 
+function isSpacerPageIndex(pageIndex: number) {
+  return pageIndex > 0 && pageIndex < 8;
+}
+
 export default function DynamicPages({
   pageIndex,
   setPageIndex,
@@ -41,7 +45,11 @@ export default function DynamicPages({
   }, [displayedPageIndex, pageIndex]);
 
   const animationClassName =
-    pageIndex !== displayedPageIndex ? styles.slideOut : styles.slideIn;
+    pageIndex !== displayedPageIndex
+      ? styles.slideOut
+      : isSpacerPageIndex(displayedPageIndex)
+        ? styles.slideInSpacer
+        : styles.slideIn;
 
   return (
     <div className={styles.container}>
