@@ -23,7 +23,11 @@ const CARD_CONFIGS: CardConfig[] = [
     pixelAttrs: {},
   },
   {
-    style: { "--active-color": "#e0f2fe", width: "100%", height: "100%" } as CSSProperties,
+    style: {
+      "--active-color": "#e0f2fe",
+      width: "100%",
+      height: "100%",
+    } as CSSProperties,
     pixelAttrs: {
       "data-gap": "10",
       "data-speed": "25",
@@ -31,7 +35,11 @@ const CARD_CONFIGS: CardConfig[] = [
     },
   },
   {
-    style: { "--active-color": "#fef08a", width: "100%", height: "100%" } as CSSProperties,
+    style: {
+      "--active-color": "#fef08a",
+      width: "100%",
+      height: "100%",
+    } as CSSProperties,
     pixelAttrs: {
       "data-gap": "3",
       "data-speed": "20",
@@ -39,7 +47,11 @@ const CARD_CONFIGS: CardConfig[] = [
     },
   },
   {
-    style: { "--active-color": "#fecdd3", width: "100%", height: "100%" } as CSSProperties,
+    style: {
+      "--active-color": "#fecdd3",
+      width: "100%",
+      height: "100%",
+    } as CSSProperties,
     pixelAttrs: {
       "data-gap": "6",
       "data-speed": "80",

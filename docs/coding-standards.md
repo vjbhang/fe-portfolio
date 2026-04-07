@@ -45,7 +45,7 @@
 
 ## 5. Comments & docs
 
-- [ ] Write comments that explain *why*, not *what* — the code shows what; the comment explains intent or trade-off · **must**
+- [ ] Write comments that explain _why_, not _what_ — the code shows what; the comment explains intent or trade-off · **must**
 - [ ] Add JSDoc/TSDoc to all exported functions and types — enables IDE hover docs · **good**
 - [ ] Remove commented-out code before committing — use git history instead · **must**
 - [ ] Use `TODO:` and `FIXME:` tags consistently so they are searchable · **good**

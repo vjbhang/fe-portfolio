@@ -1,5 +1,7 @@
-import Image from "next/image";
+"use client";
 
+import { useEffect, useState } from "react";
+import Image from "next/image";
 import MouseScroll from "./MouseScroll/MouseScroll";
 import ShakyText from "./ShakyText";
 
@@ -205,7 +207,9 @@ function renderSequenceMessage(pageIndex: number) {
     );
   }
 
-  return <p className="text-white text-xl font-inconsolata text-center">{message}</p>;
+  return (
+    <p className="text-white text-xl font-inconsolata text-center">{message}</p>
+  );
 }
 
 function SequenceRocket({ pageIndex }: { pageIndex: number }) {
@@ -280,8 +284,54 @@ export default function Sequence({
   partitioner: (index: number) => PartitionSegment[];
   setPageIndex: React.Dispatch<React.SetStateAction<number>>;
 }) {
+  const [leftArrowActive, setLeftArrowActive] = useState(false);
+  const [rightArrowActive, setRightArrowActive] = useState(false);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") {
+        setLeftArrowActive(true);
+        setPageIndex((prev) => clampPageIndex(prev - 1));
+      }
+
+      if (e.key === "ArrowRight") {
+        setRightArrowActive(true);
+        setPageIndex((prev) => clampPageIndex(prev + 1));
+      }
+    };
+
+    const handleKeyUp = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") {
+        setLeftArrowActive(false);
+      }
+
+      if (e.key === "ArrowRight") {
+        setRightArrowActive(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keyup", handleKeyUp);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keyup", handleKeyUp);
+    };
+  }, [setPageIndex]);
+
   const partitionData = partitioner(pageIndex);
   const leftOffsets = getLeftOffsets(partitionData);
+
+  const handleLeftArrowClick = () => {
+    setLeftArrowActive(true);
+    setPageIndex((prev) => clampPageIndex(prev - 1));
+    setTimeout(() => setLeftArrowActive(false), 100);
+  };
+
+  const handleRightArrowClick = () => {
+    setRightArrowActive(true);
+    setPageIndex((prev) => clampPageIndex(prev + 1));
+    setTimeout(() => setRightArrowActive(false), 100);
+  };
 
   return (
     <div className="fixed bottom-[14.4vh] left-[50%] w-[94vw] bg-white z-8 transform -translate-x-1/2">
@@ -293,8 +343,32 @@ export default function Sequence({
         height={42}
         className={`absolute top-1/2 left-1/2 transform ${pageIndex === LAST_PAGE_INDEX ? "ml-[25%]" : ""} -translate-x-1/2 -translate-y-1/2 z-10 transition-[margin] ease-in-out duration-700`}
       />
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 translate-y-9">
-        <MouseScroll scrollDeltaYState={scrollDeltaYState} />
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 translate-y-9 w-full">
+        <div className="flex items-center justify-between w-full">
+          <button
+            onClick={handleLeftArrowClick}
+            className={`pl-4 transition-opacity duration-500 hover:cursor-pointer ${leftArrowActive ? "opacity-100" : "opacity-70"}`}
+          >
+            <Image
+              src={"./arrow-left-keypad.svg"}
+              alt="arrow left keypad"
+              width={28}
+              height={28}
+            />
+          </button>
+          <MouseScroll scrollDeltaYState={scrollDeltaYState} />
+          <button
+            onClick={handleRightArrowClick}
+            className={`pr-4 transition-opacity duration-500 hover:cursor-pointer ${rightArrowActive ? "opacity-100" : "opacity-70"}`}
+          >
+            <Image
+              src={"./arrow-right-keypad.svg"}
+              alt="arrow right keypad"
+              width={28}
+              height={28}
+            />
+          </button>
+        </div>
       </div>
       <div className="absolute top-1/2 w-full transform -translate-y-full">
         <SequenceRocket pageIndex={pageIndex} />
@@ -345,7 +419,11 @@ export default function Sequence({
             onClick={() => setPageIndex(marker.targetPageIndex)}
           >
             <Image
-              src={pageIndex > marker.targetPageIndex ? marker.filledSrc : marker.hollowSrc}
+              src={
+                pageIndex > marker.targetPageIndex
+                  ? marker.filledSrc
+                  : marker.hollowSrc
+              }
               alt="scroll tracker"
               width={marker.width}
               height={marker.height}

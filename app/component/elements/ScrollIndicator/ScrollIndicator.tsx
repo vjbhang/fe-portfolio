@@ -10,11 +10,7 @@ type DiamondProps = {
   filled?: boolean;
 };
 
-function Circle({
-  filled = false,
-  graded = false,
-  direction,
-}: CircleProps) {
+function Circle({ filled = false, graded = false, direction }: CircleProps) {
   return (
     <div
       className={`w-4 h-4 transition delay-150 duration-300 ease-in transform rotate-45 ${filled ? "bg-white/50" : graded && `${direction === "left" ? "bg-linear-to-l from-transparent to-white/50" : "bg-linear-to-r from-white/50 to-transparent"}`} border border-white linear`}

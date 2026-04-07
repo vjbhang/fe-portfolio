@@ -7,6 +7,7 @@ import About from "./component/page/about";
 import AnimatedBG from "./component/elements/AnimatedBG/AnimatedBG";
 import HamburgerMenu from "./component/elements/HamburgerMenu/HamburgerMenu";
 import Sequence from "./component/elements/Sequence";
+import DynamicPages from "./component/DynamicPages/DynamicPages";
 
 type PartitionSegment = { scale: number };
 
@@ -46,8 +47,12 @@ export default function Home() {
 
   useEffect(() => {
     if (!containerRef.current) return;
-    const child = containerRef.current.children[pageIndex] as HTMLElement;
-    child?.scrollIntoView({ behavior: "smooth", inline: "start" });
+    const container = containerRef.current;
+    const pageWidth = container.offsetWidth;
+    const scrollPosition = pageIndex * pageWidth;
+    console.log("container width:", pageWidth);
+    container.scrollTo({ left: scrollPosition, behavior: "smooth" });
+    console.log("Page index changed:", pageIndex);
   }, [pageIndex]);
 
   const [scrollDeltaYState, setScrollDeltaYState] = useState(0);
@@ -82,8 +87,19 @@ export default function Home() {
       });
     };
 
+    const keyHandler = (e: KeyboardEvent) => {
+      if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)) {
+        e.preventDefault();
+      }
+    };
+
     el.addEventListener("wheel", handler, { passive: false });
-    return () => el.removeEventListener("wheel", handler);
+
+    el.addEventListener("keydown", keyHandler);
+    return () => {
+      el.removeEventListener("wheel", handler);
+      el.removeEventListener("keydown", keyHandler);
+    };
   }, []);
 
   function partitioner(index: number): PartitionSegment[] {
@@ -101,15 +117,6 @@ export default function Home() {
     <div key="spacer-7" />,
     <About key="about" setPageIndex={setPageIndex} />,
   ];
-
-  const snapPages = pages.map((page, i) => (
-    <div
-      key={`page-${i}`}
-      className="shrink-0 min-w-full w-full snap-start z-9 mb-28"
-    >
-      {page}
-    </div>
-  ));
 
   return (
     <div className="flex flex-col min-w-screen min-h-screen  font-sans bg-white mx-auto px-[3vw] sm:px-[3vw] lg:px-[3vw] py-4 sm:py-6 lg:py-8">
@@ -132,7 +139,7 @@ export default function Home() {
         ref={containerRef}
         className="flex flex-1 w-full overflow-x-auto snap-x snap-mandatory scrollbar-hide z-7"
       >
-        {snapPages}
+        <DynamicPages pageIndex={pageIndex} setPageIndex={setPageIndex} />
 
         <Sequence
           pageIndex={pageIndex}

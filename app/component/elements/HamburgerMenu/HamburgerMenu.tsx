@@ -7,9 +7,7 @@ type HamburgerMenuProps = {
   isOpen: boolean;
 };
 
-export default function HamburgerMenu({
-  isOpen,
-}: HamburgerMenuProps) {
+export default function HamburgerMenu({ isOpen }: HamburgerMenuProps) {
   const [navVisible, setNavVisible] = useState(false);
   const [panelActive, setPanelActive] = useState(false);
   const [panelOffLeft, setPanelOffLeft] = useState(false);

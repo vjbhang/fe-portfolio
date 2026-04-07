@@ -19,7 +19,10 @@ export default function ShakyText({ content }: { content: string }) {
   const [offsets, setOffsets] = useState(() => buildOffsets(content.length));
 
   useEffect(() => {
-    const interval = setInterval(() => setOffsets(buildOffsets(content.length)), 50);
+    const interval = setInterval(
+      () => setOffsets(buildOffsets(content.length)),
+      50,
+    );
     return () => clearInterval(interval);
   }, [content.length]);
 
