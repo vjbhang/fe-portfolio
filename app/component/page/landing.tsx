@@ -1,6 +1,6 @@
 import Image from "next/image";
-import ShakyText from "../elements/ShakyText";
 
+// fewfwef
 export default function Landing() {
   return (
     <div className="flex flex-col w-full h-full justify-center gap-12 font-inconsolata">
@@ -14,37 +14,60 @@ export default function Landing() {
             -- Because Every Detail Matters
           </h5>
         </div>
-        <div className="flex flex-col bg-black/50 items-center justify-center w-120 h-70 rounded-lg gap-4 ml-[6vw]">
-          <div className="flex flex-col items-center gap-1 text-center text-white text-lg">
-            <div className="flex justify-start items-center flex-row gap-40 mr-auto">
-              <Image
-                src="/scrollmouseSVG.svg"
-                alt="scroll mouse"
-                width={62}
-                height={127}
-                className="w-10 h-10 ml-10"
-              />
-              <div className="flex flex-row items-center gap-1">
+        <div className="flex flex-col bg-black/50 items-center justify-center w-100 h-70 rounded-lg gap-4">
+          <div className="flex flex-col justify-center flex-1">
+            <button className="text-sky-400 font-bold text-xl font-inconsolata mt-4 border border-solid rounded border-sky-400/15 hover:border-sky-400/80 transition duration-300 hover:cursor-pointer">
+              Initiate Launch Sequence
+            </button>
+            <code className="text-sm/tight text-commentgreen mt-1">
+              // An interactive walkthrough of the
+            </code>
+            <code className="text-sm/tight text-commentgreen">
+              // key processes behind building your
+            </code>
+            <code className="text-sm/tight text-commentgreen">
+              // digital solution
+            </code>
+          </div>
+          <div className="w-75 h-1 border-b border-white/20 border-solid" />
+          <div className="flex flex-col items-center gap-1 text-center text-white text-lg flex-[1.4]">
+            <p className="text-white text-sm">To navigate:</p>
+            <div className="flex justify-center items-center flex-row gap-6">
+              <div className="flex flex-col items-center gap-1 justify-center w-40">
                 <Image
-                  src="/arrow-left-keypad.svg"
-                  alt="left arrow key"
+                  src="/scrollmouseSVG.svg"
+                  alt="scroll mouse"
                   width={62}
                   height={127}
-                  className="w-6 h-6"
+                  className="w-10 h-10"
                 />
-                <Image
-                  src="/arrow-right-keypad.svg"
-                  alt="right arrow key"
-                  width={62}
-                  height={127}
-                  className="w-6 h-6"
-                />
+                <p className="text-sm">Scroll down</p>
+              </div>
+              <p>or</p>
+              <div className="flex flex-col items-center gap-1 justify-center w-40">
+                <div className="flex flex-row items-center gap-1 h-10">
+                  <Image
+                    src="/arrow-left-keypad.svg"
+                    alt="left arrow key"
+                    width={62}
+                    height={127}
+                    className="w-6 h-6"
+                  />
+                  <Image
+                    src="/arrow-right-keypad.svg"
+                    alt="right arrow key"
+                    width={62}
+                    height={127}
+                    className="w-6 h-6"
+                  />
+                </div>
+                <p className="text-sm">
+                  Press left/right
+                  <br />
+                  arrow keys
+                </p>
               </div>
             </div>
-            <p>Scroll down or use left/right arrow keys to</p>
-            <p className="text-amber-500 font-bold text-xl font-inconsolata text-center">
-              <ShakyText content={"INITIATE LAUNCH"} />
-            </p>
           </div>
         </div>
       </div>
