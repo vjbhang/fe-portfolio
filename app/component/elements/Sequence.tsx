@@ -208,34 +208,44 @@ function renderSequenceMessage(
         <p className="text-white font-bold text-xl font-inconsolata text-center">
           {message}
         </p>
-        <button
-          className="pointer-events-auto hover:cursor-pointer border-2 border-solid border-white/70 rounded-lg px-4 py-2 text-white hover:border-white transition duration-300 group opacity-0 animate-fadeInUp"
-          onClick={() => setPageIndex(0)}
-          style={{ animationDelay: "1s" }}
-        >
-          <Image
-            src="/replay.svg"
-            alt="replay"
-            width={20}
-            height={20}
-            className="inline-block opacity-70 group-hover:opacity-100 transition duration-300"
-          />
-        </button>
-        <style>{`
-          @keyframes fadeInUp {
-            from {
-              opacity: 0;
-              transform: translateY(8px);
+        <div className="flex flex-row gap-2 items-center font-inconsolata">
+          <button
+            className="flex flex-row items-center justify-center gap-1 pointer-events-auto hover:cursor-pointer border-2 border-solid border-white/70 rounded px-2 h-8.25 text-white hover:border-white transition duration-300 group opacity-0 animate-fadeInUp"
+            onClick={() => setPageIndex(0)}
+            style={{ animationDelay: "1s" }}
+          >
+            <p className="text-sm">Replay</p>
+            <Image
+              src="/replay.svg"
+              alt="replay"
+              width={10}
+              height={10}
+              className="inline-block opacity-70 group-hover:opacity-100 transition duration-300"
+            />
+          </button>
+          <div
+            onClick={() => setPageIndex(0)}
+            className="pointer-events-auto hover:pointer-cursor w-9 h-8.25 hover:cursor-pointer flex flex-col items-center justify-center text-white/60 border border-solid rounded border-white/60 transition duration-300 group opacity-0 animate-fadeInUp"
+            style={{ animationDelay: "1s" }}
+          >
+            <p className="text-xs/tight">R</p>
+          </div>
+          <style>{`
+            @keyframes fadeInUp {
+              from {
+                opacity: 0;
+                transform: translateY(8px);
+              }
+              to {
+                opacity: 1;
+                transform: translateY(0);
+              }
             }
-            to {
-              opacity: 1;
-              transform: translateY(0);
+            .animate-fadeInUp {
+              animation: fadeInUp 0.6s ease-out forwards;
             }
-          }
-          .animate-fadeInUp {
-            animation: fadeInUp 0.6s ease-out forwards;
-          }
-        `}</style>
+          `}</style>
+        </div>
       </div>
     );
   }

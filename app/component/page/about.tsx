@@ -1,8 +1,28 @@
+import { useEffect } from "react";
+
+const LAST_PAGE_INDEX = 8;
+
 export default function About({
   setPageIndex,
 }: {
   setPageIndex: React.Dispatch<React.SetStateAction<number>>;
 }) {
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "r" || e.key === "R") {
+        setPageIndex((previousPageIndex) =>
+          previousPageIndex === LAST_PAGE_INDEX ? 0 : previousPageIndex,
+        );
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [setPageIndex]);
+
   return (
     <div className="flex w-full h-full pb-22">
       <div className="flex flex-[1.2] flex-col justify-end pb-8 w-full h-full">

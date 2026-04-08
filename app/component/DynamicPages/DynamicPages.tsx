@@ -21,7 +21,7 @@ export default function DynamicPages({
   const [displayedPageIndex, setDisplayedPageIndex] = useState(pageIndex);
 
   const pages = [
-    <Landing key="landing" />,
+    <Landing key="landing" setPageIndex={setPageIndex} />,
     <div key="spacer-1" />,
     <div key="spacer-2" />,
     <div key="spacer-3" />,

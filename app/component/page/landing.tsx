@@ -1,11 +1,36 @@
+import { useEffect } from "react";
 import Image from "next/image";
 
 // fewfwef
-export default function Landing() {
+export default function Landing({
+  setPageIndex,
+}: {
+  setPageIndex: React.Dispatch<React.SetStateAction<number>>;
+}) {
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== "Enter") {
+        return;
+      }
+
+      setPageIndex((previousPageIndex) =>
+        previousPageIndex === 0 ? 1 : previousPageIndex,
+      );
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [setPageIndex]);
+
   return (
     <div className="flex flex-col w-full h-full justify-center gap-12 font-inconsolata">
       <div className="flex flex-col gap-8 mb-auto">
-        <h1 className="text-5xl text-white">I build your Digital Spaceship</h1>
+        <h1 className="text-5xl text-white">
+          I build Digital Spaceships
+        </h1>
         <div className="flex gap-12 items-center">
           <h4 className="text-xl text-white font-bold">
             Every Pixel, Intentional
@@ -16,8 +41,19 @@ export default function Landing() {
         </div>
         <div className="flex flex-col bg-black/50 items-center justify-center w-100 h-70 rounded-lg gap-4">
           <div className="flex flex-col justify-center flex-1">
-            <button className="text-sky-400 font-bold text-xl font-inconsolata mt-4 border border-solid rounded border-sky-400/15 hover:border-sky-400/80 transition duration-300 hover:cursor-pointer">
-              Initiate Launch Sequence
+            <button
+              className="mt-4 gap-4 flex "
+              onClick={() => setPageIndex(1)}
+            >
+              <p className="text-sky-400 px-1 py-0.5 font-bold text-xl font-inconsolata border border-solid rounded border-sky-400/15 hover:border-sky-400/80 transition hover:cursor-pointer animate-pulse hover:animate-none">
+                Initiate Launch Sequence
+              </p>
+              <div
+                onClick={() => setPageIndex(1)}
+                className="hover:cursor-pointer ml-auto flex flex-col items-center justify-center text-white/60 border border-solid rounded border-white/60 w-13 h-8.25"
+              >
+                <p className="text-xs/tight">enter ↵</p>
+              </div>
             </button>
             <code className="text-sm/tight text-commentgreen mt-1">
               // An interactive walkthrough of the
