@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 
 const MAX_OFFSET = 1; // px
@@ -16,15 +18,23 @@ function buildOffsets(numOffsets: number): Array<[number, number]> {
 }
 
 export default function ShakyText({ content }: { content: string }) {
-  const [offsets, setOffsets] = useState(() => buildOffsets(content.length));
+  const [offsets, setOffsets] = useState<Array<[number, number]>>(() => []);
+  const [isHydrated, setIsHydrated] = useState(false);
 
   useEffect(() => {
+    setOffsets(buildOffsets(content.length));
+    setIsHydrated(true);
+  }, [content.length]);
+
+  useEffect(() => {
+    if (!isHydrated) return;
+
     const interval = setInterval(
       () => setOffsets(buildOffsets(content.length)),
       50,
     );
     return () => clearInterval(interval);
-  }, [content.length]);
+  }, [content.length, isHydrated]);
 
   return (
     <span aria-label={content} className="whitespace-nowrap relative">
@@ -34,8 +44,12 @@ export default function ShakyText({ content }: { content: string }) {
           aria-hidden
           className="relative"
           style={{
-            left: `${offsets[index][0] - MAX_OFFSET / 2}px`,
-            bottom: `${offsets[index][1] - MAX_OFFSET / 2}px`,
+            left: isHydrated
+              ? `${offsets[index][0] - MAX_OFFSET / 2}px`
+              : "0px",
+            bottom: isHydrated
+              ? `${offsets[index][1] - MAX_OFFSET / 2}px`
+              : "0px",
           }}
         >
           {letter}
