@@ -209,7 +209,7 @@ function renderSequenceMessage(
           {message}
         </p>
         <button
-          className="hover:cursor-pointer border-2 border-solid border-white/70 rounded-lg px-4 py-2 text-white hover:border-white transition duration-300 group opacity-0 animate-fadeInUp"
+          className="pointer-events-auto hover:cursor-pointer border-2 border-solid border-white/70 rounded-lg px-4 py-2 text-white hover:border-white transition duration-300 group opacity-0 animate-fadeInUp"
           onClick={() => setPageIndex(0)}
           style={{ animationDelay: "1s" }}
         >
@@ -373,7 +373,7 @@ export default function Sequence({
   };
 
   return (
-    <div className="fixed bottom-[14.4vh] left-[50%] w-[94vw] bg-white z-8 transform -translate-x-1/2">
+    <div className="fixed bottom-[14.4vh] left-[50%] w-[94vw] bg-white z-8 transform -translate-x-1/2 pointer-events-none">
       <div className="border-3 border-solid border-white" />
       <Image
         src="/trackerSVG.svg"
@@ -386,7 +386,7 @@ export default function Sequence({
         <div className="flex items-center justify-between w-full">
           <button
             onClick={handleLeftArrowClick}
-            className={`pl-4 transition-opacity duration-500 hover:cursor-pointer ${leftArrowActive ? "opacity-100" : "opacity-70"}`}
+            className={`pointer-events-auto pl-4 transition-opacity duration-500 hover:cursor-pointer ${leftArrowActive ? "opacity-100" : "opacity-70"}`}
           >
             <Image
               src={"./arrow-left-keypad.svg"}
@@ -398,7 +398,7 @@ export default function Sequence({
           <MouseScroll scrollDeltaYState={scrollDeltaYState} />
           <button
             onClick={handleRightArrowClick}
-            className={`pr-4 transition-opacity duration-500 hover:cursor-pointer ${rightArrowActive ? "opacity-100" : "opacity-70"}`}
+            className={`pointer-events-auto pr-4 transition-opacity duration-500 hover:cursor-pointer ${rightArrowActive ? "opacity-100" : "opacity-70"}`}
           >
             <Image
               src={"./arrow-right-keypad.svg"}
@@ -451,7 +451,7 @@ export default function Sequence({
         {ACCENT_MARKERS.map((marker) => (
           <button
             key={`accent-${marker.accentIndex}`}
-            className="block z-2 absolute transition-[left] duration-700 linear hover:cursor-pointer transform top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            className="pointer-events-auto block z-2 absolute transition-[left] duration-700 linear hover:cursor-pointer transform top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
             style={{
               left: `${leftOffsets[marker.accentIndex + 1]}%`,
             }}
