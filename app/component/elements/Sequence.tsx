@@ -4,6 +4,7 @@ import { JSX, useEffect, useState } from "react";
 import Image from "next/image";
 import MouseScroll from "./MouseScroll/MouseScroll";
 import ShakyText from "./ShakyText";
+import KeypadEnter from "./Keypads/KeypadEnter";
 
 type PartitionSegment = { scale: number };
 type AccentMarker = {
@@ -230,21 +231,6 @@ function renderSequenceMessage(
           >
             <p className="text-xs/tight">R</p>
           </div>
-          <style>{`
-            @keyframes fadeInUp {
-              from {
-                opacity: 0;
-                transform: translateY(8px);
-              }
-              to {
-                opacity: 1;
-                transform: translateY(0);
-              }
-            }
-            .animate-fadeInUp {
-              animation: fadeInUp 0.6s ease-out forwards;
-            }
-          `}</style>
         </div>
       </div>
     );
@@ -392,8 +378,8 @@ export default function Sequence({
         height={42}
         className={`absolute top-1/2 left-1/2 transform ${pageIndex === LAST_PAGE_INDEX ? "ml-[25%]" : ""} -translate-x-1/2 -translate-y-1/2 z-10 transition-[margin] ease-in-out duration-700`}
       />
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 translate-y-9 w-full">
-        <div className="flex items-center justify-between w-full">
+      <div className="mt-2 absolute top-1/2 left-1/2 transform -translate-x-1/2 translate-y-9 w-full">
+        <div className="flex items-center justify-between w-full h-8.25">
           <button
             onClick={handleLeftArrowClick}
             className={`pointer-events-auto pl-4 transition-opacity duration-500 hover:cursor-pointer ${leftArrowActive ? "opacity-100" : "opacity-70"}`}
@@ -405,11 +391,27 @@ export default function Sequence({
               height={28}
             />
           </button>
-          <MouseScroll scrollDeltaYState={scrollDeltaYState} />
+          <div className="absolute left-1/2 transform -translate-x-1/2">
+            <MouseScroll scrollDeltaYState={scrollDeltaYState} />
+          </div>
           <button
             onClick={handleRightArrowClick}
-            className={`pointer-events-auto pr-4 transition-opacity duration-500 hover:cursor-pointer ${rightArrowActive ? "opacity-100" : "opacity-70"}`}
+            className={`pointer-events-auto flex flex-row gap-2 pr-4 transition-opacity duration-500 hover:cursor-pointer ${rightArrowActive ? "opacity-100" : "opacity-70"}`}
           >
+            {pageIndex === 1 ||
+            pageIndex === 2 ||
+            pageIndex === 3 ||
+            pageIndex === 4 ||
+            pageIndex === 5 ||
+            pageIndex === 6 ||
+            pageIndex === 7 ? (
+              <div
+                style={{ animationDelay: "0.5s" }}
+                className="animate-fadeInUp duration-300 group opacity-0"
+              >
+                <KeypadEnter setPageIndex={setPageIndex} />
+              </div>
+            ) : null}
             <Image
               src={"./arrow-right-keypad.svg"}
               alt="arrow right keypad"

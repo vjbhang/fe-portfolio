@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import Image from "next/image";
+import KeypadEnter from "../elements/Keypads/KeypadEnter";
 
 // fewfwef
 export default function Landing({
@@ -28,9 +29,7 @@ export default function Landing({
   return (
     <div className="flex flex-col w-full h-full justify-center gap-12 font-inconsolata">
       <div className="flex flex-col gap-8 mb-auto">
-        <h1 className="text-5xl text-white">
-          I build Digital Spaceships
-        </h1>
+        <h1 className="text-5xl text-white">I build Digital Spaceships</h1>
         <div className="flex gap-12 items-center">
           <h4 className="text-xl text-white font-bold">
             Every Pixel, Intentional
@@ -48,18 +47,13 @@ export default function Landing({
               <p className="text-sky-400 px-1 py-0.5 font-bold text-xl font-inconsolata border border-solid rounded border-sky-400/15 hover:border-sky-400/80 transition hover:cursor-pointer animate-pulse hover:animate-none">
                 Initiate Launch Sequence
               </p>
-              <div
-                onClick={() => setPageIndex(1)}
-                className="hover:cursor-pointer ml-auto flex flex-col items-center justify-center text-white/60 border border-solid rounded border-white/60 w-13 h-8.25"
-              >
-                <p className="text-xs/tight">enter ↵</p>
-              </div>
+              <KeypadEnter setPageIndex={setPageIndex} />
             </button>
             <code className="text-sm/tight text-commentgreen mt-1">
               // An interactive walkthrough of the
             </code>
             <code className="text-sm/tight text-commentgreen">
-              // key processes behind building your
+              // key processes behind building a
             </code>
             <code className="text-sm/tight text-commentgreen">
               // digital solution

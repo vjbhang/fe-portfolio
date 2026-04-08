@@ -1,8 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import About from "../page/about";
-import Landing from "../page/landing";
+import Landing from "../page/0-Landing";
+import Liftoff from "../page/1-LiftOff";
+import Nominal from "../page/2-Nominal";
+import Supersonic from "../page/3-Supersonic";
+import Orbit from "../page/4-Orbit";
+import ReEntry from "../page/5-ReEntry";
+import Interface from "../page/6-Interface";
+import EntryBurn from "../page/7-EntryBurn";
+import About from "../page/8-About";
 import styles from "./DynamicPages.module.css";
 
 const EXIT_DURATION_MS = 450;
@@ -22,13 +29,13 @@ export default function DynamicPages({
 
   const pages = [
     <Landing key="landing" setPageIndex={setPageIndex} />,
-    <div key="spacer-1" />,
-    <div key="spacer-2" />,
-    <div key="spacer-3" />,
-    <div key="spacer-4" />,
-    <div key="spacer-5" />,
-    <div key="spacer-6" />,
-    <div key="spacer-7" />,
+    <Liftoff key="liftoff" setPageIndex={setPageIndex} />,
+    <Nominal key="nominal" setPageIndex={setPageIndex} />,
+    <Supersonic key="supersonic" setPageIndex={setPageIndex} />,
+    <Orbit key="orbit" setPageIndex={setPageIndex} />,
+    <ReEntry key="reentry" setPageIndex={setPageIndex} />,
+    <Interface key="interface" setPageIndex={setPageIndex} />,
+    <EntryBurn key="entryburn" setPageIndex={setPageIndex} />,
     <About key="about" setPageIndex={setPageIndex} />,
   ];
 

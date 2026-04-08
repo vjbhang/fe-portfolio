@@ -2,8 +2,6 @@
 
 import { useState, useRef, useEffect } from "react";
 import Header from "./component/elements/Header";
-import Landing from "./component/page/landing";
-import About from "./component/page/about";
 import AnimatedBG from "./component/elements/AnimatedBG/AnimatedBG";
 import HamburgerMenu from "./component/elements/HamburgerMenu/HamburgerMenu";
 import Sequence from "./component/elements/Sequence";
@@ -105,18 +103,6 @@ export default function Home() {
   function partitioner(index: number): PartitionSegment[] {
     return (PARTITIONS[index] ?? DEFAULT_PARTITION).map((scale) => ({ scale }));
   }
-
-  const pages = [
-    <Landing key="landing" />,
-    <div key="spacer-1" />,
-    <div key="spacer-2" />,
-    <div key="spacer-3" />,
-    <div key="spacer-4" />,
-    <div key="spacer-5" />,
-    <div key="spacer-6" />,
-    <div key="spacer-7" />,
-    <About key="about" setPageIndex={setPageIndex} />,
-  ];
 
   return (
     <div className="flex flex-col min-w-screen min-h-screen  font-sans bg-white mx-auto px-[3vw] sm:px-[3vw] lg:px-[3vw] py-4 sm:py-6 lg:py-8">
