@@ -209,8 +209,9 @@ function renderSequenceMessage(
           {message}
         </p>
         <button
-          className="hover:cursor-pointer border-2 border-solid border-white/70 rounded-lg px-4 py-2 text-white hover:border-white transition duration-300 group"
+          className="hover:cursor-pointer border-2 border-solid border-white/70 rounded-lg px-4 py-2 text-white hover:border-white transition duration-300 group opacity-0 animate-fadeInUp"
           onClick={() => setPageIndex(0)}
+          style={{ animationDelay: "1s" }}
         >
           <Image
             src="/replay.svg"
@@ -220,6 +221,21 @@ function renderSequenceMessage(
             className="inline-block opacity-70 group-hover:opacity-100 transition duration-300"
           />
         </button>
+        <style>{`
+          @keyframes fadeInUp {
+            from {
+              opacity: 0;
+              transform: translateY(8px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+          .animate-fadeInUp {
+            animation: fadeInUp 0.6s ease-out forwards;
+          }
+        `}</style>
       </div>
     );
   }
