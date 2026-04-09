@@ -1,0 +1,75 @@
+.descriptionViewport {
+  min-height: 7.5rem;
+  overflow: hidden;
+}
+
+.shortLabel {
+  position: relative;
+  display: inline-flex;
+  padding-bottom: 0.35rem;
+}
+
+.progressUnderline {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  width: 100%;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right center;
+  animation-name: growUnderlineFromRight;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  will-change: transform;
+}
+
+.descriptionCard {
+  will-change: transform, opacity, filter;
+}
+
+.slideUp {
+  animation: slideUpIn 550ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.slideDown {
+  animation: slideDownIn 550ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes slideUpIn {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(1rem);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDownIn {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(-1rem);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes growUnderlineFromRight {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import Image from "next/image";
 import KeypadEnter from "../elements/Keypads/KeypadEnter";
+import LandingCategoryRotator from "../elements/LandingCategoryRotator";
 
 // fewfwef
 export default function Landing({
@@ -28,16 +29,15 @@ export default function Landing({
 
   return (
     <div className="flex flex-col w-full h-full justify-center gap-12 font-inconsolata">
-      <div className="flex flex-col gap-8 mb-auto">
+      <div className="flex flex-col gap-6 mb-auto">
         <h1 className="text-5xl text-white">I build Digital Spaceships</h1>
         <div className="flex gap-12 items-center">
-          <h4 className="text-xl text-white font-bold">
-            Every Pixel, Intentional
+          <h4 className="text-xl text-white font-bold flex items-center gap-2">
+            <span className="text-xs">▶</span> Freelancer // Technical Operator
+            & AI Systems Integrator
           </h4>
-          <h5 className="text-m mt-1 text-white font-bold">
-            -- Because Every Detail Matters
-          </h5>
         </div>
+        <LandingCategoryRotator />
         <div className="flex flex-col bg-black/50 items-center justify-center w-100 h-70 rounded-lg gap-4">
           <div className="flex flex-col justify-center flex-1">
             <button

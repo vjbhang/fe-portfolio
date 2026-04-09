@@ -15,7 +15,7 @@ export const Header: React.FC<HeaderProps> = ({ isOpen, setIsOpen }) => {
         <p className="text-sm font-bold text-white font-jeju-hallasan">
           VINCENT JIWON BONG
         </p>
-        <div className="flex gap-8">
+        <div className="flex gap-8 items-center">
           <Clock />
           <p className="text-sm font-bold text-white">(Los Angeles)</p>
         </div>
