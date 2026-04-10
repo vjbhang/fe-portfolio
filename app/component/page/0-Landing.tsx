@@ -56,7 +56,7 @@ export default function Landing({
               // key processes behind building a
             </code>
             <code className="text-sm/tight text-commentgreen">
-              // digital solution
+              // web/mobile application
             </code>
           </div>
           <div className="w-75 h-1 border-b border-white/20 border-solid" />

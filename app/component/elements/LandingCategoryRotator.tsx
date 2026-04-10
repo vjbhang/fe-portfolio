@@ -16,13 +16,13 @@ const CATEGORIES: Category[] = [
     shortLabel: "SMB",
     title: "Small and Medium-sized Businesses",
     description:
-      "Translate business needs into effective systems by coordinating AI tools, software platforms, and integrations while ensuring reliability and continuous improvement.",
+      "I help translate business needs into effective systems by coordinating AI tools, software platforms, and integrations while ensuring reliability and continuous improvement.",
   },
   {
     shortLabel: "PB",
     title: "Personal Brand",
     description:
-      "Design, build, and continuously optimize the digital systems that turn an individual's expertise, content, and audience into a scalable online business.",
+      "I help design, build, and continuously optimize the digital systems that turn an individual's expertise, content, and audience into a scalable online business.",
   },
 ];
 
