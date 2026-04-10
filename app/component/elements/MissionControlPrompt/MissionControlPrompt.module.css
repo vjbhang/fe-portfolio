@@ -1,0 +1,24 @@
+.cornerBox {
+  position: relative;
+  background-color: transparent;
+  --corner-color: rgba(255, 255, 255, 0.4);
+  --corner-length: 12px;
+  --corner-thickness: 1.5px;
+  background:
+    linear-gradient(var(--corner-color) 0 0) top left / var(--corner-length)
+      var(--corner-thickness) no-repeat,
+    linear-gradient(var(--corner-color) 0 0) top left / var(--corner-thickness)
+      var(--corner-length) no-repeat,
+    linear-gradient(var(--corner-color) 0 0) top right / var(--corner-length)
+      var(--corner-thickness) no-repeat,
+    linear-gradient(var(--corner-color) 0 0) top right / var(--corner-thickness)
+      var(--corner-length) no-repeat,
+    linear-gradient(var(--corner-color) 0 0) bottom left / var(--corner-length)
+      var(--corner-thickness) no-repeat,
+    linear-gradient(var(--corner-color) 0 0) bottom left /
+      var(--corner-thickness) var(--corner-length) no-repeat,
+    linear-gradient(var(--corner-color) 0 0) bottom right / var(--corner-length)
+      var(--corner-thickness) no-repeat,
+    linear-gradient(var(--corner-color) 0 0) bottom right /
+      var(--corner-thickness) var(--corner-length) no-repeat;
+}

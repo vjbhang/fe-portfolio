@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import MissionControlPrompt from "../elements/MissionControlPrompt/MissionControlPrompt";
 
 export default function Interface({
   setPageIndex,
@@ -24,6 +25,26 @@ export default function Interface({
   }, [setPageIndex]);
 
   return (
-    <div className="flex flex-col w-full h-full justify-center gap-12 font-inconsolata"></div>
+    <div className="flex flex-col w-full h-full font-inconsolata text-white">
+      <MissionControlPrompt status="RE-ENTRY INTERFACE">
+        <div className="flex flex-col gap-2">
+          <h4 className="text-sky-300 font-bold">// Mission Control:</h4>
+          <p>Flight, we've reached entry interface.</p>
+          <p>Velocity and angle within predicted corridor. .</p>
+          <p>Thermal protection systems is active.</p>
+          <p>Hitting atmosphere.</p>
+        </div>
+        <div className="w-4/5 h-px border-b border-white/30"></div>
+        <div className="flex flex-col gap-2">
+          <h4 className="text-sky-200 font-bold">// Vincent AI:</h4>
+          <p>
+            I have implemented significant changes to the application and am now
+            prioritizing user feedback, bug discovery, and performance
+            variability to ensure stability. I will be closely monitoring the
+            application.
+          </p>
+        </div>
+      </MissionControlPrompt>
+    </div>
   );
 }

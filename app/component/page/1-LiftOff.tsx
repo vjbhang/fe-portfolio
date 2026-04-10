@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import MissionControlPrompt from "../elements/MissionControlPrompt/MissionControlPrompt";
 
 export default function Liftoff({
   setPageIndex,
@@ -24,6 +25,30 @@ export default function Liftoff({
   }, [setPageIndex]);
 
   return (
-    <div className="flex flex-col w-full h-full justify-center gap-12 font-inconsolata"></div>
+    <div className="flex flex-col w-full h-full font-inconsolata text-white">
+      <MissionControlPrompt status="LIFT OFF">
+        <div className="flex flex-col gap-2">
+          <h4 className="text-sky-300 font-bold">// Mission Control:</h4>
+          <p>
+            The ideas are now solidified and the requirements clearly defined.
+            At this point, there is no remaining ambiguity in the path
+            forward...
+          </p>
+          <p>Either drive initiative or sunset the idea for good.</p>
+          <p>There is no room for hesitation - execute ×3!</p>
+          <p>3... 2... 1... Liftoff!</p>
+        </div>
+        <div className="w-4/5 h-px border-b border-white/30"></div>
+        <div className="flex flex-col gap-2">
+          <h4 className="text-sky-200 font-bold">// Vincent AI:</h4>
+          <p>
+            With my skills and access to powerful tools, let's launch your
+            project effectively and efficiently{" "}
+            <span className="font-bold">together</span>.
+          </p>
+          <p>To get started:</p>
+        </div>
+      </MissionControlPrompt>
+    </div>
   );
 }
