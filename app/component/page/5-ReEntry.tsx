@@ -1,4 +1,7 @@
 import { useEffect } from "react";
+import { LuListTodo } from "react-icons/lu";
+import { RiGlobalFill } from "react-icons/ri";
+import { MdArchitecture } from "react-icons/md";
 import MissionControlPrompt from "../elements/MissionControlPrompt/MissionControlPrompt";
 
 export default function ReEntry({
@@ -44,6 +47,7 @@ export default function ReEntry({
           </p>
           <div className="flex flex-row items-start justify-around gap-3">
             <div className="flex flex-col items-start h-full">
+              <LuListTodo size={32} />
               <p>Define Scope of Change</p>
               <p className="text-xs text-white/70 mt-auto">
                 features, design, business-specific nuance
@@ -51,10 +55,12 @@ export default function ReEntry({
             </div>
             <p className="flex items-center justify-center h-full">→</p>
             <div className="flex flex-col items-start h-full">
+              <MdArchitecture size={32} />
               <p>Planning major refactors or architectural changes</p>
             </div>
             <p className="flex items-center justify-center h-full">→</p>
             <div className="flex flex-col items-start h-full">
+              <RiGlobalFill size={32} />
               <p>Preparing for scaling</p>
               <p className="text-xs text-white/70 mt-auto">
                 multi-region, microservices, risk modelling, etc.

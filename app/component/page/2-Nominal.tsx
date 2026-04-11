@@ -1,4 +1,7 @@
 import { useEffect } from "react";
+import { PiStackDuotone } from "react-icons/pi";
+import { GrDeploy } from "react-icons/gr";
+import { FaDatabase } from "react-icons/fa";
 import MissionControlPrompt from "../elements/MissionControlPrompt/MissionControlPrompt";
 
 export default function Nominal({
@@ -45,6 +48,7 @@ export default function Nominal({
           </p>
           <div className="flex flex-row items-start justify-around gap-3">
             <div className="flex flex-col items-start h-full">
+              <PiStackDuotone size={32} />
               <p>Choosing architecture</p>
               <p className="text-xs text-white/70 mt-auto">
                 tech stack, cloud provider, frameworks
@@ -52,6 +56,7 @@ export default function Nominal({
             </div>
             <p className="flex items-center justify-center h-full">→</p>
             <div className="flex flex-col items-start h-full">
+              <GrDeploy size={32} />
               <p>
                 Rapid MVP
                 <br />
@@ -63,6 +68,7 @@ export default function Nominal({
             </div>
             <p className="flex items-center justify-center h-full">→</p>
             <div className="flex flex-col items-start h-full">
+              <FaDatabase size={32} />
               <p>Basic integrations</p>
               <p className="text-xs text-white/70 mt-auto">
                 APIs, Database, Authentication

@@ -1,4 +1,6 @@
 import { useEffect } from "react";
+import { LuListTodo } from "react-icons/lu";
+import { FiFigma } from "react-icons/fi";
 import MissionControlPrompt from "../elements/MissionControlPrompt/MissionControlPrompt";
 
 export default function Liftoff({
@@ -48,11 +50,13 @@ export default function Liftoff({
           </p>
           <p>To get started:</p>
           <div className="flex flex-row items-center justify-center gap-6">
-            <div className="flex flex-col items-center gap-2">
+            <div className="flex flex-col items-start gap-2">
+              <LuListTodo size={32} />
               <p>Define Requirements</p>
             </div>
             <p className="flex items-center justify-center h-full">→</p>
-            <div className="flex flex-col items-center gap-2">
+            <div className="flex flex-col items-start gap-2">
+              <FiFigma size={32} />
               <p>Prototyping</p>
             </div>
           </div>

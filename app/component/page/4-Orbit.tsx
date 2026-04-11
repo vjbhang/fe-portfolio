@@ -1,4 +1,7 @@
 import { useEffect } from "react";
+import { HiMiniRocketLaunch } from "react-icons/hi2";
+import { SiBaremetrics } from "react-icons/si";
+import { SiAlwaysdata } from "react-icons/si";
 import MissionControlPrompt from "../elements/MissionControlPrompt/MissionControlPrompt";
 
 export default function Orbit({
@@ -46,10 +49,12 @@ export default function Orbit({
           </p>
           <div className="flex flex-row items-start justify-around gap-3">
             <div className="flex flex-col items-start h-full">
+              <HiMiniRocketLaunch size={32} />
               <p>Stable Production Release</p>
             </div>
             <p className="flex items-center justify-center h-full">→</p>
             <div className="flex flex-col items-start h-full">
+              <SiBaremetrics size={32} />
               <p>Establish Observability</p>
               <p className="text-xs text-white/70 mt-auto">
                 logging, metrics, alerting
@@ -57,7 +62,8 @@ export default function Orbit({
             </div>
             <p className="flex items-center justify-center h-full">→</p>
             <div className="flex flex-col items-start h-full">
-              <p>Share meaningful product-market fit emerging data</p>
+              <SiAlwaysdata size={32} />
+              <p>Share meaningful emerging data</p>
             </div>
           </div>
         </div>

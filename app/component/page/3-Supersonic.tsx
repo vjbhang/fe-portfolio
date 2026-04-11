@@ -1,4 +1,6 @@
 import { useEffect } from "react";
+import { GrBusinessService } from "react-icons/gr";
+import { GrFanOption } from "react-icons/gr";
 import MissionControlPrompt from "../elements/MissionControlPrompt/MissionControlPrompt";
 
 export default function Supersonic({
@@ -45,14 +47,16 @@ export default function Supersonic({
           </p>
           <p>Should I scale beyond the original concept? Yes / No</p>
           <div className="flex flex-row items-start justify-center gap-6">
-            <div className="flex flex-col items-center gap-2 h-full">
-              <p>Assess and align with business needs</p>
+            <div className="flex flex-col items-start gap-2 h-full">
+              <GrBusinessService size={32} />
+              <p>Align with business needs</p>
               <p className="text-xs text-white/70 mt-auto">
                 business-specific nuance, speed vs scalability vs cost
               </p>
             </div>
             <p className="flex items-center justify-center h-full">→</p>
-            <div className="flex flex-col items-center gap-2 h-full">
+            <div className="flex flex-col items-start gap-2 h-full">
+              <GrFanOption size={32} />
               <p>Optimization</p>
               <p className="text-xs text-white/70 mt-auto">
                 feature complexity or increased user load

@@ -1,4 +1,7 @@
 import { useEffect } from "react";
+import { FaWrench } from "react-icons/fa";
+import { FaMagnifyingGlass } from "react-icons/fa6";
+import { FaBookOpen } from "react-icons/fa";
 import MissionControlPrompt from "../elements/MissionControlPrompt/MissionControlPrompt";
 
 export default function EntryBurn({
@@ -44,14 +47,17 @@ export default function EntryBurn({
           </p>
           <div className="flex flex-row items-start justify-around gap-3">
             <div className="flex flex-col items-start h-full">
+              <FaWrench size={32} />
               <p>Hotfixes, patches, and rapid iteration</p>
             </div>
             <p className="flex items-center justify-center h-full">→</p>
             <div className="flex flex-col items-start h-full">
-              <p>Technical debt identified and queued</p>
+              <FaMagnifyingGlass size={32} />
+              <p>Identify technical debt</p>
             </div>
             <p className="flex items-center justify-center h-full">→</p>
             <div className="flex flex-col items-start h-full">
+              <FaBookOpen size={32} />
               <p>Documentation</p>
             </div>
           </div>
