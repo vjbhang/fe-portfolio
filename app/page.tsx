@@ -125,14 +125,13 @@ export default function Home() {
         ref={containerRef}
         className="flex flex-1 w-full overflow-x-auto snap-x snap-mandatory scrollbar-hide z-7"
       >
-        <DynamicPages pageIndex={pageIndex} setPageIndex={setPageIndex} />
-
         <Sequence
           pageIndex={pageIndex}
           scrollDeltaYState={scrollDeltaYState}
           partitioner={partitioner}
           setPageIndex={setPageIndex}
         />
+        <DynamicPages pageIndex={pageIndex} setPageIndex={setPageIndex} />
       </div>
     </div>
   );

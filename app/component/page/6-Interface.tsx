@@ -27,7 +27,7 @@ export default function Interface({
   }, [setPageIndex]);
 
   return (
-    <div className="flex flex-col w-full h-full font-inconsolata text-white">
+    <div className="flex flex-col w-full h-full font-inconsolata text-white pointer-events-none">
       <MissionControlPrompt status="RE-ENTRY INTERFACE">
         <div className="flex flex-col gap-2">
           <h4 className="text-sky-300 font-bold">// Mission Control:</h4>
@@ -45,15 +45,23 @@ export default function Interface({
             variability to ensure stability. I will be closely monitoring the
             application.
           </p>
-          <div className="flex flex-row items-start justify-around gap-3">
+          <div className="flex flex-row items-start justify-around gap-3 bg-black/40 p-4 rounded-lg border border-solid border-white/20">
             <div className="flex flex-col items-start h-full">
               <RiSurveyLine size={32} />
-              <p>User Actions Monitoring</p>
+              <p>
+                User Actions
+                <br />
+                Monitoring
+              </p>
             </div>
             <p className="flex items-center justify-center h-full">→</p>
             <div className="flex flex-col items-start h-full">
               <TbBrandSpeedtest size={32} />
-              <p>User Interface Testing</p>
+              <p>
+                User Interface
+                <br />
+                Testing
+              </p>
             </div>
           </div>
         </div>

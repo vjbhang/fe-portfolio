@@ -1,6 +1,5 @@
 .cornerBox {
   position: relative;
-  background-color: transparent;
   --corner-color: rgba(255, 255, 255, 0.4);
   --corner-length: 12px;
   --corner-thickness: 1.5px;

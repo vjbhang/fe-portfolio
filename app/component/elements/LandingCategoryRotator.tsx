@@ -118,7 +118,7 @@ export default function LandingCategoryRotator() {
 
   return (
     <div
-      className="flex h-19 w-xl flex-row items-start gap-6 hover:cursor-help"
+      className="flex h-19 w-xl flex-row items-start gap-6 hover:cursor-help pointer-events-auto"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >

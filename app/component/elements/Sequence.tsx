@@ -369,7 +369,7 @@ export default function Sequence({
   };
 
   return (
-    <div className="fixed bottom-[14.4vh] left-[50%] w-[94vw] bg-white z-8 transform -translate-x-1/2 pointer-events-none">
+    <div className="fixed bottom-[14.4vh] left-[50%] w-[94vw] bg-white z-8 transform -translate-x-1/2">
       <div className="border-3 border-solid border-white" />
       <Image
         src="/trackerSVG.svg"

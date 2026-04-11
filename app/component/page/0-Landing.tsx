@@ -41,7 +41,7 @@ export default function Landing({
         <div className="flex flex-col bg-black/50 items-center justify-center w-100 h-70 rounded-lg gap-4">
           <div className="flex flex-col justify-center flex-1">
             <button
-              className="mt-4 gap-4 flex "
+              className="mt-4 gap-4 flex pointer-events-auto"
               onClick={() => setPageIndex(1)}
             >
               <p className="text-sky-400 px-1 py-0.5 font-bold text-xl font-inconsolata border border-solid rounded border-sky-400/15 hover:border-sky-400/80 transition hover:cursor-pointer animate-pulse hover:animate-none">

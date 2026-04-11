@@ -27,7 +27,7 @@ export default function Supersonic({
   }, [setPageIndex]);
 
   return (
-    <div className="flex flex-col w-full h-full font-inconsolata text-white">
+    <div className="flex flex-col w-full h-full font-inconsolata text-white pointer-events-none">
       <MissionControlPrompt status="SUPERSONIC">
         <div className="flex flex-col gap-2">
           <h4 className="text-sky-300 font-bold">// Mission Control:</h4>
@@ -46,7 +46,7 @@ export default function Supersonic({
             detailing further requirements.
           </p>
           <p>Should I scale beyond the original concept? Yes / No</p>
-          <div className="flex flex-row items-start justify-center gap-6">
+          <div className="flex flex-row items-start justify-center gap-6 bg-black/40 p-4 rounded-lg border border-solid border-white/20">
             <div className="flex flex-col items-start gap-2 h-full">
               <GrBusinessService size={32} />
               <p>Align with business needs</p>

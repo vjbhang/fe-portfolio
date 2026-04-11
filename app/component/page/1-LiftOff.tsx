@@ -27,7 +27,7 @@ export default function Liftoff({
   }, [setPageIndex]);
 
   return (
-    <div className="flex flex-col w-full h-full font-inconsolata text-white">
+    <div className="flex flex-col w-full h-full font-inconsolata text-white pointer-events-none">
       <MissionControlPrompt status="LIFT OFF">
         <div className="flex flex-col gap-2">
           <h4 className="text-sky-300 font-bold">// Mission Control:</h4>
@@ -48,11 +48,15 @@ export default function Liftoff({
             project effectively and efficiently{" "}
             <span className="font-bold">together</span>.
           </p>
-          <p>To get started:</p>
-          <div className="flex flex-row items-center justify-center gap-6">
+          <p>To get started, we will:</p>
+          <div className="flex flex-row items-center justify-around gap-6 bg-black/40 p-4 rounded-lg border border-solid border-white/20">
             <div className="flex flex-col items-start gap-2">
               <LuListTodo size={32} />
-              <p>Define Requirements</p>
+              <p>
+                Define
+                <br />
+                Requirements
+              </p>
             </div>
             <p className="flex items-center justify-center h-full">→</p>
             <div className="flex flex-col items-start gap-2">

@@ -28,7 +28,7 @@ export default function ReEntry({
   }, [setPageIndex]);
 
   return (
-    <div className="flex flex-col w-full h-full font-inconsolata text-white">
+    <div className="flex flex-col w-full h-full font-inconsolata text-white pointer-events-none">
       <MissionControlPrompt status="DE-ORBIT">
         <div className="flex flex-col gap-2">
           <h4 className="text-sky-300 font-bold">// Mission Control:</h4>
@@ -45,7 +45,7 @@ export default function ReEntry({
             demonstrated resilience, it now requires substantial changes to meet
             emerging requirements.
           </p>
-          <div className="flex flex-row items-start justify-around gap-3">
+          <div className="flex flex-row items-start justify-around gap-3 bg-black/40 p-4 rounded-lg border border-solid border-white/20">
             <div className="flex flex-col items-start h-full">
               <LuListTodo size={32} />
               <p>Define Scope of Change</p>

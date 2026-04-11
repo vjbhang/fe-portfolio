@@ -24,7 +24,7 @@ export default function About({
   }, [setPageIndex]);
 
   return (
-    <div className="flex w-full h-full pb-22">
+    <div className="flex w-full h-full pb-22 pointer-events-none">
       <div className="flex flex-[1.2] flex-col justify-end pb-8 w-full h-full">
         <div className="flex flex-col w-full gap-6">
           <p className="text-md text-white">
