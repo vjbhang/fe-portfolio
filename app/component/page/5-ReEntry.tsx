@@ -42,6 +42,25 @@ export default function ReEntry({
             demonstrated resilience, it now requires substantial changes to meet
             emerging requirements.
           </p>
+          <div className="flex flex-row items-start justify-around gap-3">
+            <div className="flex flex-col items-start h-full">
+              <p>Define Scope of Change</p>
+              <p className="text-xs text-white/70 mt-auto">
+                features, design, business-specific nuance
+              </p>
+            </div>
+            <p className="flex items-center justify-center h-full">→</p>
+            <div className="flex flex-col items-start h-full">
+              <p>Planning major refactors or architectural changes</p>
+            </div>
+            <p className="flex items-center justify-center h-full">→</p>
+            <div className="flex flex-col items-start h-full">
+              <p>Preparing for scaling</p>
+              <p className="text-xs text-white/70 mt-auto">
+                multi-region, microservices, risk modelling, etc.
+              </p>
+            </div>
+          </div>
         </div>
       </MissionControlPrompt>
     </div>

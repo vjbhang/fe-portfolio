@@ -44,6 +44,22 @@ export default function Orbit({
             ensure robust observability is in place so we can continue to
             generate and act on meaningful insights.
           </p>
+          <div className="flex flex-row items-start justify-around gap-3">
+            <div className="flex flex-col items-start h-full">
+              <p>Stable Production Release</p>
+            </div>
+            <p className="flex items-center justify-center h-full">→</p>
+            <div className="flex flex-col items-start h-full">
+              <p>Establish Observability</p>
+              <p className="text-xs text-white/70 mt-auto">
+                logging, metrics, alerting
+              </p>
+            </div>
+            <p className="flex items-center justify-center h-full">→</p>
+            <div className="flex flex-col items-start h-full">
+              <p>Share meaningful product-market fit emerging data</p>
+            </div>
+          </div>
         </div>
       </MissionControlPrompt>
     </div>

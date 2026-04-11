@@ -42,6 +42,19 @@ export default function EntryBurn({
             I am actively enhancing and debugging the application. I will also
             refine structural processes as needed to meet evolving requirements.
           </p>
+          <div className="flex flex-row items-start justify-around gap-3">
+            <div className="flex flex-col items-start h-full">
+              <p>Hotfixes, patches, and rapid iteration</p>
+            </div>
+            <p className="flex items-center justify-center h-full">→</p>
+            <div className="flex flex-col items-start h-full">
+              <p>Technical debt identified and queued</p>
+            </div>
+            <p className="flex items-center justify-center h-full">→</p>
+            <div className="flex flex-col items-start h-full">
+              <p>Documentation</p>
+            </div>
+          </div>
         </div>
       </MissionControlPrompt>
     </div>

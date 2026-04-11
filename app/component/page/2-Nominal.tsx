@@ -43,6 +43,32 @@ export default function Nominal({
             Now that we have a defined prototype, let's make it into something
             tangible. Moving from ideation to deployment.
           </p>
+          <div className="flex flex-row items-start justify-around gap-3">
+            <div className="flex flex-col items-start h-full">
+              <p>Choosing architecture</p>
+              <p className="text-xs text-white/70 mt-auto">
+                tech stack, cloud provider, frameworks
+              </p>
+            </div>
+            <p className="flex items-center justify-center h-full">→</p>
+            <div className="flex flex-col items-start h-full">
+              <p>
+                Rapid MVP
+                <br />
+                Deployment
+              </p>
+              <p className="text-xs text-white/70 mt-auto">
+                Core features implemented and working end-to-end
+              </p>
+            </div>
+            <p className="flex items-center justify-center h-full">→</p>
+            <div className="flex flex-col items-start h-full">
+              <p>Basic integrations</p>
+              <p className="text-xs text-white/70 mt-auto">
+                APIs, Database, Authentication
+              </p>
+            </div>
+          </div>
         </div>
       </MissionControlPrompt>
     </div>

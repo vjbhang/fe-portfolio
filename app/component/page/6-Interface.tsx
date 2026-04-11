@@ -43,6 +43,15 @@ export default function Interface({
             variability to ensure stability. I will be closely monitoring the
             application.
           </p>
+          <div className="flex flex-row items-start justify-around gap-3">
+            <div className="flex flex-col items-start h-full">
+              <p>User Actions Monitoring</p>
+            </div>
+            <p className="flex items-center justify-center h-full">→</p>
+            <div className="flex flex-col items-start h-full">
+              <p>User Interface Testing</p>
+            </div>
+          </div>
         </div>
       </MissionControlPrompt>
     </div>

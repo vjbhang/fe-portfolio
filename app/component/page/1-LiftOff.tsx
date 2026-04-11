@@ -47,6 +47,15 @@ export default function Liftoff({
             <span className="font-bold">together</span>.
           </p>
           <p>To get started:</p>
+          <div className="flex flex-row items-center justify-center gap-6">
+            <div className="flex flex-col items-center gap-2">
+              <p>Define Requirements</p>
+            </div>
+            <p className="flex items-center justify-center h-full">→</p>
+            <div className="flex flex-col items-center gap-2">
+              <p>Prototyping</p>
+            </div>
+          </div>
         </div>
       </MissionControlPrompt>
     </div>
