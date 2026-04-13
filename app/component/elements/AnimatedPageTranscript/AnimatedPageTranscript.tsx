@@ -2,8 +2,8 @@ import { useEffect, useMemo, useState } from "react";
 import styles from "./AnimatedPageTranscript.module.css";
 
 const MISSION_PARAGRAPH_DURATION_MS = 750;
-const MISSION_PARAGRAPH_STAGGER_MS = 800;
-const TYPE_SPEED_MS = 10;
+const MISSION_PARAGRAPH_STAGGER_MS = 680;
+const TYPE_SPEED_MS = 5;
 
 export default function AnimatedPageTranscript({
   missionControlLines,
@@ -89,7 +89,7 @@ export default function AnimatedPageTranscript({
 
     const highlightDelayTimeout = window.setTimeout(() => {
       setShowProcessHighlights(true);
-    }, 450);
+    }, 400);
 
     return () => {
       window.clearTimeout(highlightDelayTimeout);
@@ -128,13 +128,13 @@ export default function AnimatedPageTranscript({
           );
         })}
         <p
-          className={`text-white/60 text-xs tracking-wide mt-4 -mb-3 ${styles.processHighlightRow} ${showProcessHighlights ? styles.processHighlightRowVisible : ""}`.trim()}
+          className={`text-white/60 text-xs tracking-wide mt-auto -mb-1 ${styles.processHighlightRow} ${showProcessHighlights ? styles.processHighlightRowVisible : ""}`.trim()}
         >
           TASK
         </p>
 
         <div
-          className={`flex flex-row items-center rounded-lg py-2 mt-auto ${styles.processHighlightRow} ${
+          className={`flex flex-row items-center rounded-lg pb-2 ${styles.processHighlightRow} ${
             showProcessHighlights ? styles.processHighlightRowVisible : ""
           }`.trim()}
         >
