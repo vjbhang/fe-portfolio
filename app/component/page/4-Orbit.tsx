@@ -40,7 +40,7 @@ export default function Orbit({
             "We are stable.",
           ]}
           vincentAiLines={[
-            "The application is stable, performing reliably, and consistently delivering value. I will ensure robust observability is in place so we can act on meaningful insights.",
+            "The application is stable, performing reliably, and consistently delivering value. I will ensure observability is in place so we can act on meaningful insights.",
           ]}
           processHighlights={
             <>

@@ -1,3 +1,80 @@
+.animationSwitch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid rgb(125 211 252 / 0.3);
+  background: rgb(125 211 252 / 0.08);
+  color: rgb(186 230 253);
+  padding: 0.2rem 0.45rem 0.2rem 0.3rem;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease;
+  pointer-events: auto;
+}
+
+.animationSwitch:hover {
+  cursor: pointer;
+  border-color: rgb(186 230 253 / 0.8);
+  background: rgb(125 211 252 / 0.14);
+}
+
+.animationSwitchOff {
+  border-color: rgb(161 161 170 / 0.35);
+  background: rgb(113 113 122 / 0.12);
+  color: rgb(212 212 216 / 0.9);
+}
+
+.animationSwitchOff:hover {
+  border-color: rgb(212 212 216 / 0.7);
+  background: rgb(113 113 122 / 0.18);
+}
+
+.switchTrack {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 2rem;
+  height: 1rem;
+  border-radius: 9999px;
+  background: rgb(125 211 252 / 0.24);
+  transition: background-color 180ms ease;
+}
+
+.switchTrackOff {
+  background: rgb(161 161 170 / 0.24);
+}
+
+.switchThumb {
+  position: absolute;
+  left: 2px;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 9999px;
+  background: rgb(125 211 252);
+  box-shadow: 0 0 10px rgb(125 211 252 / 0.35);
+  transition:
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.switchThumbOff {
+  transform: translateX(1rem);
+  background: rgb(212 212 216);
+  box-shadow: none;
+}
+
+.switchLabel {
+  line-height: 1;
+  white-space: nowrap;
+}
+
 .missionParagraph {
   opacity: 0;
   transform: translateY(0.4rem);

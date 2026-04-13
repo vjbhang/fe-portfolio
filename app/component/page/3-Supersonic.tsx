@@ -40,7 +40,7 @@ export default function Supersonic({
           ]}
           vincentAiLines={[
             "At this stage, the focus shifts to refining existing features and scaling performance as needed.",
-            "Should I scale beyond the original concept?",
+            "Should I scale beyond the initial concept?",
           ]}
           processHighlights={
             <>

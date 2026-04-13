@@ -4,6 +4,7 @@ import styles from "./AnimatedPageTranscript.module.css";
 const MISSION_PARAGRAPH_DURATION_MS = 750;
 const MISSION_PARAGRAPH_STAGGER_MS = 680;
 const TYPE_SPEED_MS = 5;
+const ANIMATION_TOGGLE_STORAGE_KEY = "portfolio-transcript-animations-enabled";
 
 export default function AnimatedPageTranscript({
   missionControlLines,
@@ -15,15 +16,25 @@ export default function AnimatedPageTranscript({
   processHighlights: React.ReactNode;
 }) {
   const hasVincentLines = vincentAiLines.length > 0;
+  const [isAnimationEnabled, setIsAnimationEnabled] = useState(() => {
+    if (typeof window === "undefined") {
+      return true;
+    }
+
+    return (
+      window.localStorage.getItem(ANIMATION_TOGGLE_STORAGE_KEY) !== "false"
+    );
+  });
   const [typedLines, setTypedLines] = useState<string[]>(() =>
-    vincentAiLines.map(() => ""),
+    isAnimationEnabled ? vincentAiLines.map(() => "") : [...vincentAiLines],
   );
   const [activeLineIndex, setActiveLineIndex] = useState<number | null>(null);
+  const [animationRunKey, setAnimationRunKey] = useState(0);
   const [isTypingComplete, setIsTypingComplete] = useState(
-    () => !hasVincentLines,
+    () => !hasVincentLines || !isAnimationEnabled,
   );
   const [showProcessHighlights, setShowProcessHighlights] = useState(
-    () => !hasVincentLines,
+    () => !hasVincentLines || !isAnimationEnabled,
   );
 
   const missionAnimationEndDelay = useMemo(() => {
@@ -36,7 +47,7 @@ export default function AnimatedPageTranscript({
   }, [missionControlLines.length]);
 
   useEffect(() => {
-    if (!hasVincentLines) {
+    if (!hasVincentLines || !isAnimationEnabled) {
       return;
     }
 
@@ -80,10 +91,16 @@ export default function AnimatedPageTranscript({
         window.clearInterval(typingInterval);
       }
     };
-  }, [hasVincentLines, missionAnimationEndDelay, vincentAiLines]);
+  }, [
+    animationRunKey,
+    hasVincentLines,
+    isAnimationEnabled,
+    missionAnimationEndDelay,
+    vincentAiLines,
+  ]);
 
   useEffect(() => {
-    if (!isTypingComplete) {
+    if (!isTypingComplete || !isAnimationEnabled) {
       return;
     }
 
@@ -94,19 +111,84 @@ export default function AnimatedPageTranscript({
     return () => {
       window.clearTimeout(highlightDelayTimeout);
     };
-  }, [isTypingComplete]);
+  }, [isAnimationEnabled, isTypingComplete]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    window.localStorage.setItem(
+      ANIMATION_TOGGLE_STORAGE_KEY,
+      String(isAnimationEnabled),
+    );
+  }, [isAnimationEnabled]);
+
+  const handleToggleAnimations = () => {
+    const nextAnimationEnabled = !isAnimationEnabled;
+
+    setIsAnimationEnabled(nextAnimationEnabled);
+
+    if (nextAnimationEnabled) {
+      setTypedLines(vincentAiLines.map(() => ""));
+      setActiveLineIndex(null);
+      setIsTypingComplete(!hasVincentLines);
+      setShowProcessHighlights(!hasVincentLines);
+      setAnimationRunKey((previousKey) => previousKey + 1);
+      return;
+    }
+
+    setTypedLines(vincentAiLines);
+    setActiveLineIndex(null);
+    setIsTypingComplete(true);
+    setShowProcessHighlights(true);
+  };
+
+  const areProcessHighlightsVisible =
+    !isAnimationEnabled || showProcessHighlights;
 
   return (
     <>
       <div className="flex flex-col gap-2">
-        <h4 className="text-sky-300 font-bold">{"// Mission Control:"}</h4>
+        <div className="flex items-center gap-3">
+          <h4 className="text-sky-300 font-bold">{"// Mission Control:"}</h4>
+          <button
+            type="button"
+            role="switch"
+            aria-checked={isAnimationEnabled}
+            onClick={handleToggleAnimations}
+            className={`${styles.animationSwitch} ${
+              !isAnimationEnabled ? styles.animationSwitchOff : ""
+            }`.trim()}
+          >
+            <span
+              className={`${styles.switchTrack} ${
+                !isAnimationEnabled ? styles.switchTrackOff : ""
+              }`.trim()}
+              aria-hidden="true"
+            >
+              <span
+                className={`${styles.switchThumb} ${
+                  !isAnimationEnabled ? styles.switchThumbOff : ""
+                }`.trim()}
+              />
+            </span>
+            <span className={styles.switchLabel}>
+              {isAnimationEnabled ? "Text Delay" : "Text Delay"}
+            </span>
+          </button>
+        </div>
         {missionControlLines.map((line, index) => (
           <p
-            key={`${line}-${index}`}
-            className={styles.missionParagraph}
-            style={{
-              animationDelay: `${index * MISSION_PARAGRAPH_STAGGER_MS}ms`,
-            }}
+            key={`${animationRunKey}-${line}-${index}`}
+            className={isAnimationEnabled ? styles.missionParagraph : ""}
+            style={
+              isAnimationEnabled
+                ? {
+                    animationDelay: `${index * MISSION_PARAGRAPH_STAGGER_MS}ms`,
+                  }
+                : undefined
+            }
           >
             {line}
           </p>
@@ -128,14 +210,14 @@ export default function AnimatedPageTranscript({
           );
         })}
         <p
-          className={`text-white/60 text-xs tracking-wide mt-auto -mb-1 ${styles.processHighlightRow} ${showProcessHighlights ? styles.processHighlightRowVisible : ""}`.trim()}
+          className={`text-white/60 text-xs tracking-wide mt-auto -mb-1 ${styles.processHighlightRow} ${areProcessHighlightsVisible ? styles.processHighlightRowVisible : ""}`.trim()}
         >
           TASK
         </p>
 
         <div
           className={`flex flex-row items-center rounded-lg pb-2 ${styles.processHighlightRow} ${
-            showProcessHighlights ? styles.processHighlightRowVisible : ""
+            areProcessHighlightsVisible ? styles.processHighlightRowVisible : ""
           }`.trim()}
         >
           {processHighlights}
