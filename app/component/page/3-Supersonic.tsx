@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { GrBusinessService } from "react-icons/gr";
 import { GrFanOption } from "react-icons/gr";
 import MissionControlPrompt from "../elements/MissionControlPrompt/MissionControlPrompt";
+import ProcessHighlightLayout from "../elements/ProcessHighlightLayout";
 
 export default function Supersonic({
   setPageIndex,
@@ -32,36 +33,42 @@ export default function Supersonic({
         <div className="flex flex-col gap-2">
           <h4 className="text-sky-300 font-bold">// Mission Control:</h4>
           <p>Vehicle is reaching supersonic velocity.</p>
-          <p>Structure is nominal.</p>
           <p>At maximum dynamic pressure - Max Q.</p>
           <p>Withstanding a lot of pressure!</p>
           <p>Reaching orbit.</p>
         </div>
-        <div className="w-4/5 h-px border-b border-white/30"></div>
-        <div className="flex flex-col gap-2">
+        <div className="w-full h-px border-b border-white/30 self-center"></div>
+        <div className="flex flex-col gap-2 h-full">
           <h4 className="text-sky-200 font-bold">// Vincent AI:</h4>
           <p>
-            At this stage, the focus shifts to refining existing functionality
-            and scaling performance as needed. I will ask for your input
-            detailing further requirements.
+            At this stage, the focus shifts to refining existing features and
+            scaling performance as needed. I will ask for your input detailing
+            further requirements.
           </p>
           <p>Should I scale beyond the original concept? Yes / No</p>
-          <div className="flex flex-row items-start justify-center gap-6 bg-black/40 p-4 rounded-lg border border-solid border-white/20">
-            <div className="flex flex-col items-start gap-2 h-full">
+          <div className="flex flex-row items-center rounded-lg py-2 mt-auto">
+            <ProcessHighlightLayout>
               <GrBusinessService size={32} />
-              <p>Align with business needs</p>
-              <p className="text-xs text-white/70 mt-auto">
-                business-specific nuance, speed vs scalability vs cost
+              <p>
+                Align with
+                <br />
+                business needs
               </p>
-            </div>
-            <p className="flex items-center justify-center h-full">→</p>
-            <div className="flex flex-col items-start gap-2 h-full">
+              <p className="text-xs text-white/70 mt-auto">
+                business-specific nuance,
+                <br />
+                speed vs scalability vs cost
+              </p>
+            </ProcessHighlightLayout>
+            <div className="border border-b border-white/20 w-5" />
+            <ProcessHighlightLayout>
               <GrFanOption size={32} />
               <p>Optimization</p>
               <p className="text-xs text-white/70 mt-auto">
-                feature complexity or increased user load
+                feature complexity or <br />
+                increased user load
               </p>
-            </div>
+            </ProcessHighlightLayout>
           </div>
         </div>
       </MissionControlPrompt>

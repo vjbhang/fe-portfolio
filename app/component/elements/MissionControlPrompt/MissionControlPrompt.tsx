@@ -9,8 +9,10 @@ export default function MissionControlPrompt({
   status?: string;
 }) {
   return (
-    <div className={`${styles.cornerBox} w-130 p-0.5`}>
-      <div className="relative flex flex-col w-full px-5 py-3 gap-4 items-start bg-black/70">
+    <div
+      className={`${styles.cornerBox} w-150 p-0.5 h-[85%] pointer-events-auto`}
+    >
+      <div className="relative flex flex-col w-full h-full px-5 py-3 gap-4 items-start bg-black/80">
         {status && (
           <div className="font-inconsolata text-white/70 text-sm absolute top-0 right-0 pr-4 pt-1.5 text-right">
             <p className="text-xs">STAGE</p>

@@ -3,6 +3,7 @@ import { PiStackDuotone } from "react-icons/pi";
 import { GrDeploy } from "react-icons/gr";
 import { FaDatabase } from "react-icons/fa";
 import MissionControlPrompt from "../elements/MissionControlPrompt/MissionControlPrompt";
+import ProcessHighlightLayout from "../elements/ProcessHighlightLayout";
 
 export default function Nominal({
   setPageIndex,
@@ -35,27 +36,26 @@ export default function Nominal({
           <p>Nominal Systems Check.</p>
           <p>Thrusters: Positive</p>
           <p>Trajectory: Positive</p>
-          <p>Weather Conditions: Positive</p>
           <p>Onboard Personnel: . . . Unable to confirm</p>
           <p>We are off the ground!</p>
         </div>
-        <div className="w-4/5 h-px border-b border-white/30"></div>
-        <div className="flex flex-col gap-2">
+        <div className="w-full h-px border-b border-white/30 self-center"></div>
+        <div className="flex flex-col gap-2 h-full">
           <h4 className="text-sky-200 font-bold">// Vincent AI:</h4>
           <p>
             Now that we have a defined prototype, let's make it into something
             tangible. Moving from ideation to deployment.
           </p>
-          <div className="flex flex-row items-start justify-around gap-3 bg-black/40 p-4 rounded-lg border border-solid border-white/20">
-            <div className="flex flex-col items-start h-full">
+          <div className="flex flex-row items-center rounded-lg py-2 mt-auto">
+            <ProcessHighlightLayout>
               <PiStackDuotone size={32} />
               <p>Choosing architecture</p>
               <p className="text-xs text-white/70 mt-auto">
                 tech stack, cloud provider, frameworks
               </p>
-            </div>
-            <p className="flex items-center justify-center h-full">→</p>
-            <div className="flex flex-col items-start h-full">
+            </ProcessHighlightLayout>
+            <div className="border border-b border-white/20 w-5" />
+            <ProcessHighlightLayout>
               <GrDeploy size={32} />
               <p>
                 Rapid MVP
@@ -63,17 +63,17 @@ export default function Nominal({
                 Deployment
               </p>
               <p className="text-xs text-white/70 mt-auto">
-                Core features implemented and working end-to-end
+                Core features implemented; working end-to-end
               </p>
-            </div>
-            <p className="flex items-center justify-center h-full">→</p>
-            <div className="flex flex-col items-start h-full">
+            </ProcessHighlightLayout>
+            <div className="border border-b border-white/20 w-5" />
+            <ProcessHighlightLayout>
               <FaDatabase size={32} />
               <p>Basic integrations</p>
               <p className="text-xs text-white/70 mt-auto">
                 APIs, Database, Authentication
               </p>
-            </div>
+            </ProcessHighlightLayout>
           </div>
         </div>
       </MissionControlPrompt>

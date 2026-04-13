@@ -3,6 +3,7 @@ import { FaWrench } from "react-icons/fa";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { FaBookOpen } from "react-icons/fa";
 import MissionControlPrompt from "../elements/MissionControlPrompt/MissionControlPrompt";
+import ProcessHighlightLayout from "../elements/ProcessHighlightLayout";
 
 export default function EntryBurn({
   setPageIndex,
@@ -38,28 +39,32 @@ export default function EntryBurn({
           <p>Throttle is responsive - rate of descent decreasing.</p>
           <p>Vehicle is landing.</p>
         </div>
-        <div className="w-4/5 h-px border-b border-white/30"></div>
-        <div className="flex flex-col gap-2">
+        <div className="w-full h-px border-b border-white/30 self-center"></div>
+        <div className="flex flex-col gap-2 h-full">
           <h4 className="text-sky-200 font-bold">// Vincent AI:</h4>
           <p>
             I am actively enhancing and debugging the application. I will also
             refine structural processes as needed to meet evolving requirements.
           </p>
-          <div className="flex flex-row items-start justify-around gap-3 bg-black/40 p-4 rounded-lg border border-solid border-white/20">
-            <div className="flex flex-col items-start h-full">
+          <div className="flex flex-row items-center rounded-lg py-2 mt-auto">
+            <ProcessHighlightLayout>
               <FaWrench size={32} />
               <p>Hotfixes, patches, and rapid iteration</p>
-            </div>
-            <p className="flex items-center justify-center h-full">→</p>
-            <div className="flex flex-col items-start h-full">
+            </ProcessHighlightLayout>
+            <div className="border border-b border-white/20 w-5" />
+            <ProcessHighlightLayout>
               <FaMagnifyingGlass size={32} />
               <p>Identify technical debt</p>
-            </div>
-            <p className="flex items-center justify-center h-full">→</p>
-            <div className="flex flex-col items-start h-full">
+            </ProcessHighlightLayout>
+            <div className="border border-b border-white/20 w-5" />
+            <ProcessHighlightLayout>
               <FaBookOpen size={32} />
-              <p>Documentation</p>
-            </div>
+              <p>
+                Setup
+                <br />
+                Docs
+              </p>
+            </ProcessHighlightLayout>
           </div>
         </div>
       </MissionControlPrompt>

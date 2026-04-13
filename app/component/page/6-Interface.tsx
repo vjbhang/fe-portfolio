@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { RiSurveyLine } from "react-icons/ri";
 import { TbBrandSpeedtest } from "react-icons/tb";
 import MissionControlPrompt from "../elements/MissionControlPrompt/MissionControlPrompt";
+import ProcessHighlightLayout from "../elements/ProcessHighlightLayout";
 
 export default function Interface({
   setPageIndex,
@@ -36,8 +37,8 @@ export default function Interface({
           <p>Thermal protection systems is active.</p>
           <p>Hitting atmosphere.</p>
         </div>
-        <div className="w-4/5 h-px border-b border-white/30"></div>
-        <div className="flex flex-col gap-2">
+        <div className="w-full h-px border-b border-white/30 self-center"></div>
+        <div className="flex flex-col gap-2 h-full">
           <h4 className="text-sky-200 font-bold">// Vincent AI:</h4>
           <p>
             I have implemented significant changes to the application and am now
@@ -45,24 +46,24 @@ export default function Interface({
             variability to ensure stability. I will be closely monitoring the
             application.
           </p>
-          <div className="flex flex-row items-start justify-around gap-3 bg-black/40 p-4 rounded-lg border border-solid border-white/20">
-            <div className="flex flex-col items-start h-full">
+          <div className="flex flex-row items-center rounded-lg py-2 mt-auto">
+            <ProcessHighlightLayout>
               <RiSurveyLine size={32} />
               <p>
                 User Actions
                 <br />
                 Monitoring
               </p>
-            </div>
-            <p className="flex items-center justify-center h-full">→</p>
-            <div className="flex flex-col items-start h-full">
+            </ProcessHighlightLayout>
+            <div className="border border-b border-white/20 w-5" />
+            <ProcessHighlightLayout>
               <TbBrandSpeedtest size={32} />
               <p>
                 User Interface
                 <br />
                 Testing
               </p>
-            </div>
+            </ProcessHighlightLayout>
           </div>
         </div>
       </MissionControlPrompt>
