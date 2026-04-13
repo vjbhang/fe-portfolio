@@ -3,6 +3,7 @@ import { HiMiniRocketLaunch } from "react-icons/hi2";
 import { SiBaremetrics } from "react-icons/si";
 import { SiAlwaysdata } from "react-icons/si";
 import MissionControlPrompt from "../elements/MissionControlPrompt/MissionControlPrompt";
+import AnimatedPageTranscript from "../elements/AnimatedPageTranscript/AnimatedPageTranscript";
 import ProcessHighlightLayout from "../elements/ProcessHighlightLayout";
 
 export default function Orbit({
@@ -31,53 +32,62 @@ export default function Orbit({
   return (
     <div className="flex flex-col w-full h-full font-inconsolata text-white pointer-events-none">
       <MissionControlPrompt status="ORBIT">
-        <div className="flex flex-col gap-2">
-          <h4 className="text-sky-300 font-bold">// Mission Control:</h4>
-          <p>Flight, we have SECO (Second Engine Cutoff).</p>
-          <p>Orbital velocity achieved - parameters look good.</p>
-          <p>Vehicle is in orbit.</p>
-          <p>We are stable.</p>
-        </div>
-        <div className="w-full h-px border-b border-white/30 self-center"></div>
-        <div className="flex flex-col gap-2 h-full">
-          <h4 className="text-sky-200 font-bold">// Vincent AI:</h4>
-          <p>
-            The application is stable, performing reliably, and consistently
-            delivering value. I will ensure robust observability is in place so
-            we can act on meaningful insights.
-          </p>
-          <div className="flex flex-row items-center rounded-lg py-2 mt-auto">
-            <ProcessHighlightLayout>
-              <HiMiniRocketLaunch size={32} />
-              <p>
-                Stable
-                <br />
-                Release
-              </p>
-            </ProcessHighlightLayout>
-            <div className="border border-b border-white/20 w-5" />
-            <ProcessHighlightLayout>
-              <SiBaremetrics size={32} />
-              <p>
-                Establish
-                <br />
-                Observability
-              </p>
-              <p className="text-xs text-white/70 mt-auto">
-                logging, metrics, alerting
-              </p>
-            </ProcessHighlightLayout>
-            <div className="border border-b border-white/20 w-5" />
-            <ProcessHighlightLayout>
-              <SiAlwaysdata size={32} />
-              <p>
-                Get
-                <br />
-                Meaningful Data
-              </p>
-            </ProcessHighlightLayout>
-          </div>
-        </div>
+        <AnimatedPageTranscript
+          missionControlLines={[
+            "Flight, we have SECO (Second Engine Cutoff).",
+            "Orbital velocity achieved - parameters look good.",
+            "Vehicle is in orbit.",
+            "We are stable.",
+          ]}
+          vincentAiLines={[
+            "The application is stable, performing reliably, and consistently delivering value. I will ensure robust observability is in place so we can act on meaningful insights.",
+          ]}
+          processHighlights={
+            <>
+              <ProcessHighlightLayout>
+                <HiMiniRocketLaunch size={32} />
+                <p>
+                  Stable
+                  <br />
+                  Release
+                </p>
+                <p className="text-xs text-white/70 mt-auto">
+                  deploy version that
+                  <br />
+                  meets quality benchmarks
+                </p>
+              </ProcessHighlightLayout>
+              <div className="border border-b border-white/20 w-5" />
+              <ProcessHighlightLayout>
+                <SiBaremetrics size={32} />
+                <p>
+                  Establish
+                  <br />
+                  Observability
+                </p>
+                <p className="text-xs text-white/70 mt-auto">
+                  logging, metrics,
+                  <br />
+                  alerting
+                </p>
+              </ProcessHighlightLayout>
+              <div className="border border-b border-white/20 w-5" />
+              <ProcessHighlightLayout>
+                <SiAlwaysdata size={32} />
+                <p>
+                  Get
+                  <br />
+                  Insight
+                </p>
+                <p className="text-xs text-white/70 mt-auto">
+                  collect and analyze data to understand user behavior,
+                  <br />
+                  application performance
+                </p>
+              </ProcessHighlightLayout>
+            </>
+          }
+        />
       </MissionControlPrompt>
     </div>
   );

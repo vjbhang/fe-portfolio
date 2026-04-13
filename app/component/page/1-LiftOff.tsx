@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { LuListTodo } from "react-icons/lu";
 import { FiFigma } from "react-icons/fi";
 import MissionControlPrompt from "../elements/MissionControlPrompt/MissionControlPrompt";
+import AnimatedPageTranscript from "../elements/AnimatedPageTranscript/AnimatedPageTranscript";
 import ProcessHighlightLayout from "../elements/ProcessHighlightLayout";
 
 export default function Liftoff({
@@ -30,44 +31,48 @@ export default function Liftoff({
   return (
     <div className="flex flex-col w-full h-full font-inconsolata text-white pointer-events-none">
       <MissionControlPrompt status="LIFT OFF">
-        <div className="flex flex-col gap-2">
-          <h4 className="text-sky-300 font-bold">// Mission Control:</h4>
-          <p>
-            The ideas are now solidified and the requirements clearly defined.
-            At this point, there is no remaining ambiguity in the path
-            forward...
-          </p>
-          <p>There is no room for hesitation - execute {"×"}3!</p>
-          <p>3... 2... 1... Liftoff!</p>
-        </div>
-        <div className="w-full h-px border-b border-white/30 self-center"></div>
-        <div className="flex flex-col gap-2 h-full">
-          <h4 className="text-sky-200 font-bold">// Vincent AI:</h4>
-          <p>
-            With my skills and the latest powerful tools, let's begin your
-            project.
-          </p>
-          <p>To get started, we will:</p>
-          <div className="flex flex-row items-center rounded-lg py-2 mt-auto">
-            <ProcessHighlightLayout>
-              <LuListTodo size={32} />
-              <p>
-                Define
-                <br />
-                Requirements
-              </p>
-            </ProcessHighlightLayout>
-            <div className="border border-b border-white/20 w-5" />
-            <ProcessHighlightLayout>
-              <FiFigma size={32} />
-              <p>
-                Design
-                <br />
-                Prototype
-              </p>
-            </ProcessHighlightLayout>
-          </div>
-        </div>
+        <AnimatedPageTranscript
+          missionControlLines={[
+            "The ideas are solid and the requirements have been clearly defined. It's clear what we need to build, and we have a plan for how to do it.",
+            "All that's left to do is launch!",
+            "3... 2... 1... Liftoff!",
+          ]}
+          vincentAiLines={[
+            "I am Vincent AI - efficient and resourceful. Initiating project.",
+            "To get started, we will:",
+          ]}
+          processHighlights={
+            <>
+              <ProcessHighlightLayout>
+                <LuListTodo size={32} />
+                <p>
+                  Define
+                  <br />
+                  Requirements
+                </p>
+                <p className="text-xs text-white/70 mt-auto">
+                  establish clear specifications,
+                  <br />
+                  build user stories
+                </p>
+              </ProcessHighlightLayout>
+              <div className="border border-b border-white/20 w-5" />
+              <ProcessHighlightLayout>
+                <FiFigma size={32} />
+                <p>
+                  Design
+                  <br />
+                  Prototype
+                </p>
+                <p className="text-xs text-white/70 mt-auto">
+                  create low- to
+                  <br />
+                  high-fidelity interactive prototypes
+                </p>
+              </ProcessHighlightLayout>
+            </>
+          }
+        />
       </MissionControlPrompt>
     </div>
   );

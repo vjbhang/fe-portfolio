@@ -2,8 +2,6 @@ import { useEffect } from "react";
 import Image from "next/image";
 import KeypadEnter from "../elements/Keypads/KeypadEnter";
 import LandingCategoryRotator from "../elements/LandingCategoryRotator";
-
-// fewfwef
 export default function Landing({
   setPageIndex,
 }: {
@@ -50,13 +48,13 @@ export default function Landing({
               <KeypadEnter setPageIndex={setPageIndex} />
             </button>
             <code className="text-sm/tight text-commentgreen mt-1">
-              // An interactive walkthrough of the
+              {"// An interactive walkthrough of the"}
             </code>
             <code className="text-sm/tight text-commentgreen">
-              // key processes behind building a
+              {"// key processes behind building a"}
             </code>
             <code className="text-sm/tight text-commentgreen">
-              // web/mobile application
+              {"// web/mobile application"}
             </code>
           </div>
           <div className="w-75 h-1 border-b border-white/20 border-solid" />

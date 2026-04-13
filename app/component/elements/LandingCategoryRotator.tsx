@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import styles from "./LandingCategoryRotator.module.css";
 
 const ROTATION_INTERVAL_MS = 6000;
@@ -39,53 +39,52 @@ export default function LandingCategoryRotator() {
   const [animationKey, setAnimationKey] = useState(0);
   const [progressKey, setProgressKey] = useState(0);
   const rotationTimeoutRef = useRef<number | null>(null);
-  const remainingTimeRef = useRef(ROTATION_INTERVAL_MS);
-  const cycleStartedAtRef = useRef(Date.now());
 
-  const clearRotationTimeout = () => {
+  const clearRotationTimeout = useCallback(() => {
     if (rotationTimeoutRef.current === null) {
       return;
     }
 
     window.clearTimeout(rotationTimeoutRef.current);
     rotationTimeoutRef.current = null;
-  };
+  }, []);
 
-  const scheduleRotation = (delayMs: number) => {
-    clearRotationTimeout();
-    remainingTimeRef.current = delayMs;
-    cycleStartedAtRef.current = Date.now();
+  const scheduleRotation = useCallback(
+    (delayMs: number) => {
+      clearRotationTimeout();
 
-    rotationTimeoutRef.current = window.setTimeout(() => {
-      setActiveIndex((previousIndex) => {
-        const nextIndex = (previousIndex + 1) % CATEGORIES.length;
-        setAnimationDirection(getDirection(previousIndex, nextIndex));
-        setAnimationKey((previousKey) => previousKey + 1);
-        setProgressKey((previousKey) => previousKey + 1);
-        return nextIndex;
-      });
+      const runRotation = () => {
+        setActiveIndex((previousIndex) => {
+          const nextIndex = (previousIndex + 1) % CATEGORIES.length;
+          setAnimationDirection(getDirection(previousIndex, nextIndex));
+          setAnimationKey((previousKey) => previousKey + 1);
+          setProgressKey((previousKey) => previousKey + 1);
+          return nextIndex;
+        });
 
-      scheduleRotation(ROTATION_INTERVAL_MS);
-    }, delayMs);
-  };
+        rotationTimeoutRef.current = window.setTimeout(
+          runRotation,
+          ROTATION_INTERVAL_MS,
+        );
+      };
+
+      rotationTimeoutRef.current = window.setTimeout(runRotation, delayMs);
+    },
+    [clearRotationTimeout],
+  );
 
   useEffect(() => {
     if (isHovered) {
       clearRotationTimeout();
-      const elapsedMs = Date.now() - cycleStartedAtRef.current;
-      remainingTimeRef.current = Math.max(
-        remainingTimeRef.current - elapsedMs,
-        0,
-      );
       return;
     }
 
-    scheduleRotation(remainingTimeRef.current);
+    scheduleRotation(ROTATION_INTERVAL_MS);
 
     return () => {
       clearRotationTimeout();
     };
-  }, [isHovered]);
+  }, [clearRotationTimeout, isHovered, scheduleRotation]);
 
   const handleCategorySelect = (nextIndex: number) => {
     if (nextIndex === activeIndex) {
@@ -96,8 +95,6 @@ export default function LandingCategoryRotator() {
     setAnimationKey((previousKey) => previousKey + 1);
     setProgressKey((previousKey) => previousKey + 1);
     setActiveIndex(nextIndex);
-
-    remainingTimeRef.current = ROTATION_INTERVAL_MS;
 
     if (!isHovered) {
       scheduleRotation(ROTATION_INTERVAL_MS);

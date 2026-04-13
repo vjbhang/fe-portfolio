@@ -3,6 +3,7 @@ import { FaWrench } from "react-icons/fa";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { FaBookOpen } from "react-icons/fa";
 import MissionControlPrompt from "../elements/MissionControlPrompt/MissionControlPrompt";
+import AnimatedPageTranscript from "../elements/AnimatedPageTranscript/AnimatedPageTranscript";
 import ProcessHighlightLayout from "../elements/ProcessHighlightLayout";
 
 export default function EntryBurn({
@@ -31,42 +32,49 @@ export default function EntryBurn({
   return (
     <div className="flex flex-col w-full h-full font-inconsolata text-white pointer-events-none">
       <MissionControlPrompt status="RE-ENTRY BURN">
-        <div className="flex flex-col gap-2">
-          <h4 className="text-sky-300 font-bold">// Mission Control:</h4>
-          <p>Entry burn start.</p>
-          <p>Engines ramping - thrust vector stable. </p>
-          <p>Guidance is tracking nominal descent profile.</p>
-          <p>Throttle is responsive - rate of descent decreasing.</p>
-          <p>Vehicle is landing.</p>
-        </div>
-        <div className="w-full h-px border-b border-white/30 self-center"></div>
-        <div className="flex flex-col gap-2 h-full">
-          <h4 className="text-sky-200 font-bold">// Vincent AI:</h4>
-          <p>
-            I am actively enhancing and debugging the application. I will also
-            refine structural processes as needed to meet evolving requirements.
-          </p>
-          <div className="flex flex-row items-center rounded-lg py-2 mt-auto">
-            <ProcessHighlightLayout>
-              <FaWrench size={32} />
-              <p>Hotfixes, patches, and rapid iteration</p>
-            </ProcessHighlightLayout>
-            <div className="border border-b border-white/20 w-5" />
-            <ProcessHighlightLayout>
-              <FaMagnifyingGlass size={32} />
-              <p>Identify technical debt</p>
-            </ProcessHighlightLayout>
-            <div className="border border-b border-white/20 w-5" />
-            <ProcessHighlightLayout>
-              <FaBookOpen size={32} />
-              <p>
-                Setup
-                <br />
-                Docs
-              </p>
-            </ProcessHighlightLayout>
-          </div>
-        </div>
+        <AnimatedPageTranscript
+          missionControlLines={[
+            "Entry burn start.",
+            "Engines ramping - thrust vector stable. ",
+            "Guidance is tracking nominal descent profile.",
+            "Throttle is responsive - rate of descent decreasing.",
+            "Vehicle is landing.",
+          ]}
+          vincentAiLines={[
+            "I am actively enhancing the application. I will refine or add on to structural processes as needed to meet evolving requirements.",
+          ]}
+          processHighlights={
+            <>
+              <ProcessHighlightLayout>
+                <FaWrench size={32} />
+                <p>Hotfixes, patches, and rapid iteration</p>
+                <p className="text-xs text-white/70 mt-auto">
+                  an ongoing process of improvement and adaptation
+                </p>
+              </ProcessHighlightLayout>
+              <div className="border border-b border-white/20 w-5" />
+              <ProcessHighlightLayout>
+                <FaMagnifyingGlass size={32} />
+                <p>Identify technical debt</p>
+                <p className="text-xs text-white/70 mt-auto">
+                  review codebase, look for structural improvements
+                </p>
+              </ProcessHighlightLayout>
+              <div className="border border-b border-white/20 w-5" />
+              <ProcessHighlightLayout>
+                <FaBookOpen size={32} />
+                <p>
+                  Setup
+                  <br />
+                  Docs
+                </p>
+                <p className="text-xs text-white/70 mt-auto">
+                  maintain documentation for product/tech
+                </p>
+              </ProcessHighlightLayout>
+            </>
+          }
+        />
       </MissionControlPrompt>
     </div>
   );

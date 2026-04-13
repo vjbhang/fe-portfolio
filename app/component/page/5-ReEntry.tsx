@@ -3,6 +3,7 @@ import { LuListTodo } from "react-icons/lu";
 import { RiGlobalFill } from "react-icons/ri";
 import { MdArchitecture } from "react-icons/md";
 import MissionControlPrompt from "../elements/MissionControlPrompt/MissionControlPrompt";
+import AnimatedPageTranscript from "../elements/AnimatedPageTranscript/AnimatedPageTranscript";
 import ProcessHighlightLayout from "../elements/ProcessHighlightLayout";
 
 export default function ReEntry({
@@ -31,48 +32,53 @@ export default function ReEntry({
   return (
     <div className="flex flex-col w-full h-full font-inconsolata text-white pointer-events-none">
       <MissionControlPrompt status="DE-ORBIT">
-        <div className="flex flex-col gap-2">
-          <h4 className="text-sky-300 font-bold">// Mission Control:</h4>
-          <p>All stations, standby for deorbit sequence.</p>
-          <p>Shutdown confirmed. Trajectory is on reentry corridor.</p>
-          <p>Vehicle is committed to reentry.</p>
-        </div>
-        <div className="w-full h-px border-b border-white/30 self-center"></div>
-        <div className="flex flex-col gap-2 h-full">
-          <h4 className="text-sky-200 font-bold">// Vincent AI:</h4>
-          <p>
-            For the application to “re-enter” from orbit, the original concept
-            must undergo disruptive evolution. While the application has
-            demonstrated resilience, it now requires substantial changes to meet
-            emerging requirements.
-          </p>
-          <div className="flex flex-row items-center rounded-lg py-2 mt-auto">
-            <ProcessHighlightLayout>
-              <LuListTodo size={32} />
-              <p>Define Scope of Change</p>
-              <p className="text-xs text-white/70 mt-auto">
-                features, design, business-specific nuance
-              </p>
-            </ProcessHighlightLayout>
-            <div className="border border-b border-white/20 w-5" />
-            <ProcessHighlightLayout>
-              <MdArchitecture size={32} />
-              <p>Architectural Changes</p>
-            </ProcessHighlightLayout>
-            <div className="border border-b border-white/20 w-5" />
-            <ProcessHighlightLayout>
-              <RiGlobalFill size={32} />
-              <p>
-                Plan for
-                <br />
-                Scaling
-              </p>
-              <p className="text-xs text-white/70 mt-auto">
-                multi-region, microservices, risk modelling, etc.
-              </p>
-            </ProcessHighlightLayout>
-          </div>
-        </div>
+        <AnimatedPageTranscript
+          missionControlLines={[
+            "All stations, standby for deorbit sequence.",
+            "Shutdown confirmed. Trajectory is on reentry corridor.",
+            "Vehicle is committed to reentry.",
+          ]}
+          vincentAiLines={[
+            "For the application to \u201Cre-enter\u201D from orbit, the original concept must undergo disruptive evolution. While the application has demonstrated resilience, it now requires substantial changes to meet emerging requirements.",
+          ]}
+          processHighlights={
+            <>
+              <ProcessHighlightLayout>
+                <LuListTodo size={32} />
+                <p>
+                  Re-define
+                  <br />
+                  Scope of Change
+                </p>
+                <p className="text-xs text-white/70 mt-auto">
+                  features, design, business-specific nuance
+                </p>
+              </ProcessHighlightLayout>
+              <div className="border border-b border-white/20 w-5" />
+              <ProcessHighlightLayout>
+                <MdArchitecture size={32} />
+                <p>Architectural Changes</p>
+                <p className="text-xs text-white/70 mt-auto">
+                  modify systems
+                  <br />
+                  for scalability
+                </p>
+              </ProcessHighlightLayout>
+              <div className="border border-b border-white/20 w-5" />
+              <ProcessHighlightLayout>
+                <RiGlobalFill size={32} />
+                <p>
+                  Plan for
+                  <br />
+                  Scaling
+                </p>
+                <p className="text-xs text-white/70 mt-auto">
+                  multi-region, microservices, risk modelling, etc.
+                </p>
+              </ProcessHighlightLayout>
+            </>
+          }
+        />
       </MissionControlPrompt>
     </div>
   );

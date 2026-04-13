@@ -18,23 +18,17 @@ function buildOffsets(numOffsets: number): Array<[number, number]> {
 }
 
 export default function ShakyText({ content }: { content: string }) {
-  const [offsets, setOffsets] = useState<Array<[number, number]>>(() => []);
-  const [isHydrated, setIsHydrated] = useState(false);
+  const [offsets, setOffsets] = useState<Array<[number, number]>>(() =>
+    buildOffsets(content.length),
+  );
 
   useEffect(() => {
-    setOffsets(buildOffsets(content.length));
-    setIsHydrated(true);
-  }, [content.length]);
-
-  useEffect(() => {
-    if (!isHydrated) return;
-
     const interval = setInterval(
       () => setOffsets(buildOffsets(content.length)),
       50,
     );
     return () => clearInterval(interval);
-  }, [content.length, isHydrated]);
+  }, [content.length]);
 
   return (
     <span aria-label={content} className="whitespace-nowrap relative">
@@ -44,12 +38,8 @@ export default function ShakyText({ content }: { content: string }) {
           aria-hidden
           className="relative"
           style={{
-            left: isHydrated
-              ? `${offsets[index][0] - MAX_OFFSET / 2}px`
-              : "0px",
-            bottom: isHydrated
-              ? `${offsets[index][1] - MAX_OFFSET / 2}px`
-              : "0px",
+            left: `${(offsets[index]?.[0] ?? 0) - MAX_OFFSET / 2}px`,
+            bottom: `${(offsets[index]?.[1] ?? 0) - MAX_OFFSET / 2}px`,
           }}
         >
           {letter}
