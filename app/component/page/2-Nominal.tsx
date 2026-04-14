@@ -36,8 +36,7 @@ export default function Nominal({
           missionControlLines={[
             "We are off the ground!",
             "Nominal Systems Check.",
-            "Thrusters: Positive",
-            "Trajectory: Positive",
+            "Thrusters: Positive. Trajectory: Positive.",
             "Onboard Personnel: . . . Unable to confirm",
           ]}
           vincentAiLines={[

@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 import styles from "./AnimatedPageTranscript.module.css";
 
-const MISSION_PARAGRAPH_DURATION_MS = 750;
+const MISSION_PARAGRAPH_DURATION_MS = 680;
 const MISSION_PARAGRAPH_STAGGER_MS = 680;
-const TYPE_SPEED_MS = 5;
+const TYPE_SPEED_MS = 3;
 const ANIMATION_TOGGLE_STORAGE_KEY = "portfolio-transcript-animations-enabled";
 
 export default function AnimatedPageTranscript({

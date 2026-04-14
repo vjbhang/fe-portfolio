@@ -36,9 +36,7 @@ export default function EntryBurn({
           missionControlLines={[
             "Entry burn start.",
             "Engines ramping - thrust vector stable. ",
-            "Guidance is tracking nominal descent profile.",
             "Throttle is responsive - rate of descent decreasing.",
-            "Vehicle is landing.",
           ]}
           vincentAiLines={[
             "The goal now is to ensure the application operates seamlessly. I am actively making enhancements. I will refine or add on to structural processes as needed to meet evolving requirements.",

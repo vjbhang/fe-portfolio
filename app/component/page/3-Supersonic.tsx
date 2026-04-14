@@ -35,7 +35,6 @@ export default function Supersonic({
           missionControlLines={[
             "Vehicle is reaching supersonic velocity.",
             "At maximum dynamic pressure - Max Q.",
-            "Withstanding a lot of pressure!",
             "Reaching orbit.",
           ]}
           vincentAiLines={[

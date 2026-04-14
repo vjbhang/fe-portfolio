@@ -33,7 +33,7 @@ export default function Liftoff({
       <MissionControlPrompt status="LIFT OFF">
         <AnimatedPageTranscript
           missionControlLines={[
-            "The ideas are solid and the requirements have been clearly defined. It's clear what we need to build, and we have a plan for how to do it.",
+            "Our mission is to reach out to the stars.",
             "All that's left to do is launch!",
             "3... 2... 1... Liftoff!",
           ]}

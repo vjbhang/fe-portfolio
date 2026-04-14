@@ -34,7 +34,6 @@ export default function Orbit({
       <MissionControlPrompt status="ORBIT">
         <AnimatedPageTranscript
           missionControlLines={[
-            "Flight, we have SECO (Second Engine Cutoff).",
             "Orbital velocity achieved - parameters look good.",
             "Vehicle is in orbit.",
             "We are stable.",

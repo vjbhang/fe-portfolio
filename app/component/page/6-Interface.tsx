@@ -34,8 +34,7 @@ export default function Interface({
         <AnimatedPageTranscript
           missionControlLines={[
             "Flight, we've reached entry interface.",
-            "Velocity and angle within predicted corridor. .",
-            "Thermal protection systems is active.",
+            "Thermal protection systems are active.",
             "Hitting atmosphere.",
           ]}
           vincentAiLines={[
