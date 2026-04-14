@@ -39,7 +39,7 @@ export default function Supersonic({
             "Reaching orbit.",
           ]}
           vincentAiLines={[
-            "At this stage, the focus shifts to refining existing features and scaling performance as needed.",
+            "The project is now tangible. The focus shifts to refining existing features and scaling performance as needed.",
             "Should I scale beyond the initial concept?",
           ]}
           processHighlights={

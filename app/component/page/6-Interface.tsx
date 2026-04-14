@@ -39,7 +39,7 @@ export default function Interface({
             "Hitting atmosphere.",
           ]}
           vincentAiLines={[
-            "I have implemented significant changes to the application and am now prioritizing user feedback, bug discovery, and performance to ensure stability. I will be closely monitoring the application.",
+            "Ahead of major changes, I am prioritizing user feedback, bug discovery, and performance to ensure stability. I will be closely monitoring the application.",
           ]}
           processHighlights={
             <>

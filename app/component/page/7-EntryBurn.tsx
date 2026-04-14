@@ -41,7 +41,7 @@ export default function EntryBurn({
             "Vehicle is landing.",
           ]}
           vincentAiLines={[
-            "I am actively enhancing the application. I will refine or add on to structural processes as needed to meet evolving requirements.",
+            "The goal now is to ensure the application operates seamlessly. I am actively making enhancements. I will refine or add on to structural processes as needed to meet evolving requirements.",
           ]}
           processHighlights={
             <>

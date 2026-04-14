@@ -39,7 +39,7 @@ export default function ReEntry({
             "Vehicle is committed to reentry.",
           ]}
           vincentAiLines={[
-            "For the application to \u201Cre-enter\u201D from orbit, the original concept must undergo disruptive evolution. While the application has demonstrated resilience, it now requires substantial changes to meet emerging requirements.",
+            "In space flight, 're-entry' is riskier than the initial launch. While the application has demonstrated stability, circumstance now requires change to meet emerging requirements.",
           ]}
           processHighlights={
             <>

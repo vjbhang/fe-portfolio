@@ -48,6 +48,30 @@
   src: url("/fonts/jeju-hallasan/JejuHallasan-Regular.woff2") format("woff2");
 }
 
+@font-face {
+  font-family: "D-DIN";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    local("D-DIN"),
+    local("D-DIN Regular"),
+    url("/fonts/d-din/D-DIN.woff2") format("woff2"),
+    url("/fonts/d-din/D-DIN.woff") format("woff");
+}
+
+@font-face {
+  font-family: "D-DIN";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src:
+    local("D-DIN Bold"),
+    local("D-DIN"),
+    url("/fonts/d-din/D-DIN-Bold.woff2") format("woff2"),
+    url("/fonts/d-din/D-DIN-Bold.woff") format("woff");
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -57,6 +81,7 @@
   --color-energyblue: #43bed4;
   --color-launchred: #e86565;
   --color-commentgreen: #60a343;
+  --font-d-din: "D-DIN", ui-sans-serif, system-ui, sans-serif;
   --font-inconsolata: "Inconsolata", ui-monospace, monospace;
   --font-jeju-hallasan: "Jeju Hallasan", ui-sans-serif, system-ui, sans-serif;
 }

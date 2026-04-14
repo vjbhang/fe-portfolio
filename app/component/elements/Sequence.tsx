@@ -295,7 +295,7 @@ function SequenceMessage({
 
   return (
     <div
-      className="w-32 h-28 absolute left-[42%] bottom-3 z-2"
+      className="w-32 h-28 absolute left-[58%] bottom-3 z-2"
       style={{
         transform,
         marginLeft: pageIndex === LAST_PAGE_INDEX ? "25%" : "0%",
