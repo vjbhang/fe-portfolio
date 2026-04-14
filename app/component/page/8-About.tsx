@@ -33,7 +33,7 @@ export default function About({
             <div className="flex flex-col gap-2">
               <p>
                 Ever since I picked up programming, I have had an intense
-                fascination for how code - despite its syntax-ed nature - verily
+                fascination for how code - despite its syntactical grammar -
                 translates into usable human interfaces and visually engaging
                 media forms.{" "}
               </p>
@@ -80,7 +80,7 @@ export default function About({
               <p className="italic">
                 Let's work together to bring your ideas to life <b>quickly</b>.
               </p>
-              <div className="flex flex-row items-center gap-4 justify-center bg-[#7dd3fc14] border-[#7DD3FC] border border-solid rounded-3xl text-[#bae6fd] px-2 py-1 w-fit">
+              <div className="flex flex-row items-center gap-4 justify-center bg-[#7dd3fc14] border-[#7DD3FC] border border-solid rounded-3xl text-[#bae6fd] px-2 py-1 w-fit mt-1">
                 <p className="font-inconsolata">Contact/Inquiries</p>
                 <p className="font-inconsolata text-md font-bold">
                   vjbstudio@pm.me

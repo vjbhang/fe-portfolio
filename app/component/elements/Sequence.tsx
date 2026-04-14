@@ -443,19 +443,21 @@ export default function Sequence({
         {partitionData.slice(0, -1).map((_, index) => (
           <div key={`border-${index}`}>
             <div
-              className="absolute bottom-0 h-[70vh] transition-[left] duration-700 linear border-white border-r border-dashed pointer-events-none"
+              className="absolute bottom-0 h-[70vh] transition-[left,opacity] duration-700 linear border-white border-r border-dashed pointer-events-none"
               style={{
                 left: `${leftOffsets[index + 1]}%`,
                 width: 0,
                 zIndex: 2,
+                opacity: `${pageIndex === LAST_PAGE_INDEX ? 0 : 1}`,
               }}
             />
             <div
-              className="absolute bottom-0 h-8 transition-[left] duration-700 linear border-white border-r border-solid pointer-events-none translate-y-4"
+              className="absolute bottom-0 h-8 transition-[left,opacity] duration-700 linear border-white border-r border-solid pointer-events-none translate-y-4"
               style={{
                 left: `${leftOffsets[index + 1]}%`,
                 width: 0,
                 zIndex: 2,
+                opacity: `${pageIndex === LAST_PAGE_INDEX ? 0 : 1}`,
               }}
             />
           </div>
