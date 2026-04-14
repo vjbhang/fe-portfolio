@@ -33,7 +33,7 @@ export default function About({
             <div className="flex flex-col gap-2">
               <p>
                 Ever since I picked up programming, I have had an intense
-                fascination for how code - despite its syntactical grammar -
+                fascination for how code - despite its syntactical rigidness -
                 translates into usable human interfaces and visually engaging
                 media forms.{" "}
               </p>
