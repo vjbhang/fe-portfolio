@@ -35,7 +35,6 @@ export default function Nominal({
         <AnimatedPageTranscript
           missionControlLines={[
             "We are off the ground!",
-            "Nominal Systems Check.",
             "Thrusters: Positive. Trajectory: Positive.",
             "Onboard Personnel: . . . Unable to confirm",
           ]}

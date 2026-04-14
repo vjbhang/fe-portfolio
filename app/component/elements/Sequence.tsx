@@ -257,7 +257,7 @@ function SequenceRocket({ pageIndex }: { pageIndex: number }) {
       style={{
         transform,
         transformOrigin: "center center",
-        marginLeft: pageIndex === 8 ? "25%" : "0%",
+        marginLeft: pageIndex === 8 ? "21%" : "0%",
         transition:
           "transform 700ms ease-in-out, margin-left 700ms ease-in-out",
       }}
@@ -298,7 +298,7 @@ function SequenceMessage({
       className="w-32 h-28 absolute left-[58%] bottom-3 z-2"
       style={{
         transform,
-        marginLeft: pageIndex === LAST_PAGE_INDEX ? "25%" : "0%",
+        marginLeft: pageIndex === LAST_PAGE_INDEX ? "21%" : "0%",
         transition:
           "transform 700ms ease-in-out, margin-left 700ms ease-in-out",
       }}
@@ -376,7 +376,7 @@ export default function Sequence({
         alt="scroll tracker"
         width={42}
         height={42}
-        className={`absolute top-1/2 left-1/2 transform ${pageIndex === LAST_PAGE_INDEX ? "ml-[25%]" : ""} -translate-x-1/2 -translate-y-1/2 z-10 transition-[margin] ease-in-out duration-700`}
+        className={`absolute top-1/2 left-1/2 transform ${pageIndex === LAST_PAGE_INDEX ? "ml-[21%]" : ""} -translate-x-1/2 -translate-y-1/2 z-10 transition-[margin] ease-in-out duration-700`}
       />
       <div className="mt-2 absolute top-1/2 left-1/2 transform -translate-x-1/2 translate-y-9 w-full">
         <div className="flex items-center justify-between w-full h-8.25">
@@ -468,6 +468,7 @@ export default function Sequence({
             className="pointer-events-auto block z-2 absolute transition-[left] duration-700 linear hover:cursor-pointer transform top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
             style={{
               left: `${leftOffsets[marker.accentIndex + 1]}%`,
+              opacity: `${pageIndex === LAST_PAGE_INDEX ? 0 : 1}`,
             }}
             onClick={() => setPageIndex(marker.targetPageIndex)}
           >

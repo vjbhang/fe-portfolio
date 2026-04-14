@@ -69,7 +69,7 @@ export default function HamburgerMenu({ isOpen }: HamburgerMenuProps) {
               href="#landing"
               className={`${styles.menu__link} font-inconsolata`}
             >
-              Landing
+              About
             </a>
           </li>
           <li className={styles.menu__item}>
@@ -82,7 +82,7 @@ export default function HamburgerMenu({ isOpen }: HamburgerMenuProps) {
               href="#about"
               className={`${styles.menu__link} font-inconsolata`}
             >
-              About
+              Now
             </a>
           </li>
         </ul>

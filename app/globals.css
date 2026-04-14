@@ -1,6 +1,26 @@
 @import "tailwindcss";
 @import "tailwind-scrollbar-hide/v4";
 
+/* Custom animation + gradient only */
+@layer utilities {
+  .bg-gradient-rotate {
+    background: conic-gradient(from 0deg, #3b82f6, #37588b, #97b1db, #3b82f6);
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 6s linear infinite;
+  }
+
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+
 @font-face {
   font-family: "Inconsolata";
   font-style: normal;

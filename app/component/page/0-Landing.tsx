@@ -31,8 +31,8 @@ export default function Landing({
         <h1 className="text-5xl text-white">I build Digital Spaceships</h1>
         <div className="flex gap-12 items-center">
           <h4 className="text-xl text-white font-bold flex items-center gap-2">
-            <span className="text-xs">▶</span> Freelancer // Technical Operator
-            & AI Systems Integrator
+            <span className="text-xs">▶</span> Freelancer // Software Engineer &
+            AI Systems Integrator
           </h4>
         </div>
         <LandingCategoryRotator />

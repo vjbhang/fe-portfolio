@@ -209,11 +209,13 @@ export default function AnimatedPageTranscript({
             </p>
           );
         })}
-        <p
-          className={`text-white/60 text-xs tracking-wide mt-auto -mb-1 ${styles.processHighlightRow} ${areProcessHighlightsVisible ? styles.processHighlightRowVisible : ""}`.trim()}
-        >
-          TASK
-        </p>
+        {processHighlights && (
+          <p
+            className={`text-white/60 text-xs tracking-wide mt-auto -mb-1 ${styles.processHighlightRow} ${areProcessHighlightsVisible ? styles.processHighlightRowVisible : ""}`.trim()}
+          >
+            TASK
+          </p>
+        )}
 
         <div
           className={`flex flex-row items-center rounded-lg pb-2 ${styles.processHighlightRow} ${

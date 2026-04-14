@@ -119,7 +119,7 @@ export default function Home() {
         <source src={"/bgvid.mp4"} type="video/mp4" />
       </video>
       <div className="absolute top-0 left-0 w-full h-full z-6 bg-black/65 backdrop-blur-sm" />
-      <HamburgerMenu isOpen={isOpen} />
+      {/* <HamburgerMenu isOpen={isOpen} /> */}
       <Header isOpen={isOpen} setIsOpen={setIsOpen} />
       <div
         ref={containerRef}

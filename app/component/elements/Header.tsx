@@ -21,7 +21,7 @@ export const Header: React.FC<HeaderProps> = ({ isOpen, setIsOpen }) => {
         </div>
         <div className="ml-auto flex items-center gap-8">
           <Timer />
-          <HamburgerIcon isOpen={isOpen} setIsOpen={setIsOpen} />
+          {/* <HamburgerIcon isOpen={isOpen} setIsOpen={setIsOpen} /> */}
         </div>
       </div>
     </header>
