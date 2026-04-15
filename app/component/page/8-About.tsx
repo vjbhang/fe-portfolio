@@ -66,8 +66,7 @@ export default function About({
           <h4 className="text-lg font-bold">ABOUT ME</h4>
           <div className="flex flex-col gap-3">
             <p>
-              It is no longer the case where you need a whole team of developers
-              to build a product.{" "}
+              It no longer requires an entire team of developers to build a product.{" "}
               <span className="font-bold">
                 Building digital solutions has become democratized
               </span>{" "}
@@ -90,16 +89,8 @@ export default function About({
             <p className="italic">
               Let's work together to bring your ideas to life - quickly.
             </p>
-            <p className="text-white/70 text-xs italic">
-              Once I receive your email, I’ll follow up with a survey and
-              provide options to schedule a call.{" "}
-            </p>
-            <div className="flex flex-row gap-3 items-center justify-end">
-              {emailCopiedActive && (
-                <p className="ml-auto font-inconsolata text-sm text-white/70">
-                  copied e-mail!
-                </p>
-              )}
+            
+            <div className="flex flex-row gap-3 items-center">
               <button
                 onClick={copyEmail}
                 className="flex flex-row items-center gap-4 justify-center bg-[#7dd3fc14] border-[#7DD3FC] border border-solid rounded-3xl text-[#bae6fd] px-2 py-1 w-fit mt-1 pointer-events-auto cursor-pointer"
@@ -109,7 +100,16 @@ export default function About({
                   vjbstudio@pm.me
                 </p>
               </button>
+              {emailCopiedActive && (
+                <p className="font-inconsolata text-sm text-white/70">
+                  copied e-mail!
+                </p>
+              )}
             </div>
+            <p className="text-white/70 text-xs italic">
+              Once I receive your email, I’ll follow up with a survey and
+              provide options to schedule a meeting/call.{" "}
+            </p>
           </div>
         </div>
       </div>
