@@ -98,6 +98,7 @@
 }
 
 @theme {
+  --breakpoint-md: 1427px;
   --color-energyblue: #43bed4;
   --color-launchred: #e86565;
   --color-commentgreen: #60a343;

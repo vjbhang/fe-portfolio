@@ -11,7 +11,7 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ isOpen, setIsOpen }) => {
   return (
     <header className="h-21.75 w-full bg-transparent z-9 font-inconsolata">
-      <div className="w-full py-6 flex items-center gap-32">
+      <div className="w-full md:py-6 flex items-center md:gap-32">
         <p className="text-sm font-bold text-white font-jeju-hallasan">
           VINCENT JIWON BONG
         </p>
