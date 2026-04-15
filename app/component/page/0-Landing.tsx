@@ -55,7 +55,7 @@ export default function Landing({
         <div className="flex flex-col items-center justify-center gap-4 rounded-lg border border-solid border-white/20 bg-black/50 md:-mt-3 mt-auto md:h-70 md:w-100 md:pb-0 w-full h-fit pb-4">
           <div className="flex flex-col justify-center flex-1 md:mt-0 -mt-2">
             <button
-              className="mt-4 gap-4 flex pointer-events-auto md:w-fit w-full"
+              className="mt-4 gap-4 flex pointer-events-auto md:w-fit w-full px-1"
               onClick={() => setPageIndex(1)}
             >
               <Link
@@ -73,7 +73,7 @@ export default function Landing({
               </div>
             </button>
             <code className="text-sm/tight text-commentgreen mt-1">
-              {"// Go through an interactive walkthrough of"}
+              {"// An interactive walkthrough of"}
             </code>
             <code className="text-sm/tight text-commentgreen">
               {"// the processes behind building a"}
