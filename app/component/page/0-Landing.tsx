@@ -27,8 +27,8 @@ export default function Landing({
   }, [setPageIndex]);
 
   return (
-    <div className="flex flex-col w-full h-full justify-center gap-12 font-inconsolata">
-      <div className="flex flex-col md:gap-6 gap-3 mb-auto">
+    <div className="flex flex-col w-full h-full md:justify-center gap-12 font-inconsolata">
+      <div className="flex flex-col md:gap-6 gap-3 md:mb-auto md:h-fit h-full md:pb-0 pb-10">
         <h1 className="md:text-7xl text-6xl md:px-0 px-2 text-white">
           <span className="md:hidden inline">I build Digital Spaceships</span>
           <span className="md:inline hidden">
@@ -52,7 +52,7 @@ export default function Landing({
           </h4>
         </div>
         <LandingCategoryRotator />
-        <div className="flex flex-col bg-black/50 items-center justify-center md:w-100 w-full md:h-70 h-fit rounded-lg gap-4 md:-mt-3 border border-solid border-white/20 md:pb-0 pb-4">
+        <div className="flex flex-col items-center justify-center gap-4 rounded-lg border border-solid border-white/20 bg-black/50 md:-mt-3 mt-auto md:h-70 md:w-100 md:pb-0 w-full h-fit pb-4">
           <div className="flex flex-col justify-center flex-1 md:mt-0 -mt-2">
             <button
               className="mt-4 gap-4 flex pointer-events-auto md:w-fit w-full"
@@ -62,10 +62,11 @@ export default function Landing({
                 href={"/initiate"}
                 className="text-sky-400 text-start md:px-1 md:py-0.5 font-bold text-xl font-inconsolata border border-solid rounded border-sky-400/15 hover:border-sky-400/80 transition hover:cursor-pointer md:animate-pulse hover:animate-none md:w-fit w-full"
               >
-                <span className="md:inline hidden">
-                  Initiate Launch Sequence
-                </span>
-                <span className="md:hidden inline text-2xl">/initiate</span>
+                <p className="md:inline hidden">Initiate Launch Sequence</p>
+                <p className="md:hidden inline text-2xl">
+                  /initiate
+                  <span className="text-white/40 ml-2 text-sm">(click)</span>
+                </p>
               </Link>
               <div className="md:inline hidden">
                 <KeypadEnter setPageIndex={setPageIndex} />

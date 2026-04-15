@@ -332,7 +332,7 @@ export const MISSION_CONTROL_PROMPTS: {
       "Touchdown confirmed.",
     ],
     vincentai: [
-      "The application is stable and ready for the next iteration. Software is never truly 'complete', going through multiple launch and re-entry cycles. But based on the requirements, multiple iterations may not be necessary.",
+      "The application is stable and ready for the next iteration. Software is never truly 'complete', going through multiple launch and re-entry cycles.",
       "---",
       "This landing page is a demonstration of my capabilities and a vision for how I provide value to clients. ",
       "As a freelancer, I can help build your digital solution - whether it is a website, web/mobile application, or an AI implementation.",
