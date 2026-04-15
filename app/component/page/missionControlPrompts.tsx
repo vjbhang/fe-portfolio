@@ -1,0 +1,343 @@
+import { LuListTodo } from "react-icons/lu";
+import ProcessHighlightLayout from "../elements/ProcessHighlightLayout";
+import { FiFigma } from "react-icons/fi";
+import { GrBusinessService, GrDeploy, GrFanOption } from "react-icons/gr";
+import { FaBookOpen, FaDatabase, FaWrench } from "react-icons/fa";
+import { PiStackDuotone } from "react-icons/pi";
+import { SiAlwaysdata, SiBaremetrics } from "react-icons/si";
+import { HiMiniRocketLaunch } from "react-icons/hi2";
+import { RiGlobalFill, RiSurveyLine } from "react-icons/ri";
+import { MdArchitecture } from "react-icons/md";
+import { TbBrandSpeedtest } from "react-icons/tb";
+import { FaMagnifyingGlass } from "react-icons/fa6";
+
+export const MISSION_CONTROL_PROMPTS: {
+  stage: string;
+  mc: string[];
+  vincentai: string[];
+  task: React.ReactNode;
+}[] = [
+  {
+    stage: "LIFT OFF",
+    mc: [
+      "Our mission is to reach out to the stars.",
+      "The spaceship is ready for launch.",
+      "Countdown initiated: 3... 2... 1... Liftoff!",
+    ],
+    vincentai: [
+      "I am Vincent AI - efficient and resourceful. Initiating project.",
+      "To get started, we will:",
+    ],
+    task: (
+      <>
+        <ProcessHighlightLayout>
+          <LuListTodo size={32} />
+          <p>
+            Define
+            <br />
+            Requirements
+          </p>
+          <p className="text-xs text-white/70 mt-auto">
+            establish clear specifications,
+            <br />
+            build user stories
+          </p>
+        </ProcessHighlightLayout>
+        <div className="border border-b border-white/20 w-5" />
+        <ProcessHighlightLayout>
+          <FiFigma size={32} />
+          <p>
+            Design
+            <br />
+            Prototype
+          </p>
+          <p className="text-xs text-white/70 mt-auto">
+            create low- to
+            <br />
+            high-fidelity interactive prototypes
+          </p>
+        </ProcessHighlightLayout>
+      </>
+    ),
+  },
+  {
+    stage: "NOMINAL",
+    mc: [
+      "We are off the ground!",
+      "Thrusters: Positive. Trajectory: Positive.",
+      "Onboard Personnel: Looking good~",
+    ],
+    vincentai: [
+      "Now that we have a defined prototype, let's make it into something tangible. Moving from ideation to deployment.",
+    ],
+    task: (
+      <>
+        <ProcessHighlightLayout>
+          <PiStackDuotone size={32} />
+          <p>Choosing Architecture</p>
+          <p className="text-xs text-white/70 mt-auto">
+            tech stack, cloud provider, frameworks
+          </p>
+        </ProcessHighlightLayout>
+        <div className="border border-b border-white/20 w-5" />
+        <ProcessHighlightLayout>
+          <GrDeploy size={32} />
+          <p>
+            Rapid MVP
+            <br />
+            Deployment
+          </p>
+          <p className="text-xs text-white/70 mt-auto">
+            core features implemented; working end-to-end
+          </p>
+        </ProcessHighlightLayout>
+        <div className="border border-b border-white/20 w-5" />
+        <ProcessHighlightLayout>
+          <FaDatabase size={32} />
+          <p>Base Integrations</p>
+          <p className="text-xs text-white/70 mt-auto">
+            APIs, database, authentication
+          </p>
+        </ProcessHighlightLayout>
+      </>
+    ),
+  },
+  {
+    stage: "SUPERSONIC",
+    mc: [
+      "Vehicle is reaching supersonic.",
+      "At maximum dynamic pressure - Max Q.",
+      "Reaching orbit.",
+    ],
+    vincentai: [
+      "We have a working application. Moving my focus to refine existing features and scaling performance as needed.",
+      "Should I scale beyond the initial concept?",
+    ],
+    task: (
+      <>
+        <ProcessHighlightLayout>
+          <GrBusinessService size={32} />
+          <p>
+            Align with
+            <br />
+            Business Needs
+          </p>
+          <p className="text-xs text-white/70 mt-auto">
+            business-specific nuance,
+            <br />
+            speed vs scalability vs cost
+          </p>
+        </ProcessHighlightLayout>
+        <div className="border border-b border-white/20 w-5" />
+        <ProcessHighlightLayout>
+          <GrFanOption size={32} />
+          <p>Optimization</p>
+          <p className="text-xs text-white/70 mt-auto">
+            feature complexity or <br />
+            increased user load
+          </p>
+        </ProcessHighlightLayout>
+      </>
+    ),
+  },
+  {
+    stage: "ORBIT",
+    mc: [
+      "Orbital velocity achieved - parameters look good.",
+      "Vehicle is in orbit.",
+      "We are stable.",
+    ],
+    vincentai: [
+      "The application is stable, performing reliably, and consistently delivering value. I will ensure observability is in place so we can act on meaningful insights.",
+    ],
+    task: (
+      <>
+        <ProcessHighlightLayout>
+          <HiMiniRocketLaunch size={32} />
+          <p>
+            Stable
+            <br />
+            Release
+          </p>
+          <p className="text-xs text-white/70 mt-auto">
+            deploy version that
+            <br />
+            meets quality benchmarks
+          </p>
+        </ProcessHighlightLayout>
+        <div className="border border-b border-white/20 w-5" />
+        <ProcessHighlightLayout>
+          <SiBaremetrics size={32} />
+          <p>
+            Establish
+            <br />
+            Observability
+          </p>
+          <p className="text-xs text-white/70 mt-auto">
+            logging, metrics,
+            <br />
+            alerting
+          </p>
+        </ProcessHighlightLayout>
+        <div className="border border-b border-white/20 w-5" />
+        <ProcessHighlightLayout>
+          <SiAlwaysdata size={32} />
+          <p>
+            Get
+            <br />
+            Insight
+          </p>
+          <p className="text-xs text-white/70 mt-auto">
+            collect and analyze data to understand user behavior,
+            <br />
+            application performance
+          </p>
+        </ProcessHighlightLayout>
+      </>
+    ),
+  },
+  {
+    stage: "RE-ENTRY",
+    mc: [
+      "All stations, standby for deorbit sequence.",
+      "Shutdown confirmed. Trajectory is on reentry corridor.",
+      "Vehicle is committed to reentry.",
+    ],
+    vincentai: [
+      "In space flight, 're-entry' is riskier than the initial launch. While the application has demonstrated stability, the situation now requires change to meet emerging requirements.",
+    ],
+    task: (
+      <>
+        <ProcessHighlightLayout>
+          <LuListTodo size={32} />
+          <p>
+            Re-define
+            <br />
+            Scope of Change
+          </p>
+          <p className="text-xs text-white/70 mt-auto">
+            features, design, business-specific nuance
+          </p>
+        </ProcessHighlightLayout>
+        <div className="border border-b border-white/20 w-5" />
+        <ProcessHighlightLayout>
+          <MdArchitecture size={32} />
+          <p>Architectural Changes</p>
+          <p className="text-xs text-white/70 mt-auto">
+            modify systems
+            <br />
+            for scalability
+          </p>
+        </ProcessHighlightLayout>
+        <div className="border border-b border-white/20 w-5" />
+        <ProcessHighlightLayout>
+          <RiGlobalFill size={32} />
+          <p>
+            Plan for
+            <br />
+            Scaling
+          </p>
+          <p className="text-xs text-white/70 mt-auto">
+            multi-region, microservices, risk modelling, etc.
+          </p>
+        </ProcessHighlightLayout>
+      </>
+    ),
+  },
+  {
+    stage: "INTERFACE",
+    mc: [
+      "Flight, we've reached entry interface.",
+      "Thermal protection systems are active.",
+      "Hitting atmosphere.",
+    ],
+    vincentai: [
+      "Ahead of major changes, I am prioritizing user feedback, bug discovery, and performance to ensure stability. I will be closely monitoring the application.",
+    ],
+    task: (
+      <>
+        <ProcessHighlightLayout>
+          <RiSurveyLine size={32} />
+          <p>
+            User Actions
+            <br />
+            Monitoring
+          </p>
+          <p className="text-xs text-white/70 mt-auto">
+            track user interactions for feature optimization
+          </p>
+        </ProcessHighlightLayout>
+        <div className="border border-b border-white/20 w-5" />
+        <ProcessHighlightLayout>
+          <TbBrandSpeedtest size={32} />
+          <p>
+            User Interface
+            <br />
+            Testing
+          </p>
+          <p className="text-xs text-white/70 mt-auto">
+            manual testing, automated UI tests, visual regression tools
+          </p>
+        </ProcessHighlightLayout>
+      </>
+    ),
+  },
+  {
+    stage: "ENTRY BURN",
+    mc: [
+      "Entry burn start.",
+      "Engines ramping - thrust vector stable. ",
+      "Throttle is responsive - rate of descent decreasing.",
+    ],
+    vincentai: [
+      "The goal now is to ensure the application operates seamlessly. I am actively making enhancements. I will refine or add on to structural processes as needed to meet evolving requirements.",
+    ],
+    task: (
+      <>
+        <ProcessHighlightLayout>
+          <FaWrench size={32} />
+          <p>Hotfixes, patches, and rapid iteration</p>
+          <p className="text-xs text-white/70 mt-auto">
+            an ongoing process of improvement and adaptation
+          </p>
+        </ProcessHighlightLayout>
+        <div className="border border-b border-white/20 w-5" />
+        <ProcessHighlightLayout>
+          <FaMagnifyingGlass size={32} />
+          <p>Identify technical debt</p>
+          <p className="text-xs text-white/70 mt-auto">
+            review codebase, look for structural improvements
+          </p>
+        </ProcessHighlightLayout>
+        <div className="border border-b border-white/20 w-5" />
+        <ProcessHighlightLayout>
+          <FaBookOpen size={32} />
+          <p>
+            Setup
+            <br />
+            Docs
+          </p>
+          <p className="text-xs text-white/70 mt-auto">
+            maintain documentation for product/tech
+          </p>
+        </ProcessHighlightLayout>
+      </>
+    ),
+  },
+  {
+    stage: "ABOUT",
+    mc: [
+      "Landing legs deployed.",
+      "Vehicle is stable on the pad.",
+      "Touchdown confirmed.",
+    ],
+    vincentai: [
+      "The application is stable and ready for the next iteration. Depending on your requirements, it is not always the case where multiple iterations are needed. Software is never truly 'complete', going through multiple launch and re-entry cycles.",
+      "---",
+      "This landing page is a demonstration of my capabilities and a vision for how I provide value to clients. ",
+      "As a freelancer, I can help you build your digital solution - whether it is a website, web/mobile application, or an AI implementation.",
+      "If you have any questions, or would like to discuss working together, please don't hesitate to reach out. →",
+    ],
+    task: undefined,
+  },
+];

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import Image from "next/image";
-import KeypadEnter from "../elements/Keypads/KeypadEnter";
-import LandingCategoryRotator from "../elements/LandingCategoryRotator";
+import KeypadEnter from "../../elements/Keypads/KeypadEnter";
+import LandingCategoryRotator from "../../elements/LandingCategoryRotator";
 export default function Landing({
   setPageIndex,
 }: {

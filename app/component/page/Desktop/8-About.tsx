@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import GradientRotateButton from "../elements/GradientRotateBtn";
-import MissionControlPrompt from "../elements/MissionControlPrompt/MissionControlPrompt";
-import AnimatedPageTranscript from "../elements/AnimatedPageTranscript/AnimatedPageTranscript";
-import ProcessHighlightLayout from "../elements/ProcessHighlightLayout";
+import GradientRotateButton from "../../elements/GradientRotateBtn";
+import MissionControlPrompt from "../../elements/MissionControlPrompt/MissionControlPrompt";
+import AnimatedPageTranscript from "../../elements/AnimatedPageTranscript/AnimatedPageTranscript";
+import ProcessHighlightLayout from "../../elements/ProcessHighlightLayout";
 import { FaBookOpen, FaWrench } from "react-icons/fa";
 import { FaMagnifyingGlass } from "react-icons/fa6";
+import { MISSION_CONTROL_PROMPTS } from "../missionControlPrompts";
 
 const LAST_PAGE_INDEX = 8;
 
@@ -44,19 +45,9 @@ export default function About({
         <div className="flex flex-col w-full h-full font-inconsolata text-white">
           <MissionControlPrompt status="MISSION COMPLETE">
             <AnimatedPageTranscript
-              missionControlLines={[
-                "Landing legs deployed.",
-                "Vehicle is stable on the pad.",
-                "Touchdown confirmed.",
-              ]}
-              vincentAiLines={[
-                "The application is safe, stable, and ready for the next iteration. Depending on your requirements, it is not always the case where multiple iterations are needed. Software is never truly 'complete', going through multiple launch and re-entry cycles.",
-                "---",
-                "This landing page is a demonstration of my capabilities and a vision for how I provide value to clients. ",
-                "As a freelancer, I can help you build your digital solution - whether it is a website, web/mobile application, or an AI implementation.",
-                "If you have any questions, or would like to discuss working together, please don't hesitate to reach out. →",
-              ]}
-              processHighlights={undefined}
+              missionControlLines={MISSION_CONTROL_PROMPTS[7].mc}
+              vincentAiLines={MISSION_CONTROL_PROMPTS[7].vincentai}
+              processHighlights={MISSION_CONTROL_PROMPTS[7].task}
             />
           </MissionControlPrompt>
         </div>
@@ -66,7 +57,8 @@ export default function About({
           <h4 className="text-lg font-bold">ABOUT ME</h4>
           <div className="flex flex-col gap-3">
             <p>
-              It no longer requires an entire team of developers to build a product.{" "}
+              It no longer requires an entire team of developers to build a
+              product.{" "}
               <span className="font-bold">
                 Building digital solutions has become democratized
               </span>{" "}
@@ -89,7 +81,7 @@ export default function About({
             <p className="italic">
               Let's work together to bring your ideas to life - quickly.
             </p>
-            
+
             <div className="flex flex-row gap-3 items-center">
               <button
                 onClick={copyEmail}

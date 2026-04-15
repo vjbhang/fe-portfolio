@@ -1,15 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Landing from "../page/0-Landing";
-import Liftoff from "../page/1-LiftOff";
-import Nominal from "../page/2-Nominal";
-import Supersonic from "../page/3-Supersonic";
-import Orbit from "../page/4-Orbit";
-import ReEntry from "../page/5-ReEntry";
-import Interface from "../page/6-Interface";
-import EntryBurn from "../page/7-EntryBurn";
-import About from "../page/8-About";
+import Landing from "../page/Desktop/0-Landing";
+import Liftoff from "../page/Desktop/1-LiftOff";
+import Nominal from "../page/Desktop/2-Nominal";
+import Supersonic from "../page/Desktop/3-Supersonic";
+import Orbit from "../page/Desktop/4-Orbit";
+import ReEntry from "../page/Desktop/5-ReEntry";
+import Interface from "../page/Desktop/6-Interface";
+import EntryBurn from "../page/Desktop/7-EntryBurn";
+import About from "../page/Desktop/8-About";
 import styles from "./DynamicPages.module.css";
 
 const EXIT_DURATION_MS = 450;
