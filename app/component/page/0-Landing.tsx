@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import Image from "next/image";
-import KeypadEnter from "../../elements/Keypads/KeypadEnter";
-import LandingCategoryRotator from "../../elements/LandingCategoryRotator";
+import KeypadEnter from "../elements/Keypads/KeypadEnter";
+import LandingCategoryRotator from "../elements/LandingCategoryRotator";
+import Link from "next/link";
 export default function Landing({
   setPageIndex,
 }: {
@@ -27,25 +28,47 @@ export default function Landing({
 
   return (
     <div className="flex flex-col w-full h-full justify-center gap-12 font-inconsolata">
-      <div className="flex flex-col gap-6 mb-auto">
-        <h1 className="text-5xl text-white">I build Digital Spaceships</h1>
+      <div className="flex flex-col md:gap-6 gap-3 mb-auto">
+        <h1 className="md:text-7xl text-6xl md:px-0 px-2 text-white">
+          <span className="md:hidden inline">I build Digital Spaceships</span>
+          <span className="md:inline hidden">
+            I build Digital <br />
+            Spaceships
+          </span>
+        </h1>
         <div className="flex gap-12 items-center">
-          <h4 className="text-xl text-white font-bold flex items-center gap-2">
-            <span className="text-xs">▶</span> Freelancer // Software Engineer &
-            AI Systems Integrator
+          <h4 className="text-xl text-white font-bold flex md:flex-row flex-col items-center md:px-0 px-2 md:gap-2 md:pt-0 pt-1">
+            <p className="md:m-0 mr-auto text-energyblue">
+              <span className="text-xs md:inline hidden">▶</span> Freelancer //
+            </p>
+            <span className="md:inline hidden text-energyblue">
+              Software Engineer & AI Systems Integrator
+            </span>
+            <span className="md:hidden text-energyblue">
+              Software Engineer
+              <br />
+              AI Systems Integrator
+            </span>
           </h4>
         </div>
         <LandingCategoryRotator />
-        <div className="flex flex-col bg-black/50 items-center justify-center w-100 h-70 rounded-lg gap-4">
-          <div className="flex flex-col justify-center flex-1">
+        <div className="flex flex-col bg-black/50 items-center justify-center md:w-100 w-full md:h-70 h-fit rounded-lg gap-4 md:-mt-3 border border-solid border-white/20 md:pb-0 pb-4">
+          <div className="flex flex-col justify-center flex-1 md:mt-0 -mt-2">
             <button
-              className="mt-4 gap-4 flex pointer-events-auto"
+              className="mt-4 gap-4 flex pointer-events-auto md:w-fit w-full"
               onClick={() => setPageIndex(1)}
             >
-              <p className="text-sky-400 px-1 py-0.5 font-bold text-xl font-inconsolata border border-solid rounded border-sky-400/15 hover:border-sky-400/80 transition hover:cursor-pointer animate-pulse hover:animate-none">
-                Initiate Launch Sequence
+              <p className="text-sky-400 text-start md:px-1 md:py-0.5 font-bold text-xl font-inconsolata border border-solid rounded border-sky-400/15 hover:border-sky-400/80 transition hover:cursor-pointer md:animate-pulse hover:animate-none md:w-fit w-full">
+                <span className="md:inline hidden">
+                  Initiate Launch Sequence
+                </span>
+                <Link className="md:hidden inline text-2xl" href={"/initiate"}>
+                  /initiate
+                </Link>
               </p>
-              <KeypadEnter setPageIndex={setPageIndex} />
+              <div className="md:inline hidden">
+                <KeypadEnter setPageIndex={setPageIndex} />
+              </div>
             </button>
             <code className="text-sm/tight text-commentgreen mt-1">
               {"// An interactive walkthrough of the"}
@@ -57,8 +80,8 @@ export default function Landing({
               {"// web/mobile application"}
             </code>
           </div>
-          <div className="w-75 h-1 border-b border-white/20 border-solid" />
-          <div className="flex flex-col items-center gap-1 text-center text-white text-lg flex-[1.4]">
+          <div className="w-75 h-1 border-b border-white/20 border-solid md:inline hidden" />
+          <div className="flex flex-col items-center gap-1 text-center text-white text-lg flex-[1.4] md:inline hidden">
             <p className="text-white text-sm">To navigate:</p>
             <div className="flex justify-center items-center flex-row gap-6">
               <div className="flex flex-col items-center gap-1 justify-center w-40">

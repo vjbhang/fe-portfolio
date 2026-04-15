@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import GradientRotateButton from "../../elements/GradientRotateBtn";
-import MissionControlPrompt from "../../elements/MissionControlPrompt/MissionControlPrompt";
-import AnimatedPageTranscript from "../../elements/AnimatedPageTranscript/AnimatedPageTranscript";
-import ProcessHighlightLayout from "../../elements/ProcessHighlightLayout";
+import GradientRotateButton from "../elements/GradientRotateBtn";
+import MissionControlPrompt from "../elements/MissionControlPrompt/MissionControlPrompt";
+import AnimatedPageTranscript from "../elements/AnimatedPageTranscript/AnimatedPageTranscript";
+import ProcessHighlightLayout from "../elements/ProcessHighlightLayout";
 import { FaBookOpen, FaWrench } from "react-icons/fa";
 import { FaMagnifyingGlass } from "react-icons/fa6";
-import { MISSION_CONTROL_PROMPTS } from "../missionControlPrompts";
+import { MISSION_CONTROL_PROMPTS } from "./missionControlPrompts";
 
 const LAST_PAGE_INDEX = 8;
 

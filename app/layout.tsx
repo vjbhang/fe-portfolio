@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import AnimatedBG from "./component/elements/AnimatedBG/AnimatedBG";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,9 +26,22 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} relative min-h-screen antialiased`}
       >
-        {children}
+        <div className="md:absolute fixed top-0 left-0 w-full h-full z-7">
+          <AnimatedBG />
+        </div>
+        <video
+          autoPlay
+          loop
+          muted
+          className="md:absolute fixed top-0 left-0 w-full h-full object-cover z-5"
+        >
+          <source src={"/bgvid.webm"} type="video/webm" />
+          <source src={"/bgvid.mp4"} type="video/mp4" />
+        </video>
+        <div className="md:absolute fixed top-0 left-0 w-full h-full z-6 bg-black/65 backdrop-blur-sm" />
+        <div className="relative z-10 min-h-screen">{children}</div>
       </body>
     </html>
   );

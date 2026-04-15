@@ -17,7 +17,7 @@
   width: 100%;
   background: currentColor;
   transform: scaleX(0);
-  transform-origin: right center;
+  transform-origin: left center;
   animation-name: growUnderlineFromRight;
   animation-timing-function: linear;
   animation-fill-mode: forwards;

@@ -16,13 +16,13 @@ const CATEGORIES: Category[] = [
     shortLabel: "SMB",
     title: "Small and Medium-sized Businesses",
     description:
-      "I help translate business needs into effective systems by coordinating AI tools, software platforms, and integrations while ensuring reliability and continuous improvement.",
+      "I help translate business needs for small and medium-sized businesses by coordinating AI tools, software platforms, and integrations into effective systems.",
   },
   {
     shortLabel: "PB",
     title: "Personal Brand",
     description:
-      "I help design, build, and continuously optimize the digital systems that turn an individual's expertise, content, and audience into a scalable online business.",
+      "I help personal brands to design, build, and optimize the digital systems that turn an individual's expertise, content, and audience into a scalable online business.",
   },
 ];
 
@@ -115,21 +115,21 @@ export default function LandingCategoryRotator() {
 
   return (
     <div
-      className="flex h-19 w-xl flex-row items-start gap-6 hover:cursor-help pointer-events-auto"
+      className="flex md:h-19 md:w-xl w-full md:flex-row flex-col items-start md:gap-6 gap-2 md:pt-0 pt-3 hover:cursor-help pointer-events-auto"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="flex flex-col items-center gap-1.5 justify-around">
+      <div className="flex md:flex-col flex-row items-center gap-1.5 md:justify-around justify-center md:w-fit w-full">
         {CATEGORIES.map((category, index) => (
           <button
             key={category.shortLabel}
             type="button"
             onClick={() => handleCategorySelect(index)}
-            className={`text-white font-bold tracking-[0.18em] transition-opacity duration-300 hover:cursor-pointer ${
+            className={`text-white font-bold tracking-[0.18em] transition-opacity duration-300 hover:cursor-pointer md:inline w-full ${
               index === activeIndex ? "opacity-100" : "opacity-35"
             }`}
           >
-            <span className={styles.shortLabel}>
+            <span className={`${styles.shortLabel}`}>
               {category.shortLabel}
               {index === activeIndex ? (
                 <span
@@ -145,14 +145,18 @@ export default function LandingCategoryRotator() {
           </button>
         ))}
       </div>
-      <div className={`${styles.descriptionViewport} max-w-2xl flex-1`}>
+      <div
+        className={`${styles.descriptionViewport} md:max-w-2xl md:px-0 px-2`}
+      >
         <div
           key={`${activeCategory.shortLabel}-${animationKey}`}
           className={`${styles.descriptionCard} ${descriptionClassName}`}
         >
-          <h5 className="text-sm text-zinc-300 font-bold leading-6">
-            <span className="text-white">{activeCategory.title}</span>{" "}
-            {activeCategory.description}
+          <h5 className="text-sm text-zinc-300 font-bold leading-6 md:inline flex flex-col md:px-0 px-2">
+            <span className="text-white md:text-base text-lg md:text-start text-center">
+              {activeCategory.title}
+            </span>{" "}
+            <span>{activeCategory.description}</span>
           </h5>
         </div>
       </div>

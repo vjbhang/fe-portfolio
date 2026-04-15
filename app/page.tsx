@@ -2,10 +2,9 @@
 
 import { useState, useRef, useEffect } from "react";
 import Header from "./component/elements/Header";
-import AnimatedBG from "./component/elements/AnimatedBG/AnimatedBG";
-import HamburgerMenu from "./component/elements/HamburgerMenu/HamburgerMenu";
 import Sequence from "./component/elements/Sequence";
 import DynamicPages from "./component/DynamicPages/DynamicPages";
+import MobilePages from "./component/MobilePages/MobilePages";
 
 type PartitionSegment = { scale: number };
 
@@ -35,13 +34,32 @@ const PARTITIONS = [
 
 const DEFAULT_PARTITION = new Array(10).fill({ scale: 0.2 });
 const SCROLL_THRESHOLD = 1200;
+const MOBILE_BREAKPOINT = 1385;
 
 export default function Home() {
   const [pageIndex, setPageIndex] = useState<number>(0);
+  const [isMobileViewport, setIsMobileViewport] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
 
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(
+      `(max-width: ${MOBILE_BREAKPOINT - 1}px)`,
+    );
+
+    const updateViewportMode = (event?: MediaQueryListEvent) => {
+      setIsMobileViewport(event?.matches ?? mediaQuery.matches);
+    };
+
+    updateViewportMode();
+    mediaQuery.addEventListener("change", updateViewportMode);
+
+    return () => {
+      mediaQuery.removeEventListener("change", updateViewportMode);
+    };
+  }, []);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -105,25 +123,12 @@ export default function Home() {
   }
 
   return (
-    <div className="flex flex-col min-w-screen min-h-screen  font-sans bg-white mx-auto px-[3vw] sm:px-[3vw] lg:px-[3vw] py-4 sm:py-6 lg:py-8">
-      <div className="absolute top-0 left-0 w-full h-full z-7">
-        <AnimatedBG />
-      </div>
-      <video
-        autoPlay
-        loop
-        muted
-        className="absolute top-0 left-0 w-full h-full object-cover z-5"
-      >
-        <source src={"/bgvid.webm"} type="video/webm" />
-        <source src={"/bgvid.mp4"} type="video/mp4" />
-      </video>
-      <div className="absolute top-0 left-0 w-full h-full z-6 bg-black/65 backdrop-blur-sm" />
+    <div className="flex min-h-screen min-w-screen flex-col font-sans">
       {/* <HamburgerMenu isOpen={isOpen} /> */}
       <Header isOpen={isOpen} setIsOpen={setIsOpen} />
       <div
         ref={containerRef}
-        className="flex flex-1 w-full overflow-x-auto snap-x snap-mandatory scrollbar-hide z-7"
+        className="mx-auto flex w-full flex-1 snap-x snap-mandatory overflow-x-auto px-[3vw] pt-15 scrollbar-hide md:pt-24 md:pb-10 sm:px-[3vw]"
       >
         <Sequence
           pageIndex={pageIndex}
@@ -131,7 +136,11 @@ export default function Home() {
           partitioner={partitioner}
           setPageIndex={setPageIndex}
         />
-        <DynamicPages pageIndex={pageIndex} setPageIndex={setPageIndex} />
+        {isMobileViewport ? (
+          <MobilePages pageIndex={pageIndex} setPageIndex={setPageIndex} />
+        ) : (
+          <DynamicPages pageIndex={pageIndex} setPageIndex={setPageIndex} />
+        )}
       </div>
     </div>
   );

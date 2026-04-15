@@ -335,7 +335,7 @@ export const MISSION_CONTROL_PROMPTS: {
       "The application is stable and ready for the next iteration. Depending on your requirements, it is not always the case where multiple iterations are needed. Software is never truly 'complete', going through multiple launch and re-entry cycles.",
       "---",
       "This landing page is a demonstration of my capabilities and a vision for how I provide value to clients. ",
-      "As a freelancer, I can help you build your digital solution - whether it is a website, web/mobile application, or an AI implementation.",
+      "As a freelancer, I can help build your digital solution - whether it is a website, web/mobile application, or an AI implementation.",
       "If you have any questions, or would like to discuss working together, please don't hesitate to reach out. →",
     ],
     task: undefined,

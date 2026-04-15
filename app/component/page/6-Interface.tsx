@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { RiSurveyLine } from "react-icons/ri";
 import { TbBrandSpeedtest } from "react-icons/tb";
-import MissionControlPrompt from "../../elements/MissionControlPrompt/MissionControlPrompt";
-import AnimatedPageTranscript from "../../elements/AnimatedPageTranscript/AnimatedPageTranscript";
-import ProcessHighlightLayout from "../../elements/ProcessHighlightLayout";
-import { MISSION_CONTROL_PROMPTS } from "../missionControlPrompts";
+import MissionControlPrompt from "../elements/MissionControlPrompt/MissionControlPrompt";
+import AnimatedPageTranscript from "../elements/AnimatedPageTranscript/AnimatedPageTranscript";
+import ProcessHighlightLayout from "../elements/ProcessHighlightLayout";
+import { MISSION_CONTROL_PROMPTS } from "./missionControlPrompts";
 
 export default function Interface({
   setPageIndex,
