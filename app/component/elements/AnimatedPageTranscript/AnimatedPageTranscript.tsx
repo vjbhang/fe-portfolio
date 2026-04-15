@@ -149,8 +149,8 @@ export default function AnimatedPageTranscript({
 
   return (
     <>
-      <div className="flex flex-col gap-2">
-        <div className="flex items-center gap-3">
+      <div className="flex flex-col gap-2 ">
+        <div className="items-center gap-3 md:flex hidden">
           <h4 className="text-sky-300 font-bold">{"// Mission Control:"}</h4>
           <button
             type="button"
@@ -194,7 +194,7 @@ export default function AnimatedPageTranscript({
           </p>
         ))}
       </div>
-      <div className="w-full h-px border-b border-white/30 self-center"></div>
+      <div className="w-full h-px border-b border-white/30 self-center md:inline hidden"></div>
       <div className="flex flex-col gap-2 h-full">
         <h4 className="text-sky-200 font-bold">{"// Vincent AI:"}</h4>
         {typedLines.map((line, index) => {
@@ -209,20 +209,24 @@ export default function AnimatedPageTranscript({
             </p>
           );
         })}
-        {processHighlights && (
-          <p
-            className={`text-white/60 text-xs tracking-wide mt-auto -mb-1 ${styles.processHighlightRow} ${areProcessHighlightsVisible ? styles.processHighlightRowVisible : ""}`.trim()}
-          >
-            TASK
-          </p>
-        )}
+        <div className="flex flex-col gap-2">
+          {processHighlights && (
+            <p
+              className={`text-white/60 text-xs tracking-wide mt-auto -mb-1 ${styles.processHighlightRow} ${areProcessHighlightsVisible ? styles.processHighlightRowVisible : ""}`.trim()}
+            >
+              TASK
+            </p>
+          )}
 
-        <div
-          className={`flex flex-row items-center rounded-lg pb-2 ${styles.processHighlightRow} ${
-            areProcessHighlightsVisible ? styles.processHighlightRowVisible : ""
-          }`.trim()}
-        >
-          {processHighlights}
+          <div
+            className={`flex md:flex-row flex-col items-center rounded-lg pb-2 ${styles.processHighlightRow} ${
+              areProcessHighlightsVisible
+                ? styles.processHighlightRowVisible
+                : ""
+            }`.trim()}
+          >
+            {processHighlights}
+          </div>
         </div>
       </div>
     </>

@@ -25,8 +25,8 @@ export const MISSION_CONTROL_PROMPTS: {
       "Countdown initiated: 3... 2... 1... Liftoff!",
     ],
     vincentai: [
-      "I am Vincent AI - efficient and resourceful. Initiating project.",
-      "To get started, we will:",
+      "I am Vincent AI - efficient and resourceful. Let me walk you through the processes involved in building an application.",
+      "To get started, let's start with the following:",
     ],
     task: (
       <>
@@ -43,7 +43,7 @@ export const MISSION_CONTROL_PROMPTS: {
             build user stories
           </p>
         </ProcessHighlightLayout>
-        <div className="border border-b border-white/20 w-5" />
+        <div className="border md:border-b border-l border-white/20 md:w-5 md:h-0 h-5" />
         <ProcessHighlightLayout>
           <FiFigma size={32} />
           <p>
@@ -79,7 +79,7 @@ export const MISSION_CONTROL_PROMPTS: {
             tech stack, cloud provider, frameworks
           </p>
         </ProcessHighlightLayout>
-        <div className="border border-b border-white/20 w-5" />
+        <div className="border md:border-b border-l border-white/20 md:w-5 h-5" />
         <ProcessHighlightLayout>
           <GrDeploy size={32} />
           <p>
@@ -91,7 +91,7 @@ export const MISSION_CONTROL_PROMPTS: {
             core features implemented; working end-to-end
           </p>
         </ProcessHighlightLayout>
-        <div className="border border-b border-white/20 w-5" />
+        <div className="border md:border-b border-l border-white/20 md:w-5 h-5" />
         <ProcessHighlightLayout>
           <FaDatabase size={32} />
           <p>Base Integrations</p>
@@ -128,7 +128,7 @@ export const MISSION_CONTROL_PROMPTS: {
             speed vs scalability vs cost
           </p>
         </ProcessHighlightLayout>
-        <div className="border border-b border-white/20 w-5" />
+        <div className="border md:border-b border-l border-white/20 md:w-5 h-5" />
         <ProcessHighlightLayout>
           <GrFanOption size={32} />
           <p>Optimization</p>
@@ -165,7 +165,7 @@ export const MISSION_CONTROL_PROMPTS: {
             meets quality benchmarks
           </p>
         </ProcessHighlightLayout>
-        <div className="border border-b border-white/20 w-5" />
+        <div className="border md:border-b border-l border-white/20 md:w-5 h-5" />
         <ProcessHighlightLayout>
           <SiBaremetrics size={32} />
           <p>
@@ -179,7 +179,7 @@ export const MISSION_CONTROL_PROMPTS: {
             alerting
           </p>
         </ProcessHighlightLayout>
-        <div className="border border-b border-white/20 w-5" />
+        <div className="border md:border-b border-l border-white/20 md:w-5 h-5" />
         <ProcessHighlightLayout>
           <SiAlwaysdata size={32} />
           <p>
@@ -219,7 +219,7 @@ export const MISSION_CONTROL_PROMPTS: {
             features, design, business-specific nuance
           </p>
         </ProcessHighlightLayout>
-        <div className="border border-b border-white/20 w-5" />
+        <div className="border md:border-b border-l border-white/20 md:w-5 h-5" />
         <ProcessHighlightLayout>
           <MdArchitecture size={32} />
           <p>Architectural Changes</p>
@@ -229,7 +229,7 @@ export const MISSION_CONTROL_PROMPTS: {
             for scalability
           </p>
         </ProcessHighlightLayout>
-        <div className="border border-b border-white/20 w-5" />
+        <div className="border md:border-b border-l border-white/20 md:w-5 h-5" />
         <ProcessHighlightLayout>
           <RiGlobalFill size={32} />
           <p>
@@ -267,7 +267,7 @@ export const MISSION_CONTROL_PROMPTS: {
             track user interactions for feature optimization
           </p>
         </ProcessHighlightLayout>
-        <div className="border border-b border-white/20 w-5" />
+        <div className="border md:border-b border-l border-white/20 md:w-5 h-5" />
         <ProcessHighlightLayout>
           <TbBrandSpeedtest size={32} />
           <p>
@@ -301,7 +301,7 @@ export const MISSION_CONTROL_PROMPTS: {
             an ongoing process of improvement and adaptation
           </p>
         </ProcessHighlightLayout>
-        <div className="border border-b border-white/20 w-5" />
+        <div className="border md:border-b border-l border-white/20 md:w-5 h-5" />
         <ProcessHighlightLayout>
           <FaMagnifyingGlass size={32} />
           <p>Identify technical debt</p>
@@ -309,7 +309,7 @@ export const MISSION_CONTROL_PROMPTS: {
             review codebase, look for structural improvements
           </p>
         </ProcessHighlightLayout>
-        <div className="border border-b border-white/20 w-5" />
+        <div className="border md:border-b border-l border-white/20 md:w-5 h-5" />
         <ProcessHighlightLayout>
           <FaBookOpen size={32} />
           <p>
@@ -332,7 +332,7 @@ export const MISSION_CONTROL_PROMPTS: {
       "Touchdown confirmed.",
     ],
     vincentai: [
-      "The application is stable and ready for the next iteration. Depending on your requirements, it is not always the case where multiple iterations are needed. Software is never truly 'complete', going through multiple launch and re-entry cycles.",
+      "The application is stable and ready for the next iteration. Software is never truly 'complete', going through multiple launch and re-entry cycles. But based on the requirements, multiple iterations may not be necessary.",
       "---",
       "This landing page is a demonstration of my capabilities and a vision for how I provide value to clients. ",
       "As a freelancer, I can help build your digital solution - whether it is a website, web/mobile application, or an AI implementation.",

@@ -58,30 +58,31 @@ export default function Landing({
               className="mt-4 gap-4 flex pointer-events-auto md:w-fit w-full"
               onClick={() => setPageIndex(1)}
             >
-              <p className="text-sky-400 text-start md:px-1 md:py-0.5 font-bold text-xl font-inconsolata border border-solid rounded border-sky-400/15 hover:border-sky-400/80 transition hover:cursor-pointer md:animate-pulse hover:animate-none md:w-fit w-full">
+              <Link
+                href={"/initiate"}
+                className="text-sky-400 text-start md:px-1 md:py-0.5 font-bold text-xl font-inconsolata border border-solid rounded border-sky-400/15 hover:border-sky-400/80 transition hover:cursor-pointer md:animate-pulse hover:animate-none md:w-fit w-full"
+              >
                 <span className="md:inline hidden">
                   Initiate Launch Sequence
                 </span>
-                <Link className="md:hidden inline text-2xl" href={"/initiate"}>
-                  /initiate
-                </Link>
-              </p>
+                <span className="md:hidden inline text-2xl">/initiate</span>
+              </Link>
               <div className="md:inline hidden">
                 <KeypadEnter setPageIndex={setPageIndex} />
               </div>
             </button>
             <code className="text-sm/tight text-commentgreen mt-1">
-              {"// An interactive walkthrough of the"}
+              {"// Go through an interactive walkthrough of"}
             </code>
             <code className="text-sm/tight text-commentgreen">
-              {"// key processes behind building a"}
+              {"// the processes behind building a"}
             </code>
             <code className="text-sm/tight text-commentgreen">
               {"// web/mobile application"}
             </code>
           </div>
           <div className="w-75 h-1 border-b border-white/20 border-solid md:inline hidden" />
-          <div className="flex flex-col items-center gap-1 text-center text-white text-lg flex-[1.4] md:inline hidden">
+          <div className="flex-col items-center gap-1 text-center text-white text-lg flex-[1.4] md:flex hidden">
             <p className="text-white text-sm">To navigate:</p>
             <div className="flex justify-center items-center flex-row gap-6">
               <div className="flex flex-col items-center gap-1 justify-center w-40">
