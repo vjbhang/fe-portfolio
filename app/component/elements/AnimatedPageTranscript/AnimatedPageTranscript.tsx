@@ -180,7 +180,7 @@ export default function AnimatedPageTranscript({
 
   return (
     <>
-      <div className="flex flex-col gap-2 ">
+      <div className="flex flex-col gap-2 md:w-fit w-full">
         <div className="items-center gap-3 md:flex hidden">
           <h4 className="text-sky-300 font-bold">{"// Mission Control:"}</h4>
           <button
@@ -226,7 +226,7 @@ export default function AnimatedPageTranscript({
         ))}
       </div>
       <div className="w-full h-px border-b border-white/30 self-center md:inline hidden"></div>
-      <div className="flex flex-col gap-2 h-full">
+      <div className="flex flex-col gap-2 h-full md:w-fit w-full">
         <h4 className="text-sky-200 font-bold">{"// Vincent AI:"}</h4>
         {typedLines.map((line, index) => {
           const isActiveLine = activeLineIndex === index;

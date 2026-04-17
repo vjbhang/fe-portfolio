@@ -28,7 +28,11 @@ export default function DynamicPages({
   const [displayedPageIndex, setDisplayedPageIndex] = useState(pageIndex);
 
   const pages = [
-    <Landing key="landing" setPageIndex={setPageIndex} isMobileViewport={undefined} />,
+    <Landing
+      key="landing"
+      setPageIndex={setPageIndex}
+      isMobileViewport={undefined}
+    />,
     <Liftoff key="liftoff" setPageIndex={setPageIndex} />,
     <Nominal key="nominal" setPageIndex={setPageIndex} />,
     <Supersonic key="supersonic" setPageIndex={setPageIndex} />,

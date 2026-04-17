@@ -31,12 +31,14 @@ export const MISSION_CONTROL_PROMPTS: {
     task: (
       <>
         <ProcessHighlightLayout>
-          <LuListTodo size={32} />
-          <p>
-            Define
-            <br />
-            Requirements
-          </p>
+          <div className="md:inline flex flex-row items-center gap-4">
+            <LuListTodo size={32} />
+            <p>
+              Define
+              <br />
+              Requirements
+            </p>
+          </div>
           <p className="text-xs text-white/70 mt-auto">
             establish clear specifications,
             <br />
@@ -45,12 +47,14 @@ export const MISSION_CONTROL_PROMPTS: {
         </ProcessHighlightLayout>
         <div className="border md:border-b border-l border-white/20 md:w-5 md:h-0 h-5" />
         <ProcessHighlightLayout>
-          <FiFigma size={32} />
-          <p>
-            Design
-            <br />
-            Prototype
-          </p>
+          <div className="md:inline flex flex-row items-center gap-4">
+            <FiFigma size={32} />
+            <p>
+              Design
+              <br />
+              Prototype
+            </p>
+          </div>
           <p className="text-xs text-white/70 mt-auto">
             create low- to
             <br />
@@ -73,28 +77,34 @@ export const MISSION_CONTROL_PROMPTS: {
     task: (
       <>
         <ProcessHighlightLayout>
-          <PiStackDuotone size={32} />
-          <p>Choosing Architecture</p>
+          <div className="md:inline flex flex-row items-center gap-4">
+            <PiStackDuotone size={32} />
+            <p>Choosing Architecture</p>
+          </div>
           <p className="text-xs text-white/70 mt-auto">
             tech stack, cloud provider, frameworks
           </p>
         </ProcessHighlightLayout>
         <div className="border md:border-b border-l border-white/20 md:w-5 h-5" />
         <ProcessHighlightLayout>
-          <GrDeploy size={32} />
-          <p>
-            Rapid MVP
-            <br />
-            Deployment
-          </p>
+          <div className="md:inline flex flex-row items-center gap-4">
+            <GrDeploy size={32} />
+            <p>
+              Rapid MVP
+              <br />
+              Deployment
+            </p>
+          </div>
           <p className="text-xs text-white/70 mt-auto">
             core features implemented; working end-to-end
           </p>
         </ProcessHighlightLayout>
         <div className="border md:border-b border-l border-white/20 md:w-5 h-5" />
         <ProcessHighlightLayout>
-          <FaDatabase size={32} />
-          <p>Base Integrations</p>
+          <div className="md:inline flex flex-row items-center gap-4">
+            <FaDatabase size={32} />
+            <p>Base Integrations</p>
+          </div>
           <p className="text-xs text-white/70 mt-auto">
             APIs, database, authentication
           </p>
@@ -116,12 +126,14 @@ export const MISSION_CONTROL_PROMPTS: {
     task: (
       <>
         <ProcessHighlightLayout>
-          <GrBusinessService size={32} />
-          <p>
-            Align with
-            <br />
-            Business Needs
-          </p>
+          <div className="md:inline flex flex-row items-center gap-4">
+            <GrBusinessService size={32} />
+            <p>
+              Align with
+              <br />
+              Business Needs
+            </p>
+          </div>
           <p className="text-xs text-white/70 mt-auto">
             business-specific nuance,
             <br />
@@ -130,8 +142,10 @@ export const MISSION_CONTROL_PROMPTS: {
         </ProcessHighlightLayout>
         <div className="border md:border-b border-l border-white/20 md:w-5 h-5" />
         <ProcessHighlightLayout>
-          <GrFanOption size={32} />
-          <p>Optimization</p>
+          <div className="md:inline flex flex-row items-center gap-4">
+            <GrFanOption size={32} />
+            <p>Optimization</p>
+          </div>
           <p className="text-xs text-white/70 mt-auto">
             feature complexity or <br />
             increased user load
@@ -153,12 +167,14 @@ export const MISSION_CONTROL_PROMPTS: {
     task: (
       <>
         <ProcessHighlightLayout>
-          <HiMiniRocketLaunch size={32} />
-          <p>
-            Stable
-            <br />
-            Release
-          </p>
+          <div className="md:inline flex flex-row items-center gap-4">
+            <HiMiniRocketLaunch size={32} />
+            <p>
+              Stable
+              <br />
+              Release
+            </p>
+          </div>
           <p className="text-xs text-white/70 mt-auto">
             deploy version that
             <br />
@@ -167,12 +183,14 @@ export const MISSION_CONTROL_PROMPTS: {
         </ProcessHighlightLayout>
         <div className="border md:border-b border-l border-white/20 md:w-5 h-5" />
         <ProcessHighlightLayout>
-          <SiBaremetrics size={32} />
-          <p>
-            Establish
-            <br />
-            Observability
-          </p>
+          <div className="md:inline flex flex-row items-center gap-4">
+            <SiBaremetrics size={32} />
+            <p>
+              Establish
+              <br />
+              Observability
+            </p>
+          </div>
           <p className="text-xs text-white/70 mt-auto">
             logging, metrics,
             <br />
@@ -181,12 +199,15 @@ export const MISSION_CONTROL_PROMPTS: {
         </ProcessHighlightLayout>
         <div className="border md:border-b border-l border-white/20 md:w-5 h-5" />
         <ProcessHighlightLayout>
-          <SiAlwaysdata size={32} />
-          <p>
-            Get
-            <br />
-            Insight
-          </p>
+          <div className="md:inline flex flex-row items-center gap-4">
+            <SiAlwaysdata size={32} />
+            <p>
+              Get
+              <br />
+              Insight
+            </p>
+          </div>
+          <div className="md:inline flex flex-row items-center gap-4"></div>
           <p className="text-xs text-white/70 mt-auto">
             collect and analyze data to understand user behavior,
             <br />
@@ -209,20 +230,25 @@ export const MISSION_CONTROL_PROMPTS: {
     task: (
       <>
         <ProcessHighlightLayout>
-          <LuListTodo size={32} />
-          <p>
-            Re-define
-            <br />
-            Scope of Change
-          </p>
+          <div className="md:inline flex flex-row items-center gap-4">
+            <LuListTodo size={32} />
+            <p>
+              Re-define
+              <br />
+              Scope of Change
+            </p>
+          </div>
+          <div className="md:inline flex flex-row items-center gap-4"></div>
           <p className="text-xs text-white/70 mt-auto">
             features, design, business-specific nuance
           </p>
         </ProcessHighlightLayout>
         <div className="border md:border-b border-l border-white/20 md:w-5 h-5" />
         <ProcessHighlightLayout>
-          <MdArchitecture size={32} />
-          <p>Architectural Changes</p>
+          <div className="md:inline flex flex-row items-center gap-4">
+            <MdArchitecture size={32} />
+            <p>Architectural Changes</p>
+          </div>
           <p className="text-xs text-white/70 mt-auto">
             modify systems
             <br />
@@ -231,12 +257,14 @@ export const MISSION_CONTROL_PROMPTS: {
         </ProcessHighlightLayout>
         <div className="border md:border-b border-l border-white/20 md:w-5 h-5" />
         <ProcessHighlightLayout>
-          <RiGlobalFill size={32} />
-          <p>
-            Plan for
-            <br />
-            Scaling
-          </p>
+          <div className="md:inline flex flex-row items-center gap-4">
+            <RiGlobalFill size={32} />
+            <p>
+              Plan for
+              <br />
+              Scaling
+            </p>
+          </div>
           <p className="text-xs text-white/70 mt-auto">
             multi-region, microservices, risk modelling, etc.
           </p>
@@ -257,24 +285,28 @@ export const MISSION_CONTROL_PROMPTS: {
     task: (
       <>
         <ProcessHighlightLayout>
-          <RiSurveyLine size={32} />
-          <p>
-            User Actions
-            <br />
-            Monitoring
-          </p>
+          <div className="md:inline flex flex-row items-center gap-4">
+            <RiSurveyLine size={32} />
+            <p>
+              User Actions
+              <br />
+              Monitoring
+            </p>
+          </div>
           <p className="text-xs text-white/70 mt-auto">
             track user interactions for feature optimization
           </p>
         </ProcessHighlightLayout>
         <div className="border md:border-b border-l border-white/20 md:w-5 h-5" />
         <ProcessHighlightLayout>
-          <TbBrandSpeedtest size={32} />
-          <p>
-            User Interface
-            <br />
-            Testing
-          </p>
+          <div className="md:inline flex flex-row items-center gap-4">
+            <TbBrandSpeedtest size={32} />
+            <p>
+              User Interface
+              <br />
+              Testing
+            </p>
+          </div>
           <p className="text-xs text-white/70 mt-auto">
             manual testing, automated UI tests, visual regression tools
           </p>
@@ -295,28 +327,34 @@ export const MISSION_CONTROL_PROMPTS: {
     task: (
       <>
         <ProcessHighlightLayout>
-          <FaWrench size={32} />
-          <p>Hotfixes, patches, and rapid iteration</p>
+          <div className="md:inline flex flex-row items-center gap-4">
+            <FaWrench size={32} />
+            <p>Hotfixes, patches, and rapid iteration</p>
+          </div>
           <p className="text-xs text-white/70 mt-auto">
             an ongoing process of improvement and adaptation
           </p>
         </ProcessHighlightLayout>
         <div className="border md:border-b border-l border-white/20 md:w-5 h-5" />
         <ProcessHighlightLayout>
-          <FaMagnifyingGlass size={32} />
-          <p>Identify technical debt</p>
+          <div className="md:inline flex flex-row items-center gap-4">
+            <FaMagnifyingGlass size={32} />
+            <p>Identify technical debt</p>
+          </div>
           <p className="text-xs text-white/70 mt-auto">
             review codebase, look for structural improvements
           </p>
         </ProcessHighlightLayout>
         <div className="border md:border-b border-l border-white/20 md:w-5 h-5" />
         <ProcessHighlightLayout>
-          <FaBookOpen size={32} />
-          <p>
-            Setup
-            <br />
-            Docs
-          </p>
+          <div className="md:inline flex flex-row items-center gap-4">
+            <FaBookOpen size={32} />
+            <p>
+              Setup
+              <br />
+              Docs
+            </p>
+          </div>
           <p className="text-xs text-white/70 mt-auto">
             maintain documentation for product/tech
           </p>
@@ -334,7 +372,7 @@ export const MISSION_CONTROL_PROMPTS: {
     vincentai: [
       "The application is stable and ready for the next iteration. Software is never truly 'complete', going through multiple launch and re-entry cycles.",
       "---",
-      "As a freelancer, I can help build your digital solution - whether it is a website, web/mobile application, or an AI implementation.",
+      "As a freelancer, I can help build your digital solution - whether it is a website, web/mobile application, or an AI custom interface.",
       "If you have any questions, or would like to discuss working together, please don't hesitate to reach out. →",
     ],
     task: undefined,
