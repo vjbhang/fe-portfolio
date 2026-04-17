@@ -384,12 +384,14 @@ export default function Sequence({
             onClick={handleLeftArrowClick}
             className={`pointer-events-auto pl-4 transition-opacity duration-500 hover:cursor-pointer ${leftArrowActive ? "opacity-100" : "opacity-70"}`}
           >
-            <Image
-              src={"./arrow-left-keypad.svg"}
-              alt="arrow left keypad"
-              width={28}
-              height={28}
-            />
+            {pageIndex === 0 ? null : (
+              <Image
+                src={"./arrow-left-keypad.svg"}
+                alt="arrow left keypad"
+                width={28}
+                height={28}
+              />
+            )}
           </button>
           <div className="absolute left-1/2 transform -translate-x-1/2">
             <MouseScroll scrollDeltaYState={scrollDeltaYState} />
@@ -412,12 +414,14 @@ export default function Sequence({
                 <KeypadEnter setPageIndex={setPageIndex} />
               </div>
             ) : null}
-            <Image
-              src={"./arrow-right-keypad.svg"}
-              alt="arrow right keypad"
-              width={28}
-              height={28}
-            />
+            {pageIndex === 8 ? null : (
+              <Image
+                src={"./arrow-right-keypad.svg"}
+                alt="arrow right keypad"
+                width={28}
+                height={28}
+              />
+            )}
           </button>
         </div>
       </div>
