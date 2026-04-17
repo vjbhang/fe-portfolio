@@ -6,6 +6,9 @@ import MissionControlPrompt from "../component/elements/MissionControlPrompt/Mis
 import { MISSION_CONTROL_PROMPTS } from "../component/page/missionControlPrompts";
 import AnimatedPageTranscript from "../component/elements/AnimatedPageTranscript/AnimatedPageTranscript";
 import Link from "next/link";
+import { GrHomeRounded } from "react-icons/gr";
+import { FaChevronRight } from "react-icons/fa";
+import { FaChevronLeft } from "react-icons/fa";
 
 const LAST_PAGE_INDEX = 7;
 
@@ -39,30 +42,30 @@ export default function Initiate() {
   return (
     <div className="relative flex min-h-screen w-full flex-col">
       <Header isOpen={isOpen} setIsOpen={setIsOpen} />
-      <div className="flex flex-row justify-between p-2 text-white font-inconsolata mt-17">
+      <div className="flex flex-row justify-evenly p-2 text-white font-inconsolata mt-17">
         {isPageIndex === 0 ? (
-          <div className="min-w-20" />
+          <div className="px-2 py-1 flex-1 items-center justify-center flex" />
         ) : (
           <button
-            className="min-w-20 border border-white/30 rounded px-2 py-1"
+            className="px-2 py-1 flex-1 items-center justify-start flex"
             onClick={decrementPageIndex}
           >
-            Back
+            <FaChevronLeft size={24} />
           </button>
         )}
-        <Link href="/" className="pointer-events-auto">
-          <button className="min-w-20 border border-white/30 rounded px-2 py-1">
-            Home
+        <Link href="/" className="pointer-events-auto flex-1">
+          <button className="px-2 py-1 flex w-full items-center justify-center gap-2">
+            <GrHomeRounded size={24} />
           </button>
         </Link>
         {isPageIndex >= LAST_PAGE_INDEX ? (
-          <div className="min-w-20" />
+          <div className="px-2 py-1 flex-1 items-center justify-center flex" />
         ) : (
           <button
-            className="min-w-20 border border-white/30 rounded px-2 py-1"
+            className="px-2 py-1 flex-1 items-center justify-end flex"
             onClick={incrementPageIndex}
           >
-            Next
+            <FaChevronRight size={24} />
           </button>
         )}
       </div>
@@ -79,25 +82,7 @@ export default function Initiate() {
         </MissionControlPrompt>
       </div>
       {isPageIndex === LAST_PAGE_INDEX && (
-        <div className="flex flex-col items-center justify-center gap-4 mt-auto mb-20">
-          <button
-            onClick={copyEmail}
-            className="flex flex-row items-center gap-4 justify-center bg-[#7dd3fc14] border-[#7DD3FC] border border-solid rounded-3xl text-[#bae6fd] px-2 mx-4 max-w-120 py-1 mt-1 pointer-events-auto cursor-pointer"
-          >
-            <p className="font-inconsolata text-lg">Contact/Inquiries</p>
-            <p className="font-inconsolata text-lg font-bold">
-              vjbstudio@pm.me
-            </p>
-          </button>
-          {emailCopiedActive && (
-            <p className="font-inconsolata text-sm text-white/70">
-              copied e-mail!
-            </p>
-          )}
-          <p className="text-white/70 text-xs italic text-center max-w-[90%]">
-            Once I receive your email, I’ll follow up with a survey and provide
-            options to schedule a meeting/call.{" "}
-          </p>
+        <div className="flex flex-col items-center justify-center gap-4 mb-20">
           <div className="flex flex-col gap-3 text-white font-d-din w-full px-4">
             <h4 className="text-lg font-bold text-center mt-4">ABOUT ME</h4>
             <p>
@@ -126,6 +111,24 @@ export default function Initiate() {
               Let's work together to bring your ideas to life - quickly.
             </p>
           </div>
+          <button
+            onClick={copyEmail}
+            className="flex flex-row items-center gap-4 justify-center bg-[#7dd3fc14] border-[#7DD3FC] border border-solid rounded-3xl text-[#bae6fd] px-2 mx-4 max-w-120 py-1 mt-1 pointer-events-auto cursor-pointer"
+          >
+            <p className="font-inconsolata text-lg">Contact/Inquiries</p>
+            <p className="font-inconsolata text-lg font-bold">
+              vjbstudio@pm.me
+            </p>
+          </button>
+          {emailCopiedActive && (
+            <p className="font-inconsolata text-sm text-white/70">
+              copied e-mail!
+            </p>
+          )}
+          <p className="text-white/70 text-xs italic text-center max-w-[90%]">
+            Once I receive your email, I’ll follow up with a survey and provide
+            options to schedule a meeting/call.{" "}
+          </p>
         </div>
       )}
     </div>

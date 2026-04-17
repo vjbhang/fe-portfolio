@@ -6,16 +6,21 @@ import { MISSION_CONTROL_PROMPTS } from "../page/missionControlPrompts";
 export default function MobilePages({
   pageIndex,
   setPageIndex,
+  isMobileViewport,
 }: {
   pageIndex: number;
   setPageIndex: React.Dispatch<React.SetStateAction<number>>;
+  isMobileViewport: boolean;
 }) {
   void pageIndex;
   void setPageIndex;
 
   return (
     <div className="flex flex-col w-full">
-      <Landing setPageIndex={setPageIndex} />
+      <Landing
+        setPageIndex={setPageIndex}
+        isMobileViewport={isMobileViewport}
+      />
     </div>
   );
 }

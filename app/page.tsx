@@ -137,7 +137,11 @@ export default function Home() {
           setPageIndex={setPageIndex}
         />
         {isMobileViewport ? (
-          <MobilePages pageIndex={pageIndex} setPageIndex={setPageIndex} />
+          <MobilePages
+            pageIndex={pageIndex}
+            setPageIndex={setPageIndex}
+            isMobileViewport={isMobileViewport}
+          />
         ) : (
           <DynamicPages pageIndex={pageIndex} setPageIndex={setPageIndex} />
         )}

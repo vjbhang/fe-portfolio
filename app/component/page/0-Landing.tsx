@@ -5,8 +5,10 @@ import LandingCategoryRotator from "../elements/LandingCategoryRotator";
 import Link from "next/link";
 export default function Landing({
   setPageIndex,
+  isMobileViewport,
 }: {
   setPageIndex: React.Dispatch<React.SetStateAction<number>>;
+  isMobileViewport: boolean;
 }) {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -28,7 +30,7 @@ export default function Landing({
 
   return (
     <div className="flex flex-col w-full h-full md:justify-center gap-12 font-inconsolata">
-      <div className="flex flex-col md:gap-6 gap-3 md:mb-auto md:h-fit h-full md:pb-0 pb-10">
+      <div className="flex flex-col md:gap-6 gap-3 md:mb-auto md:h-fit h-full md:pb-0 pb-10 md:pt-0 pt-3">
         <h1 className="md:text-7xl text-6xl md:px-0 px-2 text-white">
           <span className="md:hidden inline">I build Digital Spaceships</span>
           <span className="md:inline hidden">
@@ -53,35 +55,53 @@ export default function Landing({
         </div>
         <LandingCategoryRotator />
         <div className="flex flex-col items-center justify-center gap-4 rounded-lg border border-solid border-white/20 bg-black/50 md:-mt-3 mt-auto md:h-70 md:w-100 md:pb-0 w-full h-fit pb-4">
-          <div className="flex flex-col justify-center flex-1 md:mt-0 -mt-2">
-            <button
-              className="mt-4 gap-4 flex pointer-events-auto md:w-fit w-full px-1"
-              onClick={() => setPageIndex(1)}
+          {isMobileViewport ? (
+            <Link
+              href={"/initiate"}
+              className="flex flex-col justify-center flex-1 md:mt-0 -mt-2"
             >
-              <Link
-                href={"/initiate"}
-                className="text-sky-400 text-start md:px-1 md:py-0.5 font-bold text-xl font-inconsolata border border-solid rounded border-sky-400/15 hover:border-sky-400/80 transition hover:cursor-pointer md:animate-pulse hover:animate-none md:w-fit w-full"
+              <button className="mt-4 gap-4 flex pointer-events-auto md:w-fit w-full px-1">
+                <div className="text-sky-400 text-start md:px-1 md:py-0.5 font-bold text-xl font-inconsolata border border-solid rounded border-sky-400/15 hover:border-sky-400/80 transition hover:cursor-pointer md:animate-pulse hover:animate-none md:w-fit w-full">
+                  <p className="md:hidden inline text-2xl">
+                    /initiate
+                    <span className="text-white/40 ml-2 text-sm">(click)</span>
+                  </p>
+                </div>
+              </button>
+              <code className="text-sm/tight text-commentgreen mt-1">
+                {"// An interactive walkthrough of"}
+              </code>
+              <code className="text-sm/tight text-commentgreen">
+                {"// the processes behind building a"}
+              </code>
+              <code className="text-sm/tight text-commentgreen">
+                {"// web/mobile application"}
+              </code>
+            </Link>
+          ) : (
+            <div className="flex flex-col justify-center flex-1 md:mt-0 -mt-2">
+              <button
+                className="mt-4 gap-4 flex pointer-events-auto md:w-fit w-full px-1"
+                onClick={() => setPageIndex(1)}
               >
-                <p className="md:inline hidden">Initiate Launch Sequence</p>
-                <p className="md:hidden inline text-2xl">
-                  /initiate
-                  <span className="text-white/40 ml-2 text-sm">(click)</span>
-                </p>
-              </Link>
-              <div className="md:inline hidden">
-                <KeypadEnter setPageIndex={setPageIndex} />
-              </div>
-            </button>
-            <code className="text-sm/tight text-commentgreen mt-1">
-              {"// An interactive walkthrough of"}
-            </code>
-            <code className="text-sm/tight text-commentgreen">
-              {"// the processes behind building a"}
-            </code>
-            <code className="text-sm/tight text-commentgreen">
-              {"// web/mobile application"}
-            </code>
-          </div>
+                <div className="text-sky-400 text-start md:px-1 md:py-0.5 font-bold text-xl font-inconsolata border border-solid rounded border-sky-400/15 hover:border-sky-400/80 transition hover:cursor-pointer md:animate-pulse hover:animate-none md:w-fit w-full">
+                  <p className="md:inline hidden">Initiate Launch Sequence</p>
+                </div>
+                <div className="md:inline hidden">
+                  <KeypadEnter setPageIndex={setPageIndex} />
+                </div>
+              </button>
+              <code className="text-sm/tight text-commentgreen mt-1">
+                {"// An interactive walkthrough of"}
+              </code>
+              <code className="text-sm/tight text-commentgreen">
+                {"// the processes behind building a"}
+              </code>
+              <code className="text-sm/tight text-commentgreen">
+                {"// web/mobile application"}
+              </code>
+            </div>
+          )}
           <div className="w-75 h-1 border-b border-white/20 border-solid md:inline hidden" />
           <div className="flex-col items-center gap-1 text-center text-white text-lg flex-[1.4] md:flex hidden">
             <p className="text-white text-sm">To navigate:</p>
