@@ -1,10 +1,6 @@
 import { useEffect, useState } from "react";
-import GradientRotateButton from "../elements/GradientRotateBtn";
 import MissionControlPrompt from "../elements/MissionControlPrompt/MissionControlPrompt";
 import AnimatedPageTranscript from "../elements/AnimatedPageTranscript/AnimatedPageTranscript";
-import ProcessHighlightLayout from "../elements/ProcessHighlightLayout";
-import { FaBookOpen, FaWrench } from "react-icons/fa";
-import { FaMagnifyingGlass } from "react-icons/fa6";
 import { MISSION_CONTROL_PROMPTS } from "./missionControlPrompts";
 
 const LAST_PAGE_INDEX = 8;
@@ -79,7 +75,7 @@ export default function About({
               </span>
             </p>
             <p className="italic">
-              Let's work together to bring your ideas to life - quickly.
+              Let&apos;s work together to bring your ideas to life - quickly.
             </p>
 
             <div className="flex flex-row gap-3 items-center">

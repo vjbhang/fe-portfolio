@@ -1,7 +1,4 @@
-import AnimatedPageTranscript from "../elements/AnimatedPageTranscript/AnimatedPageTranscript";
-import MissionControlPrompt from "../elements/MissionControlPrompt/MissionControlPrompt";
 import Landing from "../page/0-Landing";
-import { MISSION_CONTROL_PROMPTS } from "../page/missionControlPrompts";
 
 export default function MobilePages({
   pageIndex,

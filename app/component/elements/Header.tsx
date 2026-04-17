@@ -1,7 +1,6 @@
 import React from "react";
 import Clock from "./Clock";
 import Timer from "./Timer";
-import HamburgerIcon from "./HamburgerMenu/HamburgerIcon";
 
 interface HeaderProps {
   isOpen: boolean;

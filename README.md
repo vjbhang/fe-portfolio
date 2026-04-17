@@ -1,5 +1,7 @@
 # FE-Portfolio
 
+Deploy: [Netlify](https://app.netlify.com/projects/vjbstudio/overview)
+
 ## Log
 
 - 26.3.26 (Thu): Made the timeline animation in flex. It is proving to be choppy

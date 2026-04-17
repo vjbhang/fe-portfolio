@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import Header from "../component/elements/Header";
 import MissionControlPrompt from "../component/elements/MissionControlPrompt/MissionControlPrompt";
 import { MISSION_CONTROL_PROMPTS } from "../component/page/missionControlPrompts";
@@ -108,7 +108,7 @@ export default function Initiate() {
               </span>
             </p>
             <p className="italic">
-              Let's work together to bring your ideas to life - quickly.
+              Let&apos;s work together to bring your ideas to life - quickly.
             </p>
           </div>
           <button
