@@ -363,7 +363,7 @@ export const MISSION_CONTROL_PROMPTS: {
     ),
   },
   {
-    stage: "ABOUT",
+    stage: "Touchdown",
     mc: [
       "Landing legs deployed.",
       "Vehicle is stable on the pad.",
