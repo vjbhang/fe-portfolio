@@ -28,14 +28,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} relative min-h-screen antialiased bg-black`}
       >
-        <div className="md:absolute fixed top-0 left-0 w-full h-full z-7 bg-black">
+        <div className="md:absolute fixed top-0 left-0 w-full h-full z-7">
           <AnimatedBG />
         </div>
         <video
           autoPlay
           loop
           muted
-          className="md:absolute fixed top-0 left-0 w-full h-full object-cover z-5 bg-black"
+          className="md:absolute fixed top-0 left-0 w-full h-full object-cover z-5"
         >
           <source src={"/bgvid.webm"} type="video/webm" />
           <source src={"/bgvid.mp4"} type="video/mp4" />
