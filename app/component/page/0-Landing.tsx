@@ -8,7 +8,7 @@ export default function Landing({
   isMobileViewport,
 }: {
   setPageIndex: React.Dispatch<React.SetStateAction<number>>;
-  isMobileViewport: boolean;
+  isMobileViewport: boolean | undefined;
 }) {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
