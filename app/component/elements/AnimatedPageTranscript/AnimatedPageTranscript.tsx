@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import styles from "./AnimatedPageTranscript.module.css";
 
 const MISSION_PARAGRAPH_DURATION_MS = 680;
@@ -10,10 +10,12 @@ export default function AnimatedPageTranscript({
   missionControlLines,
   vincentAiLines,
   processHighlights,
+  resetKey,
 }: {
   missionControlLines: string[];
   vincentAiLines: string[];
   processHighlights: React.ReactNode;
+  resetKey?: number;
 }) {
   const hasVincentLines = vincentAiLines.length > 0;
   const [isAnimationEnabled, setIsAnimationEnabled] = useState(() => {
@@ -36,6 +38,35 @@ export default function AnimatedPageTranscript({
   const [showProcessHighlights, setShowProcessHighlights] = useState(
     () => !hasVincentLines || !isAnimationEnabled,
   );
+
+  const isInitialResetRef = useRef(true);
+
+  // Reset animation state when resetKey changes (used by pages that don't remount this component on navigation)
+  useEffect(() => {
+    if (resetKey === undefined) {
+      return;
+    }
+
+    if (isInitialResetRef.current) {
+      isInitialResetRef.current = false;
+      return;
+    }
+
+    if (isAnimationEnabled) {
+      setTypedLines(vincentAiLines.map(() => ""));
+      setActiveLineIndex(null);
+      setIsTypingComplete(!hasVincentLines);
+      setShowProcessHighlights(!hasVincentLines);
+      setAnimationRunKey((previousKey) => previousKey + 1);
+      return;
+    }
+
+    setTypedLines([...vincentAiLines]);
+    setActiveLineIndex(null);
+    setIsTypingComplete(true);
+    setShowProcessHighlights(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [resetKey]);
 
   const missionAnimationEndDelay = useMemo(() => {
     const totalParagraphs = missionControlLines.length;

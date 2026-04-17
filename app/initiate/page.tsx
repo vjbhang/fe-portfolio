@@ -74,6 +74,7 @@ export default function Initiate() {
             missionControlLines={[]}
             vincentAiLines={MISSION_CONTROL_PROMPTS[isPageIndex].vincentai}
             processHighlights={MISSION_CONTROL_PROMPTS[isPageIndex].task}
+            resetKey={isPageIndex}
           />
         </MissionControlPrompt>
       </div>
