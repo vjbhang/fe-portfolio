@@ -99,7 +99,7 @@ export default function About({
               )}
             </div>
             <p className="text-white/70 text-xs italic">
-              Once I receive your email, I’ll follow up with a survey and
+              Once I receive your e-mail, I’ll follow up with a survey and
               provide options to schedule a meeting/call.{" "}
             </p>
           </div>

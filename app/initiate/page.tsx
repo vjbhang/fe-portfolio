@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Header from "../component/elements/Header";
 import MissionControlPrompt from "../component/elements/MissionControlPrompt/MissionControlPrompt";
 import { MISSION_CONTROL_PROMPTS } from "../component/page/missionControlPrompts";
@@ -39,17 +39,6 @@ export default function Initiate() {
   return (
     <div className="relative flex min-h-screen w-full flex-col">
       <Header isOpen={isOpen} setIsOpen={setIsOpen} />
-
-      {/* <div className="flex flex-row justify-around items-center min-h-12 mt-17 gap-1 px-2">
-        <div className="border border-white rounded p-2 flex items-center flex-1 h-8"></div>
-        <div className="border border-white rounded p-2 flex items-center flex-1 h-8"></div>
-        <div className="border border-white rounded p-2 flex items-center flex-1 h-8"></div>
-        <div className="border border-white rounded p-2 flex items-center flex-1 h-8"></div>
-        <div className="border border-white rounded p-2 flex items-center flex-1 h-8"></div>
-        <div className="border border-white rounded p-2 flex items-center flex-1 h-8"></div>
-        <div className="border border-white rounded p-2 flex items-center flex-1 h-8"></div>
-        <div className="border border-white rounded p-2 flex items-center flex-1 h-8"></div>
-      </div> */}
       <div className="flex flex-row justify-between p-2 text-white font-inconsolata mt-17">
         {isPageIndex === 0 ? (
           <div className="min-w-20" />
