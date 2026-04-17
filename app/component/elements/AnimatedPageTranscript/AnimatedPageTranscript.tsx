@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import styles from "./AnimatedPageTranscript.module.css";
 
 const MISSION_PARAGRAPH_DURATION_MS = 680;
@@ -42,7 +42,7 @@ export default function AnimatedPageTranscript({
   const isInitialResetRef = useRef(true);
 
   // Reset animation state when resetKey changes (used by pages that don't remount this component on navigation)
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (resetKey === undefined) {
       return;
     }
