@@ -35,7 +35,7 @@ export default function RootLayout({
           autoPlay
           loop
           muted
-          className="md:absolute fixed top-0 left-0 w-full h-full object-cover z-5"
+          className="md:absolute fixed top-0 left-0 w-full h-full object-cover z-5 bg-black"
         >
           <source src={"/bgvid.webm"} type="video/webm" />
           <source src={"/bgvid.mp4"} type="video/mp4" />
